@@ -7,20 +7,45 @@
   <body>
     <header>
       <!--공통헤더-->
+      <!--임시 샘플 파일을 넣긴 했지만 html에서는 공간만 확보하고 이미지 파일은 css에서 작업-->
+      <img
+        src="https://via.placeholder.com/800x150?text=example+header+image"
+      />
     </header>
     <nav>
       <!--공통네비게이션바-->
+      <ul style="list-style-type: none">
+        <li><a ="#">메인 페이지</a></li>
+        <li><a ="#"> 메뉴등록</a></li>
+        <li><a ="#"> 등등 이렇게 옆으로 css에서</a></li>
+      </ul>
     </nav>
 
-    <div class="title">
+    <div class="pg_title" style="margin: 20px 20px">
       <!--페이지 이름-->
-      <span id="메뉴조회_식당이름">맛집이름</span> <span>대표메뉴 조회</span>
+      <!--맛집이름 부분은 따로 인라인 해줘야 나중에 해당 맛집 이름으로 데이터 변경 가능-->
+      <span id="맛집이름">맛집이름</span> <span>대표메뉴 조회</span>
     </div>
 
-    <section id="메뉴조회section"></section>
+    <section id="메뉴조회section">
+      <div id="per메뉴">
+        <!--메뉴판 부분-->
+        <img src="https://via.placeholder.com/150" alt="샘플 대표메뉴 이미지" />
+        <div style="display: inline-block">
+          <span id="메뉴명">메뉴 이름</span>
+          <hr
+            style="display: inline-block; border-style: dashed; width: 20em"
+          />
+          <!--width는 수정해야함-->
+          <span id="가격">0000원</span>
+        </div>
+        <hr />
+      </div>
+    </section>
 
     <footer>
       <!--푸터 공통-->
+      <p>footer</p>
     </footer>
   </body>
 </html>
