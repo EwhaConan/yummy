@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>맛집 등록</title>
+</head>
+
+<body>
+    <header>
+        <!--공통헤더-->
+        <!--임시 샘플 파일을 넣긴 했지만 html에서는 공간만 확보하고 이미지 파일은 css에서 작업-->
+        <img src="https://via.placeholder.com/800x150?text=example+header+image" />
+    </header>
+
+    <nav>
+        <!--공통네비게이션바-->
+        <ul style="list-style-type: none">
+            <li>
+                <a="#">메인 페이지</a>
+            </li>
+            <li>
+                <a="#"> 메뉴등록</a>
+            </li>
+            <li>
+                <a="#"> 등등 이렇게 옆으로 css에서</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="pg_title">
+        <!--페이지 이름-->
+        맛집 등록
+    </div>
+
+    <section>
+        <h3>
+            자신이 생각하는 맛집을 등록해주세요!
+        </h3>
+        <hr style="border-width:2px" border-style="solid" color="#ffec94">
+        <form name="맛집 등록" action="" method="">
+
+            <span id="식당이름" class="식당이름">식당이름:</span><br>
+            <input type="text" name="name" required><br><br>
+
+            <span id="주소" class="주소">주소:</span><br>
+            <input type="text" name="주소" placeholder="도로명 주소" required><br><br>
+
+
+            <span id="전화번호" class="전화번호">전화번호:</span><br>
+            <input type="tel" required><br><br>
+
+            <span id="음식의 종류" class="음식의 종류">음식의 종류:</span><br>
+            <input type="text" name="category" placeholder="한식/양식/중식..." required><br><br>
+
+            <span id="음식 가격대" class="음식 가격대">음식 가격대:</span><br>
+            <input type="text" name="range" placeholder="ex)10000-20000원" required><br><br>
+
+            <span id="주차여부" class="주차여부">주차여부:</span><br>
+            <input type="radio" id="y" name="car" required>
+            <label for="y">YES</label><br>
+            <input type="radio" id="n" name="car">
+            <label for="n">NO</label><br><br>
+
+            <span id="영업시간" class="영업시간">영업시간:</span><br>
+            <input type="text" name="time" required><br><br>
+
+            <span id="맛집사이트" class="맛집사이트">사이트 URL:</span><br>
+            <input type="url" name="사이트" placeholder=인스타그램/홈페이지... required><br><br>
+
+            <span id="음식점대표사진" class="음식점대표사진">대표사진:</span><br>
+            <input type="file" required><br><br><br>
+
+            <input type="submit" value="맛집 등록하기">
+
+
+        </form>
+    </section>
+
+    <footer>
+        <!--footer 공통-->
+        <p>
+            footer
+        </p>
+    </footer>
+</body>
+
+</html>
