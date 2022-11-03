@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>리뷰 조회</title>
+  </head>
+  <body>
+    <header>
+      <!--공통헤더-->
+      <!--임시 샘플 파일을 넣긴 했지만 html에서는 공간만 확보하고 이미지 파일은 css에서 작업-->
+      <img
+        src="https://via.placeholder.com/800x150?text=example+header+image"
+      />
+    </header>
+    <nav>
+      <!--공통네비게이션바-->
+    </nav>
+
+    <div class="pg_title">
+      <!--페이지 이름-->
+      <h1><span id="맛집이름">맛집이름</span> <span>리뷰 조회</span></h1>
+    </div>
+
+    <section>
+      <div>
+        <!--식당 세부 화면으로 넘어가는 버튼-->
+        <input type="button" value="식당 세부 화면" />
+      </div>
+      <div class="star_rating" id="total_star_rating">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+
+      <div id="keyword">
+        <span class="keyword_name">음식이 맛있어요</span>
+        <hr style="display: inline-block; border-width: 5px; width: 5em" />
+        <br />
+        <span class="keyword_name">음식이 맛있어요</span>
+        <hr style="display: inline-block; border-width: 5px; width: 5em" />
+        <br />
+        <span class="keyword_name">음식이 맛있어요</span>
+        <hr style="display: inline-block; border-width: 5px; width: 5em" />
+        <br />
+        <span class="keyword_name">음식이 맛있어요</span>
+        <hr style="display: inline-block; border-width: 5px; width: 5em" />
+      </div>
+
+      <div id="필터버튼">
+        <input type="button" value="정렬" />
+        <input type="button" value="메뉴별 리뷰보기" />
+        <input type="checkbox" id="사진리뷰체크박스" />
+        <label for="사진리뷰체크박스">사진 리뷰 모아보기</label>
+      </div>
+      <div class="per리뷰">
+        <img src="https://via.placeholder.com/150" alt="샘플 대표메뉴 이미지" />
+        <div class="star_rating per_star_rating">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <div class="review_textblock">
+          <p class="user_name">닉네임</p>
+          <p class="review_text">리뷰 내용</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <!--푸터 공통-->
+      <p>footer</p>
+    </footer>
+  </body>
+</html>
