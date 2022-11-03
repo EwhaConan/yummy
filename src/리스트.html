@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>맛집 리스트</title>
+    </head>
+    <body>
+        <header>
+            <!--공통헤더-->
+        </header>
+        <nav>
+            <!--공통네비게이션바-->
+        </nav>
+
+        <div class="리스트" style="margin: 20px 20px">
+            <h1><span>맛집 리스트</span></h1>
+        </div>
+
+        <section id="리스트section">
+            <div class="per맛집">
+                <!--각 맛집 상세페이지로 링크-->
+                <a href="각 맛집 상세페이지 url">
+                    <!-- 링크 거는 거: <a>태그 대신에, 나중에 JS로 div 누르는 거에 이벤트헨들러 추가하는 방식으로 바꿀 수도 있을 듯. -->
+                    <div class="맛집_img_이름_좋아요버튼">
+                        <img name="맛집대표사진" src="https://via.placeholder.com/285" alt="맛집 대표사진" width="285px" height="285px"> <br>
+                        <span id="맛집이름">맛집이름</span> <br>
+                        
+                        <!--좋아요 버튼-->
+                        <div name="like" id="맛집이름+like"> <img src="https://via.placeholder.com/30/&text=unliked+heart" alt="테두리만 있는 하트" width="30px" height="30px"> </div>
+                        <!--
+                            JS 이용해서 이벤트핸들러 추가
+                            버튼 이미지 바꾸게 (강의노트에 전구 불 on/off 있었던 것처럼.)
+                        -->
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <!--공통 footer-->
+        </footer>
+    </body>
+</html>
