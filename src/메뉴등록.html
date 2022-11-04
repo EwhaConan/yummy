@@ -16,54 +16,59 @@
     <nav>
         <!--공통네비게이션바-->
         <ul style="list-style-type: none">
-            <li><a="#">메인 페이지</a></li>
-            <li><a="#"> 메뉴등록</a></li>
-            <li><a="#"> 등등 이렇게 옆으로 css에서</a></li>
+            <li>
+                <a="리스트.html">맛집 리스트</a=>
+            </li>
+            <li>
+                <a="맛집등록.html"> 맛집 등록</a=>
+            </li>
+            <li>
+                <a="점메추.html"> 점메추/저메추</a=>
+            </li>
         </ul>
     </nav>
 
     <div class="pg_title">
         <!--페이지 이름-->
-        대표메뉴 등록
+        <span class="맛집이름">대표메뉴 등록</span>
     </div>
 
     <section>
         <h3>
             자신이 생각하는 대표메뉴를 공유해주세요!
         </h3>
-        <hr style="border-width:2px" border-style="solid" color="#ffec94">
+
         <form name="대표메뉴 등록" action="" method="">
 
 
-            <span id="음식이름" class="음식이름">음식이름:</span><br>
-            <input type="text" name="foodname" required><br><br>
+            <p>음식이름:<br>
+                <input type="text" name="foodname" required><br><br>
 
-            <span id="가격" class="가격">가격:</span><br>
-            <input type="number" name="foodprice" min="0" max="500000" required><br><br>
+                <span id="가격" class="가격">가격:</span><br>
+                <input type="number" name="foodprice" min="0" max="500000" required><br><br>
 
-            <span id="사진" class="사진">사진:</span><br>
-            <input type="file" required><br><br>
+                <span id="사진" class="사진">사진:</span><br>
+                <input type="file" required><br><br>
 
-            <span id="알러지정보" class="알러지정보">알러지 정보 (*선택사항)</span><br>
-            <input type="text" name="allergy"><br><br>
+                <span id="알러지정보" class="알러지정보">알러지 정보 (*선택사항)</span><br>
+                <input type="text" name="allergy"><br><br>
 
-            <span id="비건메뉴여부" class="비건메뉴여부">비건 메뉴 여부 (*선택사항)</span><br>
-            <input type="radio" id="yes" name="select">
-            <label for="yes">YES</label><br>
-            <input type="radio" id="no" name="select">
-            <label for="no">NO</label><br>
-            <input type="radio" id="변경" name="select">
-            <label for="변경">비건으로 변경 가능</label><br><br><br>
+                <span id="비건메뉴여부" class="비건메뉴여부">비건 메뉴 여부 (*선택사항)</span><br>
+                <input type="radio" id="yes" name="select">
+                <label for="yes">YES</label><br>
+                <input type="radio" id="no" name="select">
+                <label for="no">NO</label><br>
+                <input type="radio" id="변경" name="select">
+                <label for="변경">비건으로 변경 가능</label><br><br><br>
 
-            <input type="submit" value="메뉴 등록하기">
+                <input type="submit" value="메뉴 등록하기">
 
         </form>
     </section>
     <footer>
         <!--footer 공통-->
-        <p>
-            footer
-        </p>
+        <p>@EwhaConan</p>
+        <a href="https://github.com/EwhaConan/yummy">github/EwhaConan</a>
     </footer>
 </body>
 
