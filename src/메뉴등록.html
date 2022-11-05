@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>대표메뉴 등록</title>
+</head>
+
+<body>
+    <header>
+        <!--공통헤더-->
+        <!--임시 샘플 파일을 넣긴 했지만 html에서는 공간만 확보하고 이미지 파일은 css에서 작업-->
+        <img src="https://via.placeholder.com/800x150?text=example+header+image" />
+    </header>
+
+    <nav>
+        <!--공통네비게이션바-->
+        <ul style="list-style-type: none">
+            <li>
+                <a="리스트.html">맛집 리스트</a=>
+            </li>
+            <li>
+                <a="맛집등록.html"> 맛집 등록</a=>
+            </li>
+            <li>
+                <a="점메추.html"> 점메추/저메추</a=>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="pg_title">
+        <!--페이지 이름-->
+        <span class="맛집이름">대표메뉴 등록</span>
+    </div>
+
+    <section>
+        <h3>
+            자신이 생각하는 대표메뉴를 공유해주세요!
+        </h3>
+
+        <form name="대표메뉴 등록" action="" method="">
+
+
+            <p>음식이름:</p>
+            <input type="text" name="foodname" required><br><br>
+
+            <p><span id="가격" class="가격">가격:</span></p>
+            <input type="number" name="foodprice" min="0" max="500000" required><br><br>
+
+            <p><span id="사진" class="사진">사진:</span></p>
+            <input type="file" required><br><br>
+
+            <p><span id="알러지정보" class="알러지정보">알러지 정보 (*선택사항):</span></p>
+            <input type="text" name="allergy"><br><br>
+
+            <p><span id="비건메뉴여부" class="비건메뉴여부">비건 메뉴 여부 (*선택사항):</span></p>
+            <input type="radio" id="yes" name="select">
+            <label for="yes">YES</label><br>
+            <input type="radio" id="no" name="select">
+            <label for="no">NO</label><br>
+            <input type="radio" id="변경" name="select">
+            <label for="변경">비건으로 변경 가능</label><br><br><br>
+
+            <input type="submit" value="메뉴 등록하기">
+
+        </form>
+    </section>
+    <footer>
+        <!--footer 공통-->
+        <p>@EwhaConan</p>
+        <a href="https://github.com/EwhaConan/yummy">github/EwhaConan</a>
+    </footer>
+</body>
+
+</html>
