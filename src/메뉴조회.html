@@ -3,31 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <title>메뉴 조회</title>
+    <link rel="stylesheet" href="whole.css">
   </head>
   <body>
     <header>
       <!--공통헤더-->
       <!--임시 샘플 파일을 넣긴 했지만 html에서는 공간만 확보하고 이미지 파일은 css에서 작업-->
-      <img
-        src="https://via.placeholder.com/800x150?text=example+header+image"
-      />
+      <img src="food.jpeg" style width = "600px"; height = "260px";>
     </header>
     <nav>
-      <!--공통네비게이션바 -->
-      <ul style="list-style-type: none">
-        <li><a ="리스트.html">맛집 리스트</a></li>
-        <li><a ="맛집등록.html"> 맛집 등록</a></li>
-        <li><a ="점메추.html"> 점메추/저메추</a></li>
-      </ul>
-    </nav>
+      <!--공통네비게이션바-->
+      <a href="리스트.html"><b>맛집 리스트</b></a>
+      <a href="맛집등록.html"><b>맛집 등록</b></a>
+      <a href="메뉴등록.html"><b>메뉴등록</b></a>
+      <a href="리뷰등록.html"><b>리뷰등록</b></a>
+      <a href="리뷰조회.html"><b>리뷰조회</b></a>
+      <a href="리뷰등록.html"><b>리뷰등록</b></a>
+      <a href="점메추.html"> <b>점메추 / 저메추</b></a>
+
+  </nav>
 
     <div class="pg_title">
       <!--페이지 이름-->
       <!--맛집이름 부분은 따로 인라인 해줘야 나중에 해당 맛집 이름으로 데이터 변경 가능-->
-      <h1><span class="맛집이름">맛집이름</span> <span>대표메뉴 조회</span></h1>
     </div>
 
-    <section id="메뉴조회section">
+    <section>
+      <div class = "co side">
+      </div>
+
+      <div class = "co mid">
+        <div class = "title">
+          <span id = "chk">
+          <h2>메뉴 조회</h2> 
+      </span>
+      </div>
+
+
       <div>
         <input type="button" value="대표 메뉴 등록" />
       </div>
@@ -45,12 +57,15 @@
         </div>
         <hr />
       </div>
+    </div>
+    <div class = "co side">
+    </div>
     </section>
 
     <footer>
-      <!--푸터 공통-->
-      <p>@EwhaConan</p>
-      <a href="https://github.com/EwhaConan/yummy">github/EwhaConan</a>
-    </footer>
+      <!--footer 공통-->
+      <h3>@EwhaConan</h3>
+      <h3><a href="https://github.com/EwhaConan/yummy">github/EwhaConan</a></h3>
+  </footer>
   </body>
 </html>
