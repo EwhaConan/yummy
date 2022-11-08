@@ -4,66 +4,128 @@
         <meta charset="UTF-8">
         <title>맛집 리스트</title>
         <link rel="stylesheet" href="whole.css">
-    </head>
-    <body>
-        <header>
-          <!--공통헤더-->
-          <!--임시 샘플 파일을 넣긴 했지만 html에서는 공간만 확보하고 이미지 파일은 css에서 작업-->
-          <img src="food.jpeg" style width = "600px"; height = "260px";>
-        </header>
-        <nav>
-          <!--공통네비게이션바-->
-          <a href="리스트.html"><b>맛집 리스트</b></a>
-          <a href="맛집등록.html"><b>맛집 등록</b></a>
-          <a href="메뉴등록.html"><b>메뉴등록</b></a>
-          <a href="리뷰등록.html"><b>리뷰등록</b></a>
-          <a href="리뷰조회.html"><b>리뷰조회</b></a>
-          <a href="리뷰등록.html"><b>리뷰등록</b></a>
-          <a href="점메추.html"> <b>점메추 / 저메추</b></a>
-  
-      </nav>
-
-        <div class="리스트">
-        </div>
-
-        <section id="리스트section">
-          <div class = "co side">
-
-          </div>
-
-          <div class = "co mid">
-
-            <div class = "title">
-              <span id = "chk">
-              <h2>맛집 리스트</h2> 
-          </span>
-          </div>
-
-
-            <div class="per맛집">
-                <!--각 맛집 상세페이지로 링크-->
-                <a href="각 맛집 상세페이지 url">
-                    <!-- 링크 거는 거: <a>태그 대신에, 나중에 JS로 div 누르는 거에 이벤트헨들러 추가하는 방식으로 바꿀 수도 있을 듯. -->
-                    <div class="맛집_img_이름_좋아요버튼">
-                        <img name="맛집대표사진" src="https://via.placeholder.com/285" alt="맛집 대표사진" width="285px" height="285px"> <br>
-                        <span class="맛집이름">맛집이름</span> <br>
-                        
-                        <!--좋아요 버튼-->
-                        <div name="like" class="맛집이름+like"> <img src="https://via.placeholder.com/30/&text=unliked+heart" alt="테두리만 있는 하트" width="30px" height="30px"> </div>
-                        <!--
-                            JS 이용해서 이벤트핸들러 추가
-                            버튼 이미지 바꾸게 (강의노트에 전구 불 on/off 있었던 것처럼.)
-                        -->
+        <!DOCTYPE html>
+        <html lang="ko">
+            <head>
+                <meta charset="UTF-8">
+                <title>맛집 리스트</title>
+                <link rel="stylesheet" href="whole.css">
+                
+            </head>
+            <body>
+                <header>
+                  <!--공통헤더-->
+                  <!--임시 샘플 파일을 넣긴 했지만 html에서는 공간만 확보하고 이미지 파일은 css에서 작업-->
+                  <img src="food.jpeg" style width = "600px"; height = "260px";>
+                </header>
+                <nav>
+                  <!--공통네비게이션바-->
+                  <a href="리스트.html"><b>맛집 리스트</b></a>
+                  <a href="맛집등록.html"><b>맛집 등록</b></a>
+                  <a href="메뉴등록.html"><b>메뉴등록</b></a>
+                  <a href="리뷰등록.html"><b>리뷰등록</b></a>
+                  <a href="리뷰조회.html"><b>리뷰조회</b></a>
+                  <a href="리뷰등록.html"><b>리뷰등록</b></a>
+                  <a href="점메추.html"> <b>점메추 / 저메추</b></a>
+          
+              </nav>
+        
+                <div class="리스트">
+                </div>
+        
+                <section id="리스트section">
+                  <div class = "co side">
+                    <div class="card">
+                      <h2>인기차트</h2>
+                      <p>1. 모미지식당<br>
+                        2. 참참참<br>
+                        3. 유야케도쿄<br>
+                        4. 고냉지<br>
+                        5. 티아라카페
+                      </p>
                     </div>
-                </a>
-            </div>
-          </div>
-        </section>
-
-        <footer>
-          <!--footer 공통-->
-          <h3>@EwhaConan</h3>
-          <h3><a href="https://github.com/EwhaConan/yummy">github/EwhaConan</a></h3>
-      </footer>
-    </body>
-</html>
+                
+                    <div class="card">
+                      <h3>Follow Me</h3>
+                      <p>앞으로도 종종 들러서 <br>
+                        업그레이드되는<br>
+                        이대 주변 맛집 소식을<br>
+                        봐주세요~</p>
+                    </div>
+        
+                  </div>
+        
+                  <div class = "co mid">
+        
+                    <div class = "title">
+                      <span id = "chk">
+                      <h2>맛집 리스트</h2> 
+                    </span>
+                    </div>
+        
+        
+                    <div class="per맛집">
+                        <!--각 맛집 상세페이지로 링크-->
+                        <a href="각 맛집 상세페이지 url">
+                            <!-- 링크 거는 거: <a>태그 대신에, 나중에 JS로 div 누르는 거에 이벤트헨들러 추가하는 방식으로 바꿀 수도 있을 듯. -->
+                            <div class="list">
+                              <div class="맛집">
+                              <div class = "box">
+                                <div class ="image">
+                                <img name="모미지사진" src="모미지.jpg" alt="모미지사진" width="285px" height="285px"> 
+                              </div>
+                                <div class="info">
+                                  <h3>모미지식당</h3>
+                                    <p>이대 정문쪽 덮밥집</p>
+                                    <img src="heart.png" alt="채워진 하트" width="30px" height="30px">                          
+                                  </div>
+                              </div> 
+                            </div>
+                            <div class="맛집">
+                              <div class = "box">
+                                <div class ="image">
+                                <img name="유야케도쿄사진" src="유야케도쿄.jpeg" alt="유야케도쿄사진" width="285px" height="285px"> 
+                              </div>
+                                <div class="info">
+                                  <h3>유야케도쿄</h3>
+                                    <p>이대 정문쪽 돈가스집</p>
+                                    <img src="heart.png" alt="채워진 하트" width="30px" height="30px">
+                                    <!--좋아요 버튼-->
+                                   <!--
+                                    JS 이용해서 이벤트핸들러 추가
+                                    버튼 이미지 바꾸게 (강의노트에 전구 불 on/off 있었던 것처럼.)
+                                   -->
+                                  </div>
+                              </div> 
+                            </div>
+                            <div class="맛집">
+                              <div class = "box">
+                                <div class ="image">
+                                <img name="고냉지사진" src="고냉지.jpg" alt="고냉지사진" width="285px" height="285px"> 
+                              </div>
+                                <div class="info">
+                                  <h3>고냉지</h3>
+                                    <p>신촌기차역쪽 김치찌개 맛집</p>
+                                    <img src="emptyheart.png" alt="비워진 하트" width="30px" height="30px">
+                                    <!--좋아요 버튼-->
+                                   <!--
+                                    JS 이용해서 이벤트핸들러 추가
+                                    버튼 이미지 바꾸게 (강의노트에 전구 불 on/off 있었던 것처럼.)
+                                   -->
+                                  </div>
+                              </div> 
+                            </div>
+                            </div>
+                        </a>
+                    </div>
+                  </div>
+                </section>
+        
+                <footer>
+                  <!--footer 공통-->
+                  <h3>@EwhaConan</h3>
+                  <h3><a href="https://github.com/EwhaConan/yummy">github/EwhaConan</a></h3>
+              </footer>
+            </body>
+        </html>
+        

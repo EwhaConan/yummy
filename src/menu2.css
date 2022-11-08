@@ -121,6 +121,24 @@ a {
   width: 126px;
   height: 22px;
 }
+nav{
+	overflow: hidden;
+	background-color: lightsalmon;
+}
+nav a{
+	float: left;
+	display: block;
+	color: white;
+	text-align: center;
+    padding: 14px 16px;
+	text-decoration: none;
+    font-size: 20px;
+    
+}
+nav a:hover{
+	background-color: #ffec94;
+	color: black;
+}
 footer {
   padding: 20px;
   text-align: center;
