@@ -45,6 +45,18 @@
         color: #767676;
         line-height: 20px;
       }
+      .fill_star {
+        color: orange;
+      }
+      .non_fill_star {
+        color: gray;
+      }
+      #total_star_rating {
+        font-size: 300%;
+      }
+      .per_star_rating {
+        font-size: 200%;
+      }
     </style>
   </head>
   <body>
@@ -87,7 +99,14 @@
           <input type="button" value="리뷰 등록" />
         </div>
         <div class="star_rating" id="total_star_rating">
-          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          <span class="fill_star" style="font-size: 100%">
+            <span>★</span><span>★</span><span>★</span><span>★</span
+            ><span>★</span>
+          </span>
+          <span class="non_fill_star" style="font-size: 0%">
+            <span>★</span><span>★</span><span>★</span><span>★</span
+            ><span>★</span>
+          </span>
         </div>
 
         <br />
@@ -126,14 +145,27 @@
           <img
             src="https://via.placeholder.com/150"
             alt="샘플 대표메뉴 이미지"
+            style="display: inline-block; position: static"
           />
-          <div class="star_rating per_star_rating">
-            <span>★</span><span>★</span><span>★</span><span>★</span
-            ><span>★</span>
-          </div>
-          <div class="review_textblock">
-            <p class="user_name">닉네임</p>
-            <p class="review_text">리뷰 내용</p>
+
+          <div style="display: inline-block; position: relative; top: -50px">
+            <div
+              class="star_rating per_star_rating"
+              style="display: inline-block"
+            >
+              <span class="fill_star">
+                <span>★</span><span>★</span><span>★</span><span>★</span
+                ><span>★</span>
+              </span>
+              <span class="non_fill_star" style="font-size: 0%">
+                <span>★</span><span>★</span><span>★</span><span>★</span
+                ><span>★</span>
+              </span>
+            </div>
+            <div class="review_textblock">
+              <p class="user_name">닉네임</p>
+              <p class="review_text">리뷰 내용</p>
+            </div>
           </div>
         </div>
       </div>
