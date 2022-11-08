@@ -53,9 +53,9 @@
 
           </div>
         
+
         <div class = "co mid">
-            <div class = "co mid1">
-        <div class = "title">
+            <div class = "title">
             <span id = "chk">
             <h2>맛집 등록</h2> 
         </span>
@@ -63,49 +63,55 @@
             <h3>자신이 생각하는 맛집을 등록해주세요!</h3>
         </span>
         </div>
+            <div class = "co mid1">
+        
 
        
 
         <form name="맛집 등록" action="" method="">
 
-            <p>식당이름:</p>
+            <img src="https://via.placeholder.com/350" alt="샘플이미지">
+            <br><br>           <br>
+            <p><span id="음식점대표사진" class="음식점대표사진"><b>대표사진:</b></span></p>
+            <input type="file" required><br><br>
+            <p><b>식당이름:</b></p>
             <input type="text" name="name" required><br><br>
 
-            <p><span id="주소" class="주소">주소:</span></p>
+            <p><span id="주소" class="주소"><b>주소:</b></span></p>
             <input type="text" name="주소" placeholder="도로명 주소" required><br><br>
 
 
-            <p><span id="전화번호" class="전화번호">전화번호:</span></p>
-            <input type="tel" required><br><br>
 
-            <p><span id="음식의 종류" class="음식의 종류">음식의 종류:</span></p>
-            <input type="text" name="category" placeholder="한식/양식/중식..." required><br><br>
-
-            <p><span id="음식 가격대" class="음식 가격대">음식 가격대:</span></p>
-            <input type="text" name="range" placeholder="ex)10000-20000원" required><br><br>
+        
         </div>
 
         <div class = "co mid2">
+
+            <p><span id="전화번호" class="전화번호"><b>전화번호:</b></span></p>
+            <input type="tel" required><br><br>
+
+            <p><span id="음식의 종류" class="음식의 종류"><b>음식의 종류:</b></span></p>
+            <input type="text" name="category" placeholder="한식/양식/중식..." required><br><br>
+
+            <p><span id="음식 가격대" class="음식 가격대"><b>음식 가격대:</b></span></p>
+            <input type="text" name="range" placeholder="ex)10000-20000원" required><br>
             <br>
-            <p><span id="주차여부" class="주차여부">주차여부:</span></p>
+            <p><span id="주차여부" class="주차여부"><b>주차여부:</b></span></p>
             <input type="radio" id="y" name="car" required>
             <label for="y">YES</label><br>
             <input type="radio" id="n" name="car">
             <label for="n">NO</label><br><br>
 
-            <br>
-            <p><span id="영업시간" class="영업시간">영업시간:</span></p>
-            <input type="text" name="time" required><br><br>
+            <p><span id="영업시간" class="영업시간"><b>영업시간:</b></span></p>
+            <input type="text" name="time" required>
 
             <br><br>
 
-            <p><span id="맛집사이트" class="맛집사이트">사이트 URL:</span></p>
+            <p><span id="맛집사이트" class="맛집사이트"><b>사이트 URL:</b></span></p>
             <input type="url" name="사이트" placeholder=인스타그램/홈페이지... required><br><br>
 
             <br><br>
-            <p><span id="음식점대표사진" class="음식점대표사진">대표사진:</span></p>
-            <input type="file" required><br><br><br>
-
+            
             <input type="submit" value="맛집 등록하기">
 
         </form>
