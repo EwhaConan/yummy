@@ -1,6 +1,10 @@
 {% extends "index.html" %}
 
-{% block body %}
+{% block title %}
+로그인
+{% endblock title %}
+
+{% block section %}
     <h2>로그인</h2>
 
     <form action="#" name="로그인_사용자정보" method="post">
@@ -13,4 +17,4 @@
         <input type="button" value="회원가입" onClick="location.href='#'"> <!--나중에 회원가입 페이지 링크로 수정하기-->
         <input type="button" value="로그인" onClick="sign_in();">
     </form>
-{% endblock body %}
+{% endblock section %}
