@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block head_title %}
+로그인
+{% endblock head_title %}
+
+{% block section %}
+    <h2>로그인</h2>
+
+    <form action="#" name="로그인_사용자정보" method="post">
+        <label for="id">아이디: </label>
+        <input id="id" name="id" type="text">
+    
+        <label for="pw">비밀번호: </label>
+        <input id="pw" name="pw" type="password">
+        
+        <input type="button" value="회원가입" onClick="location.href='#'"> <!--나중에 회원가입 페이지 링크로 수정하기-->
+        <input type="button" value="로그인" onClick="sign_in();">
+    </form>
+{% endblock section %}
