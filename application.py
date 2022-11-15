@@ -5,13 +5,10 @@ application = Flask(__name__)
 
 @application.route("/")
 def hello():
-    return render_template("index.html")
+    return render_template("list.html")
 
 @application.route("/index")
 def view_list():
-    
-    
-    .3
     return render_template("index.html")
 
 @application.route("/restaurantRegister")
