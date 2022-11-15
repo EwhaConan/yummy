@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>대표메뉴 등록</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='whole.css')}}">    
+</head>
+
+<body>
+    <header>
+        <!--공통헤더-->
+        <!--임시 샘플 파일을 넣긴 했지만 html에서는 공간만 확보하고 이미지 파일은 css에서 작업-->
+        <img src="static/food.jpeg" style width = "600px"; height = "260px";>
+    </header>
+
+            <nav>
+                  <!--공통네비게이션바-->
+                  <a href="/index"><b>맛집 리스트</b></a>
+                  <a href="/restaurantRegister"><b>맛집 등록</b></a>
+                  <a href="/menuRegister"><b>메뉴등록</b></a>
+                  <a href="/reviewRegister"><b>리뷰등록</b></a>
+                  <a href="/reviewView"><b>리뷰조회</b></a>
+                  <a href="/menuView"><b>메뉴 조회</b></a>
+                  <a href="/detail"><b>상세페이지</b></a>
+                  <a href="/worldCup"> <b>점메추 / 저메추</b></a>
+          
+              </nav>
+  
+    <div class="pg_title">
+        <!--페이지 이름-->
+    </div>
+
+    <section>
+        <div class = "co side">
+            <div class="card">
+              <h2>인기차트</h2>
+              <p>1. 모미지식당<br>
+                2. 참참참<br>
+                3. 유야케도쿄<br>
+                4. 고냉지<br>
+                5. 티아라카페
+              </p>
+            </div>
+        
+            <div class="card">
+              <h3>Follow Me</h3>
+              <p>앞으로도 종종 들러서 <br>
+                업그레이드되는<br>
+                이대 주변 맛집 소식을<br>
+                봐주세요~</p>
+            </div>
+
+          </div>
+
+        <div class = "co mid">
+
+            <div class = "title">
+                <span id = "chk">
+                <h2>메뉴 등록</h2> 
+              </span>
+              </div>
+            
+        <h3>
+            자신이 생각하는 대표메뉴를 공유해주세요!
+        </h3>
+        <form name="대표메뉴 등록" method="POST" enctype="multipart/form-data" action="/menuSubmit" enctype="multipart/form-data">
+
+         <div class="co mid1">
+            <p><b>음식이름 :</b></p>
+            <input type="text" name="foodname" required><br><br>
+
+            <p><span id="가격" class="가격"><b>가격 : </b></span></p>
+            <input type="number" name="foodprice" min="0" max="500000" required><br><br>
+
+
+            <p><span id="알러지정보" class="알러지정보"><b>알러지 정보 (*선택사항) :</b></span></p>
+            <input type="text" name="allergy"><br><br>
+
+            <p><span id="비건메뉴여부" class="비건메뉴여부"><b>비건 메뉴 여부 (*선택사항) :</b></span></p>
+            <input type="radio" id="yes" name="vegan" value="Y">
+            <label for="yes">YES</label><br>
+            <input type="radio" id="no" name="vegan" value="N">
+            <label for="no">NO</label><br>
+            <input type="radio" id="변경" name="vegan" value="changeable">
+            <label for="변경">비건으로 변경 가능</label><br><br><br>
+
+           </div>
+
+           <div class="co mid2">
+            <img src="https://via.placeholder.com/300" alt="샘플 대표메뉴 이미지" /><br><br>
+               <div>
+            <label for="img">사진:</label>
+            <input type="file" name="menuImg" required>
+               </div>
+               <br><br><br>
+            <input type="submit" value="메뉴 등록하기">
+            </div>
+        </form>
+    </div>
+    <div class = "co side">
+    </div>
+    </section>
+    <footer>
+        <!--footer 공통-->
+        <h3>@EwhaConan</h3>
+        <h3><a href="https://github.com/EwhaConan/yummy">github/EwhaConan</a></h3>
+    </footer>
+</body>
+
+</html>
