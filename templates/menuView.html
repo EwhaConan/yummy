@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>메뉴 조회</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='whole.css')}}">    
+  </head>
+  <body>
+    <header>
+      <!--공통헤더-->
+      <!--임시 샘플 파일을 넣긴 했지만 html에서는 공간만 확보하고 이미지 파일은 css에서 작업-->
+      <img src="static/food.jpeg" style width = "600px"; height = "260px";>
+      </header>
+                <nav>
+                  <!--공통네비게이션바-->
+                  <a href="/index"><b>맛집 리스트</b></a>
+                  <a href="/restaurantRegister"><b>맛집 등록</b></a>
+                  <a href="/menuRegister"><b>메뉴등록</b></a>
+                  <a href="/reviewRegister"><b>리뷰등록</b></a>
+                  <a href="/reviewView"><b>리뷰조회</b></a>
+                  <a href="/menuView"><b>메뉴 조회</b></a>
+                  <a href="/detail"><b>상세페이지</b></a>
+                  <a href="/worldCup"> <b>점메추 / 저메추</b></a>
+          
+              </nav>
+
+
+    <div class="pg_title">
+      <!--페이지 이름-->
+      <!--맛집이름 부분은 따로 인라인 해줘야 나중에 해당 맛집 이름으로 데이터 변경 가능-->
+    </div>
+
+    <section>
+      <div class = "co side">
+        <div class="card">
+          <h2>인기차트</h2>
+          <p>1. 모미지식당<br>
+            2. 참참참<br>
+            3. 유야케도쿄<br>
+            4. 고냉지<br>
+            5. 티아라카페
+          </p>
+        </div>
+    
+        <div class="card">
+          <h3>Follow Me</h3>
+          <p>앞으로도 종종 들러서 <br>
+            업그레이드되는<br>
+            이대 주변 맛집 소식을<br>
+            봐주세요~</p>
+        </div>
+
+      </div>
+
+      <div class = "co mid">
+        <div class = "title">
+          <span id = "chk">
+          <h2>메뉴 조회</h2> 
+      </span>
+      </div>
+
+
+      <div>
+        <input type="button" value="대표 메뉴 등록하러 가기" />
+      </div>
+      <br>
+
+
+      <div class="perMenu">
+        <!--메뉴판 부분-->
+        <br>
+        <div class="list">
+        <div class = "menu">
+        <img style = "width:300px;height:250px;" id = "gourment" src="static/momiji.jpeg" alt="샘플 대표메뉴 이미지" />
+      </div>
+      <br>
+      <div class="menu">
+        <div style="display: inline-block">
+          <span id="메뉴명"><h3><b>메뉴 이름</b></h3>소고기 가지덮밥</span>
+          <br><br>
+          <!--width는 수정해야함-->
+          <span id="가격"><h3><b>가격</b></h3>9500원</span>
+        </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="perMenu">
+      <!--메뉴판 부분-->
+      <br>
+      <div class="list">
+      <div class = "menu">
+      <img style = "width:300px;height:250px;" id = "gourment" src="static/momiji3.jpg" alt="샘플 대표메뉴 이미지" />
+    </div>
+    <br>
+    <div class="menu">
+      <div style="display: inline-block">
+        <span id="메뉴명"><h3><b>메뉴 이름</b></h3>육회덮밥</span>
+        <br><br>
+        <!--width는 수정해야함-->
+        <span id="가격"><h3><b>가격</b></h3>11000원</span>
+      </div>
+      </div>
+  </div>
+
+  <div class="perMenu">
+    <!--메뉴판 부분-->
+    <br>
+    <div class="list">
+    <div class = "menu">
+    <img style = "width:300px;height:250px;" id = "gourment" src="static/momiji5.jpg" alt="샘플 대표메뉴 이미지" />
+  </div>
+  <br>
+  <div class="menu">
+    <div style="display: inline-block">
+      <span id="메뉴명"><h3><b>메뉴 이름</b></h3>고등어 타레덮밥(시즌)</span>
+      <br><br>
+      <!--width는 수정해야함-->
+      <span id="가격"><h3><b>가격</b></h3>12800원</span>
+    </div>
+    </div>
+    </div>
+</div>
+          </div>
+      </div>
+    <div class = "co side">
+    </div>
+    </section>
+
+    <footer>
+      <!--footer 공통-->
+      <h3>@EwhaConan</h3>
+      <h3><a href="https://github.com/EwhaConan/yummy">github/EwhaConan</a></h3>
+  </footer>
+  </body>
+</html>
