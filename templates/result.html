@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html lang="ko">
   <body>
-    <img src={{ "../static/image/" + image_file_name }} height="50px">
-    {% for key, value in data.items() %}
-        <p>{{ key }}</p>
-        <p>{{ value }}</p>
-        <br>
+    <img src={{ "../static/image/" + image_file_name }} height="50px"> {% for
+    key, value in data.items() %}
+    <p>{{ key }}</p>
+    <p>{{ value }}</p>
+    <br />
     {% endfor %}
+
+    <form method="post" action="./menuRegister.html">
+      <input type="hidden" name="restaurant_name" value="{{data.name}}" />
+      <div>
+        <p>It's time to register the representative menu in {{data.name}}</p>
+        <button type="submit" name="menu">메뉴 등록하기</button>
+        <br /><br />
+      </div>
+    </form>
   </body>
 </html>

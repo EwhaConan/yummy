@@ -65,7 +65,11 @@ def view_reviewSubmit():
     return "입력값이 POST방식으로 잘 넘어왔는지 확인하는 페이지입니다. 여기 말고 터미널을 확인해주세요."
     
 
-
+@application.route("/menuRegister", methods=['POST'])
+def reg_menu():
+    data=request.form
+    print(data)
+    return render_template("menuRegister.html", data=data)
 
 
 if __name__ == "__main__":
