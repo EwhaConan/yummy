@@ -8,10 +8,17 @@
     <br />
     {% endfor %}
 
-    <form method="post" action="./menuRegister.html">
-      <input type="hidden" name="restaurant_name" value="{{data.name}}" />
+    <form method="post" action="/menuRegister">
+      <input
+        type="hidden"
+        name="restaurantName"
+        value="{{data.restaurantName}}"
+      />
       <div>
-        <p>It's time to register the representative menu in {{data.name}}</p>
+        <p>
+          It's time to register the representative menu in
+          {{data.restaurantName}}
+        </p>
         <button type="submit" name="menu">메뉴 등록하기</button>
         <br /><br />
       </div>

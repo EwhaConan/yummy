@@ -19,9 +19,9 @@ def view_restaurantRegister():
 def view_detail():
     return render_template("detail.html")
 
-@application.route("/menuRegister")
-def view_menuRegister():
-    return render_template("menuRegister.html")
+# @application.route("/menuRegister")
+# def view_menuRegister():
+#     return render_template("menuRegister.html")
 
 @application.route("/menuView")
 def view_menuView():
