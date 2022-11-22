@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block head_title %}{% endblock head_title %}</title>
+    <style>{% block style %}{% endblock style %}</style>
+    <link rel="stylesheet" href="{{ url_for('static',filename='whole.css') }}"  />
+  </head>
+
+  <body>
+    <!--헤더-->
+    <header>
+      <a href="/"><img src="static/food.jpeg" width="600px" height="260px" /></a>
+    </header>
+
+
+    <!--네비게이션바-->
+    <nav>
+      <a href="/index"><b>맛집 리스트</b></a>
+      <a href="/restaurantRegister"><b>맛집 등록</b></a>
+      <!--<a href="/menuRegister"><b>메뉴등록</b></a>-->
+      <a href="/reviewRegister"><b>리뷰등록</b></a>
+      <a href="/reviewView"><b>리뷰조회</b></a>
+      <a href="/menuView"><b>메뉴 조회</b></a>
+      <a href="/detail"><b>상세페이지</b></a>
+      <a href="/worldCup"> <b>점메추 / 저메추</b></a>
+    </nav>
+
+
+    <!--사이드바-->
+    <div class="co side">
+      <div class="card">
+        <h2>인기차트</h2>
+        <p>
+          1. 모미지식당<br />
+          2. 참참참<br />
+          3. 유야케도쿄<br />
+          4. 고냉지<br />
+          5. 티아라카페
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Follow Me</h3>
+        <p>
+          앞으로도 종종 들러서 <br />
+          업그레이드되는<br />
+          이대 주변 맛집 소식을<br />
+          봐주세요~
+        </p>
+      </div>
+    </div>
+
+
+    <!--각 페이지 section-->
+    <section>
+      <div class="co mid">
+        {% block section %}       
+        {% endblock section %}
+      </div>
+      
+      <!--이 위치에 내용 비어있는 div태그가 있는 페이지가 있어서 추가함.-->
+      {% block co_side %}{% endblock co_side %}
+
+    </section>
+
+
+    <!--footer 공통-->
+    <footer>
+      <h3>@EwhaConan</h3>
+      <h3><a href="https://github.com/EwhaConan/yummy">github/EwhaConan</a></h3>
+    </footer>
+  </body>
+</html>
