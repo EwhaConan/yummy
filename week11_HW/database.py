@@ -13,13 +13,15 @@ class DBhandler:
     def restaurant_duplicate_check(self, name):
         restaurants = self.db.child("restaurant").get()
         for res in restaurants.each():
-            if res.key()==name:
+            value = res.val()
+            if value["name"] == name:
                 return False
         return True
 
     
     def insert_restaurant(self, name, data, img_path):
         restaurant_info = {
+            "name":data['name'],
             "addr":data['addr'],
             "tel":data['tel'],
             "category":data['category'],
@@ -30,7 +32,7 @@ class DBhandler:
             "img_path":img_path
         }
         if self.restaurant_duplicate_check(name):
-            self.db.child("restaurant").child(name).set(restaurant_info)
+            self.db.child("restaurant").child(name).push(restaurant_info)
             print(data, img_path)
             return True
         else:
@@ -73,5 +75,13 @@ class DBhandler:
         self.db.child("review").child(reviewerName).set(review_info)
         print(data, img_path)
         return True
-      
+    
+    def get_restaurant(self):
+        restaurants = self.db.child("restaurant").get().val()
+        return restaurants
+        
+    
+    
+        
+    
         
