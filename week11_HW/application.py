@@ -13,7 +13,6 @@ def hello():
     
 @application.route("/list")
 def view_list():
-    # 페이지네이션
     page = request.args.get("page", 0, type=int) # 페이지 인덱스
     limit = 9 # 한 페이지에 식당 최대 9개
     
@@ -22,13 +21,10 @@ def view_list():
     
     data = DB.get_restaurant()
     total_count = len(data) # 레스토랑 총 개수
-    # total_count = 0 # 레스토랑 총 개수
-    # for d in data.items():
-    #     total_count += 1
-    page_count = int((total_count / limit) + 1) # 페이지 총 개수
+    page_count = int(((total_count + 8)/ limit)) # 페이지 총 개수
     data = dict(list(data.items())[start_idx:end_idx])
     
-    return render_template("list.html", page=page, limit=limit, page_count=page_count, total_count=total_count, datas=data.item())
+    return render_template("list.html", page=page, limit=limit, page_count=page_count, total_count=total_count, data=data)
 
 @application.route("/restaurantRegister")
 def view_restaurantRegister():

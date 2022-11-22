@@ -12,28 +12,28 @@
         </span>
       </div>
 
-    {% if total_count > 0 %} <!--등록된 맛집이 있으면-->
+    {% if total_count == 0 %} <!--등록된 맛집이 없으면-->
+    <p>등록된 맛집이 없습니다.<br>
+      당신의 맛집을 등록해서 다른 사람들에게 공유해주세요!</p>
+    
+    {% else %}
     <p>현재까지 등록된 맛집 : {{total_count}}개<p>
 
     <div class="list">
-      {% for data in datas %}
-      <!-- 테스트
-      <p>{{data[1].name}}</p>
-      {% endfor %}
-      -->
+      {% for key, value in data.items() %}
       <div class="맛집">
         <div class="box">
           <div class="image">
             <img
-              name="{{data[1].name}}"
-              src="{{data[1].img_path}}"
-              alt="{{data[1].name}}"
+              name="{{ value['name'] }}"
+              src="../static/image/{{ value['img_path'] }}"
+              alt="{{ value['name'] }}"
               width="285px"
               height="285px"
             />
           </div>
           <div class="info">
-            <h3>{{data[1].name}}</h3>
+            <h3>{{ value['name'] }}</h3>
             <img
               src="static/emptyheart.png"
               alt="비워진 하트"
@@ -59,9 +59,5 @@
       </div>
 
     </div>
-
-    {% else %}
-    <p>등록된 맛집이 없습니다.<br>
-      당신의 맛집을 등록해서 다른 사람들에게 공유해주세요!</p>
     {% endif %}
 {% endblock section %}
