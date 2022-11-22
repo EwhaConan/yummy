@@ -21,7 +21,7 @@ class DBhandler:
     
     def insert_restaurant(self, name, data, img_path):
         restaurant_info = {
-            "name":data['name'],
+            "name":name,
             "addr":data['addr'],
             "tel":data['tel'],
             "category":data['category'],
@@ -32,7 +32,7 @@ class DBhandler:
             "img_path":img_path
         }
         if self.restaurant_duplicate_check(name):
-            self.db.child("restaurant").child(name).push(restaurant_info)
+            self.db.child("restaurant").push(restaurant_info)
             print(data, img_path)
             return True
         else:
