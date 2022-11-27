@@ -1,0 +1,58 @@
+{% extends "index.html" %} {% block head_title %} 대표메뉴 등록 
+{% endblock head_title %} 
+{% block section %}
+       <div class = "title">
+                <span id = "chk">
+                <h2>메뉴 등록</h2> 
+              </span>
+        </div>
+            
+        <h3>
+            자신이 생각하는 대표메뉴를 공유해주세요!
+        </h3>
+        <form name="대표메뉴 등록" method="POST" enctype="multipart/form-data" action="/menuSubmit" enctype="multipart/form-data">
+
+         <div class="co mid1">
+             
+             <div>
+                  <br /><br />
+                  <br /><br />
+            </div>
+             
+            <!--<label for ="restaurantName"><b>식당 이름:</b> {{data.restaurantName}}</label>-->
+            <!--<input type = "hidden" name = "restaurantName" value = "{{data.restaurantName}}">-->
+            <label for="name"><b>식당 이름:</b> {{data.restaurantName}}</label>
+            <input type="hidden" name ="restaurantName" value = "{{data.restaurantName}}">
+            <label for = "foodname"><b>음식이름 :</b></label>
+            <input type="text" name="foodname" required><br><br>
+
+            <label for = "foodprice"><b>음식 가격 :</b></label><br><br>
+            <input type="number" name="foodprice" min="0" max="5000000" required><br><br>
+
+
+            <label for = "allergy"><b>알러지 정보 (*선택사항):</b></label><br><br>
+            <input type="text" name="allergy"><br><br>
+
+            <label for = "allergy"><b>비건 메뉴 여부 (*선택사항) :</b></label><br><br>
+            <input type="radio" id="yes" name="vegan" value="Y">
+            <label for="yes">YES</label><br>
+            <input type="radio" id="no" name="vegan" value="N">
+            <label for="no">NO</label><br>
+            <input type="radio" id="변경" name="vegan" value="changeable">
+            <label for="변경">비건으로 변경 가능</label><br><br><br>
+
+           </div>
+
+           <div class="co mid2">
+            <img src="https://via.placeholder.com/300" alt="샘플 대표메뉴 이미지" /><br><br>
+               <div>
+            <label for="img">사진:</label>
+            <input type="file" name="img" required>
+               </div>
+               <br><br><br>
+            <input type="submit" value="메뉴 등록하기">
+            </div>
+        </form>
+    {% endblock section %} {% block co_side %}
+<div class="co side"></div>
+{% endblock co_side %}

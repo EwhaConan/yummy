@@ -1,233 +1,193 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <title>리뷰 조회</title>
-     <link rel="stylesheet" href="{{ url_for('static',filename='whole.css')}}">    
-    <style>
-      .keyword_graph ul {
-        margin: 0 50px 0 50px;
-        padding: 1px 0 0 0;
-        border-top: 0;
-        border-right: 0;
-        font-size: 11px;
-        font-family: Tahoma, Geneva, sans-serif;
-        list-style: none;
-      }
-      .keyword_graph li {
-        position: relative;
-        margin: 10px 0;
-        vertical-align: top;
-        white-space: nowrap;
-      }
-      .keyword_graph .g_term {
-        position: absolute;
-        top: 0;
-        left: -50px;
-        width: 40px;
-        font-weight: bold;
-        line-height: 20px;
-        text-align: right;
-      }
-      .keyword_graph .g_bar {
-        display: inline-block;
-        left: 50px;
-        position: relative;
-        height: 20px;
-        border-left: 0;
-        background: orange;
-      }
-      .keyword_graph .g_bar span {
-        position: absolute;
-        top: 0;
-        right: -50px;
-        width: 40px;
-        color: #767676;
-        line-height: 20px;
-      }
-      .fill_star {
-        color: orange;
-      }
-      .non_fill_star {
-        color: gray;
-      }
-      #total_star_rating {
-        font-size: 300%;
-      }
-      .per_star_rating {
-        font-size: 200%;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <!--공통헤더-->
-      <!--임시 샘플 파일을 넣긴 했지만 html에서는 공간만 확보하고 이미지 파일은 css에서 작업-->
-      <img src="static/food.jpeg" style width="600px" ; height="260px" ; />
-    </header>
+{% extends "index.html" %}
+
+{% block head_title %}
+  리뷰 조회
+{% endblock head_title %}
     
-    <nav>
-                  <!--공통네비게이션바-->
-                  <a href="/index"><b>맛집 리스트</b></a>
-                  <a href="/restaurantRegister"><b>맛집 등록</b></a>
-                  <a href="/menuRegister"><b>메뉴등록</b></a>
-                  <a href="/reviewRegister"><b>리뷰등록</b></a>
-                  <a href="/reviewView"><b>리뷰조회</b></a>
-                  <a href="/menuView"><b>메뉴 조회</b></a>
-                  <a href="/detail"><b>상세페이지</b></a>
-                  <a href="/worldCup"> <b>점메추 / 저메추</b></a>
-          
-              </nav>
-  
+
+<!--style 태그-->
+{% block style %}
+  .keyword_graph ul {
+    margin: 0 50px 0 50px;
+    padding: 1px 0 0 0;
+    border-top: 0;
+    border-right: 0;
+    font-size: 11px;
+    font-family: Tahoma, Geneva, sans-serif;
+    list-style: none;
+  }
+  .keyword_graph li {
+    position: relative;
+    margin: 10px 0;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+  .keyword_graph .g_term {
+    position: absolute;
+    top: 0;
+    left: -50px;
+    width: 40px;
+    font-weight: bold;
+    line-height: 20px;
+    text-align: right;
+  }
+  .keyword_graph .g_bar {
+    display: inline-block;
+    left: 50px;
+    position: relative;
+    height: 20px;
+    border-left: 0;
+    background: orange;
+  }
+  .keyword_graph .g_bar span {
+    position: absolute;
+    top: 0;
+    right: -50px;
+    width: 40px;
+    color: #767676;
+    line-height: 20px;
+  }
+  .fill_star {
+    color: orange;
+  }
+  .non_fill_star {
+    color: gray;
+  }
+  #total_star_rating {
+    font-size: 300%;
+  }
+  .per_star_rating {
+    font-size: 200%;
+  }
+{% endblock style %}
 
 
-    <div class="pg_title">
-      <!--페이지 이름-->
-    </div>
+{% block section %}
+  <div class="title">
+    <span id="chk">
+      <h2 style="display: inline">모미지</h2>
+      <h2 style="display: inline">리뷰 조회</h2>
+      <br />
+    </span>
+  </div>
 
-    <section>
-      <div class = "co side">
-        <div class="card">
-          <h2>인기차트</h2>
-          <p>1. 모미지식당<br>
-            2. 참참참<br>
-            3. 유야케도쿄<br>
-            4. 고냉지<br>
-            5. 티아라카페
-          </p>
-        </div>
-    
-        <div class="card">
-          <h3>Follow Me</h3>
-          <p>앞으로도 종종 들러서 <br>
-            업그레이드되는<br>
-            이대 주변 맛집 소식을<br>
-            봐주세요~</p>
-        </div>
+  <div>
+    <!--식당 세부 화면으로 넘어가는 버튼-->
+    <input type="button" value="식당 세부 화면" />
+    <input type="button" value="리뷰 등록" />
+  </div>
+  <div class="star_rating" id="total_star_rating">
+    <span class="fill_star" style="font-size: 100%">
+      <span>★</span><span>★</span><span>★</span><span>★</span
+      ><span>★</span>
+    </span>
+    <span class="non_fill_star" style="font-size: 0%">
+      <span>★</span><span>★</span><span>★</span><span>★</span
+      ><span>★</span>
+    </span>
+  </div>
 
- </div>
+  <br />
 
-      <div class="co mid">
-        <div class="title">
-          <span id="chk">
-            <h2 style="display: inline">모미지</h2>
-            <h2 style="display: inline">리뷰 조회</h2><br>
-          </span>
-        </div>
+  <div class="keyword_graph">
+    <ul>
+      <li>
+        <span class="g_term">음식이 맛있어요</span
+        ><span class="g_bar" style="width: 40%"></span>
+      </li>
+      <li>
+        <span class="g_term">매장이 청결해요</span
+        ><span class="g_bar" style="width: 30%"></span>
+      </li>
+      <li>
+        <span class="g_term">음식이 빨리 나와요</span
+        ><span class="g_bar" style="width: 20%"></span>
+      </li>
+      <li>
+        <span class="g_term">가성비가 좋아요</span
+        ><span class="g_bar" style="width: 10%"></span>
+      </li>
+    </ul>
+  </div>
+  <br />
 
-        <div>
-          <!--식당 세부 화면으로 넘어가는 버튼-->
-          <input type="button" value="식당 세부 화면" />
-          <input type="button" value="리뷰 등록" />
-        </div>
-        <div class="star_rating" id="total_star_rating">
-          <span class="fill_star" style="font-size: 100%">
-            <span>★</span><span>★</span><span>★</span><span>★</span
-            ><span>★</span>
-          </span>
-          <span class="non_fill_star" style="font-size: 0%">
-            <span>★</span><span>★</span><span>★</span><span>★</span
-            ><span>★</span>
-          </span>
-        </div>
+  <div id="필터버튼">
+    <input type="button" value="정렬" />
+    <input type="button" value="메뉴별 리뷰보기" />
+    <input type="checkbox" id="사진리뷰체크박스" />
+    <label for="사진리뷰체크박스">사진 리뷰 모아보기</label>
+  </div>
+  <br />
 
-        <br />
+  <div class="per리뷰">
+    <img
+      id="gourment"
+      style="width: 250px; height: 200px"
+      src="static/momiji3.jpg"
+      alt="샘플 대표메뉴 이미지"
+      style="display: inline-block; position: static"
+    />
 
-        <div class="keyword_graph">
-          <ul>
-            <li>
-              <span class="g_term">음식이 맛있어요</span
-              ><span class="g_bar" style="width: 40%"></span>
-            </li>
-            <li>
-              <span class="g_term">매장이 청결해요</span
-              ><span class="g_bar" style="width: 30%"></span>
-            </li>
-            <li>
-              <span class="g_term">음식이 빨리 나와요</span
-              ><span class="g_bar" style="width: 20%"></span>
-            </li>
-            <li>
-              <span class="g_term">가성비가 좋아요</span
-              ><span class="g_bar" style="width: 10%"></span>
-            </li>
-          </ul>
-        </div>
-        <br />
-
-        <div id="필터버튼">
-          <input type="button" value="정렬" />
-          <input type="button" value="메뉴별 리뷰보기" />
-          <input type="checkbox" id="사진리뷰체크박스" />
-          <label for="사진리뷰체크박스">사진 리뷰 모아보기</label>
-        </div>
-        <br />
-
-        <div class="per리뷰">
-          <img id = "gourment" style = "width:250px; height:200px;"
-            src="static/momiji3.jpg"
-            alt="샘플 대표메뉴 이미지"
-            style="display: inline-block; position: static"
-          />
-
-          <div style="display: inline-block; position: relative; top: -50px">
-            <div
-              class="star_rating per_star_rating"
-              style="display: inline-block"
-            >
-              <span class="fill_star">
-                <span>★</span><span>★</span><span>★</span><span>★</span
-                ><span>★</span>
-              </span>
-              <span class="non_fill_star" style="font-size: 0%">
-                <span>★</span><span>★</span><span>★</span><span>★</span
-                ><span>★</span>
-              </span>
-            </div>
-            <div class="review_textblock">
-              <p class="user_name"> <b>닉네임</b><br>Charlotte</p>
-              <p class="review_text"><b>리뷰 내용</b><br> 육회덮밥 : 육회가 굉장히 신선하고 맛있어요:)</p>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="per리뷰">
-          <img id = "gourment" style = "width:250px; height:230px;"
-            src="static/momiji4.jpeg"
-            alt="샘플 대표메뉴 이미지"
-            style="display: inline-block; position: static"
-          />
-      
-          <div style="display: inline-block; position: relative; top: -50px">
-            <div
-              class="star_rating per_star_rating"
-              style="display: inline-block"
-            >
-              <span class="fill_star">
-                <span>★</span><span>★</span><span>★</span><span>★</span
-                ><span>★</span>
-              </span>
-              <span class="non_fill_star" style="font-size: 0%">
-                <span>★</span><span>★</span><span>★</span><span>★</span
-                ><span>★</span>
-              </span>
-            </div>
-            <div class="review_textblock">
-              <p class="user_name"> <b>닉네임</b><br>Dolores</p>
-              <p class="review_text"><b>리뷰 내용</b><br>소고기 대파 덮밥 : 고기와 대파 조합 최고! <br>특히 대파가 튀긴 것과 구운 것 둘 다 있어 맛있어용</p>
-            </div>
-          </div>
-        </div>
+    <div style="display: inline-block; position: relative; top: -50px">
+      <div
+        class="star_rating per_star_rating"
+        style="display: inline-block"
+      >
+        <span class="fill_star">
+          <span>★</span><span>★</span><span>★</span><span>★</span
+          ><span>★</span>
+        </span>
+        <span class="non_fill_star" style="font-size: 0%">
+          <span>★</span><span>★</span><span>★</span><span>★</span
+          ><span>★</span>
+        </span>
       </div>
-      <div class="co side"></div>
-    </section>
+      <div class="review_textblock">
+        <p class="user_name"><b>닉네임</b><br />Charlotte</p>
+        <p class="review_text">
+          <b>리뷰 내용</b><br />
+          육회덮밥 : 육회가 굉장히 신선하고 맛있어요:)
+        </p>
+      </div>
+    </div>
+  </div>
 
-    <footer>
-      <!--footer 공통-->
-      <h3>@EwhaConan</h3>
-      <h3><a href="https://github.com/EwhaConan/yummy">github/EwhaConan</a></h3>
-    </footer>
-  </body>
-</html>
+  <div class="per리뷰">
+    <img
+      id="gourment"
+      style="width: 250px; height: 230px"
+      src="static/momiji4.jpeg"
+      alt="샘플 대표메뉴 이미지"
+      style="display: inline-block; position: static"
+    />
+
+    <div style="display: inline-block; position: relative; top: -50px">
+      <div
+        class="star_rating per_star_rating"
+        style="display: inline-block"
+      >
+        <span class="fill_star">
+          <span>★</span><span>★</span><span>★</span><span>★</span
+          ><span>★</span>
+        </span>
+        <span class="non_fill_star" style="font-size: 0%">
+          <span>★</span><span>★</span><span>★</span><span>★</span
+          ><span>★</span>
+        </span>
+      </div>
+      <div class="review_textblock">
+        <p class="user_name"><b>닉네임</b><br />Dolores</p>
+        <p class="review_text">
+          <b>리뷰 내용</b><br />소고기 대파 덮밥 : 고기와 대파 조합 최고!
+          <br />특히 대파가 튀긴 것과 구운 것 둘 다 있어 맛있어용
+        </p>
+      </div>
+    </div>
+  </div>
+{% endblock section %}
+
+
+{% block co_side %}
+    <div class="co side"></div>
+{% endblock co_side %}
+        

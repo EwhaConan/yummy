@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request
+from database import DBhandler
 import sys
 application = Flask(__name__)
+
+DB = DBhandler()
 
 
 @application.route("/")
@@ -9,7 +12,7 @@ def hello():
 
 @application.route("/index")
 def view_list():
-    return render_template("index.html")
+    return render_template("list.html")
 
 @application.route("/restaurantRegister")
 def view_restaurantRegister():
@@ -19,9 +22,17 @@ def view_restaurantRegister():
 def view_detail():
     return render_template("detail.html")
 
-# @application.route("/menuRegister")
-# def view_menuRegister():
-#     return render_template("menuRegister.html")
+@application.route("/menuRegister", methods=['POST'])
+def reg_menu():
+    data=request.form
+    print(data)
+    return render_template("menuRegister.html", data=data)
+
+
+#@application.route("/menuRegister")
+#def view_menuRegister():
+    #return render_template("menuRegister.html")
+
 
 @application.route("/menuView")
 def view_menuView():
@@ -43,33 +54,41 @@ def view_worldCup():
 #아래는 과제2 (11/15마감) 제출용 페이지들
 @application.route("/menuSubmit", methods=['POST'])
 def view_menuSubmit():
-    image_file=request.files["menuImg"]
+    global idx
+    image_file=request.files["img"]
     image_file.save("./static/image/{}".format(image_file.filename))
     data=request.form
-    print(data)
-    return "입력값이 POST방식으로 잘 넘어왔는지 확인하는 페이지입니다. 여기 말고 터미널을 확인해주세요."
-
+    
+    if DB.insert_menu(data['foodname'], data, image_file.filename):
+        return render_template("menuResult.html", data=data, image_path="static/image/"+image_file.filename)
+    else:
+        return "Menu name is already exist."
+    
+    
 @application.route("/restaurantSubmit", methods=['POST'])
 def view_restaurantSubmit():
-    image_file=request.files["restaurantImg"]
+    global idx
+    image_file=request.files["file"]
     image_file.save("./static/image/{}".format(image_file.filename))
     data=request.form
-    return render_template("result.html", data=data, image_file_name=image_file.filename)
+    
+    if DB.insert_restaurant(data['name'], data, image_file.filename):
+        return render_template("result.html", data=data, image_path="static/image/"+image_file.filename) 
+    else:
+        return "Restaurant name already exist!"
 
 @application.route("/reviewSubmit", methods=['POST'])
 def view_reviewSubmit():
-    image_file=request.files["reviewImg"]
+    image_file=request.files["img"]
     image_file.save("./static/image/{}".format(image_file.filename))
     data=request.form
-    print(data)
-    return "입력값이 POST방식으로 잘 넘어왔는지 확인하는 페이지입니다. 여기 말고 터미널을 확인해주세요."
     
+    if DB.insert_review(data['reviewerName'], data, image_file.filename):
+        return render_template("reviewResult.html", data=data, image_path="static/image/"+image_file.filename)
+    else:
+        return "Enter the review!"
 
-@application.route("/menuRegister", methods=['POST'])
-def reg_menu():
-    data=request.form
-    print(data)
-    return render_template("menuRegister.html", data=data)
+
 
 
 if __name__ == "__main__":
