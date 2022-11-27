@@ -45,13 +45,15 @@ def reg_menu():
 def view_menuView():
     return render_template("menuView.html")
 
-@application.route("/reviewRegister")
+@application.route("/reviewRegister", methods=['POST'])
 def view_reviewRegister():
-    return render_template("reviewRegister.html")
+    data=request.form
+    return render_template("reviewRegister.html", data=data)
 
-@application.route("/reviewView")
+@application.route("/reviewView", methods=['POST'])
 def view_reviewView():
-    return render_template("reviewView.html")
+    data=request.form
+    return render_template("reviewView.html", data=data)
 
 @application.route("/worldCup")
 def view_worldCup():
@@ -102,10 +104,11 @@ def DynamicUrl(variable_name):
 @application.route("/view_detail/<name>/")
 def view_restaurant_detail(name):
     data = DB.get_restaurant_byname(str(name))
-    #avg_rate = DB.get_avgrate_byname(str(name))
+    avg_rate = DB.get_avgrate_byname(str(name))
+    
     print("####data:", data)
-    return render_template("detail.html", data=data)
-#avg_rate = avg_rate
+    return render_template("detail.html", data=data, avg_rate = avg_rate)
+    
 
 
 if __name__ == "__main__":

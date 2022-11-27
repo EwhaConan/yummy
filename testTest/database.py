@@ -70,7 +70,7 @@ class DBhandler:
     #넘겨 받은 후, 밑에 주석처리 한 함수 다시 풀기
     def insert_review(self, reviewerName, data, img_path):
         review_info = {
-            
+            "name":data['name'],
             "menu":data['menu'],
             "text":data['text'],
             "rating":data['rating'],
@@ -94,15 +94,17 @@ class DBhandler:
                 target_value=value
             return target_value
         
-    #def get_avgrate_byname(self, name):
-        #reviews = self.db.child("review").get()
-        #rates=[]
-        #for res in reviews.each():
-            #value=res.val()
-            #if value['menu']==name:
-                #rates.append(float(value['rate']))
-            #return sum(rates)/len(rates)
-    
-        
+    def get_avgrate_byname(self, name):
+        reviews = self.db.child("review").get()
+        rates=[]
+        for res in reviews.each():
+            value=res.val()
+            if value['name']==name:
+                rates.append(float(value['rating']))
+                if len(rates) < 0:
+                    return 0
+                else :
+                    return sum(rates)/len(rates)
+            
     
         
