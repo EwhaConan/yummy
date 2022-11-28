@@ -24,7 +24,8 @@ def view_list():
     total_count = len(data) # 레스토랑 총 개수
     page_count = int(((total_count + 8)/ limit)) # 페이지 총 개수
     data = dict(list(data.items())[start_idx:end_idx])
-    
+
+    print (data)    
     return render_template("list.html", page=page, limit=limit, page_count=page_count, total_count=total_count, datas=data.items())
 
 @application.route("/restaurantRegister")
@@ -105,13 +106,26 @@ def view_restaurant_detail(name):
     print("####data:", data)
     return render_template("detail.html", data=data, avg_rate = avg_rate)
     
-@application.route("/list_foods/<name>/", methods=['POST'])
+@application.route("/list_foods/<name>/")
 def view_foods(name):
-   
     data = DB.get_food_byname(str(name))
   #  #tot_count = len(data)
-   # #page_count = len(data)
-    return render_template("menuView.html", datas=data)
+   # #page_count = len(data)sss
+    # print("####data:", data)
+    # target_data = []
+    # for data in datas:
+    #     target_data.append({
+    #         "name" : data.get("res_name"),
+    #         "foodname": data.get("foodname"),
+    #         "foodprice":data.get("foodprice"),
+    #         "allergy":data.get("allergy"),
+    #         "vegan":data.get("vegan"),
+    #         "img_path":data.get("img_path")
+            
+    #     })
+    data = {i : data[i] for i in range(len(data))}
+    print (data)
+    return render_template("menuView.html", datas=data.items())
 
 
 if __name__ == "__main__":

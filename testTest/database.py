@@ -53,12 +53,12 @@ class DBhandler:
     
     def insert_menu(self, foodname, data, img_path):
         menu_info = {
-            "foddname":foodname,
-            "name":data['name'],
+            "foodname":foodname,
+            "res_name":data['res_name'],
             "foodprice":data['foodprice'],
             "allergy":data['allergy'],
             "vegan":data['vegan'],
-            "img_path":"static/image/"+img_path
+            "img_path":"/static/image/"+img_path
         }
 
         self.db.child("menu").push(menu_info)
@@ -112,10 +112,12 @@ class DBhandler:
         target_value=[]
         for res in restaurants.each():
             value = res.val()
-
-            if value['name'] == name:
+            print(value)
+            if value.get("res_name") == name:
                 target_value.append(value)
-            return target_value
+        print(target_value)
+        return target_value
+        
         
     def get_avgrate_byname(self, name):
         reviews = self.db.child("review").get()
