@@ -100,7 +100,7 @@ class DBhandler:
             
             if value['name'] == name:
                 target_value=value
-            return target_value
+        return target_value
 
 
    # def get_food(self):
