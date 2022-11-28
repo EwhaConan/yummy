@@ -43,26 +43,34 @@ class DBhandler:
     
     def menu_duplicate_check(self, foodname):
         menus = self.db.child("menu").get()
+
         for res in menus.each():
-            if res.key()==foodname:
+            value = res.val()
+            if value['foodname'] == foodname:
                 return False
         return True
     
     
     def insert_menu(self, foodname, data, img_path):
-        menu_info = { 
-            "restaurant":data['restaurantName'],
+        menu_info = {
+            "foddname":foodname,
+            "name":data['name'],
             "foodprice":data['foodprice'],
             "allergy":data['allergy'],
             "vegan":data['vegan'],
-            "img_path":img_path
+            "img_path":"static/image/"+img_path
         }
-        if self.menu_duplicate_check(foodname):
-            self.db.child("menu").child(foodname).set(menu_info)
-            print(data, img_path)
-            return True
-        else:
-            return False
+
+        self.db.child("menu").push(menu_info)
+        print(data, img_path)
+        return True
+        
+        #if self.menu_duplicate_check(foodname):
+         #   self.db.child("menu").push(menu_info)
+          #  print(data, img_path)
+           # return True
+        #else:
+         #   return False
         
     #review check
     
@@ -93,6 +101,21 @@ class DBhandler:
             if value['name'] == name:
                 target_value=value
             return target_value
+
+
+   # def get_food(self):
+       ## menus = self.db.child("menu").get().val()
+       # return menus
+
+    def get_food_byname(self, name):
+        restaurants = self.db.child("menu").get()
+        target_value=[]
+        for res in restaurants.each():
+            value = res.val()
+
+            if value['name'] == name:
+                target_value.append(value)
+            return target_value
         
     def get_avgrate_byname(self, name):
         reviews = self.db.child("review").get()
@@ -106,5 +129,5 @@ class DBhandler:
                 else :
                     return sum(rates)/len(rates)
             
-    
+   
         

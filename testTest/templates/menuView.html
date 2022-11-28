@@ -1,114 +1,74 @@
-{% extends "index.html" %}
+{% extends "index.html" %} {% block head_title %} 메뉴 조회 {% endblock
+head_title %} {% block section %}
+<div class="title">
+  <span id="chk">
+    <h2>메뉴 조회</h2>
+  </span>
+</div>
 
-{% block head_title %}
-  메뉴 조회 
-{% endblock head_title %}
-    
+<!--  {% if total>0 %}
+    <p>
+        음식 리스트 -- 현재까지 {{total}}개 등록됨
+</p>-->
 
-{% block section %}
-  <div class="title">
-    <span id="chk">
-      <h2>메뉴 조회</h2>
-    </span>
-  </div>
+<div>
+  <input type="button" value="대표 메뉴 등록하러 가기" />
+</div>
+<br />
 
-  <div>
-    <input type="button" value="대표 메뉴 등록하러 가기" />
-  </div>
+<div class="perMenu">
+  <!--메뉴판 부분-->
+  {% for data in datas %}
   <br />
-
-  <div class="perMenu">
-    <!--메뉴판 부분-->
+  <div class="list">
+    <div class="menu">
+      <img
+        style="width: 300px; height: 250px"
+        id="gourment"
+        src="/static/image/{{data.img_path}}"
+        alt="샘플 대표메뉴 이미지"
+      />
+    </div>
     <br />
-    <div class="list">
-      <div class="menu">
-        <img
-          style="width: 300px; height: 250px"
-          id="gourment"
-          src="static/momiji.jpeg"
-          alt="샘플 대표메뉴 이미지"
-        />
-      </div>
-      <br />
-      <div class="menu">
-        <div style="display: inline-block">
-          <span id="메뉴명"
-            ><h3><b>메뉴 이름</b></h3>
-            소고기 가지덮밥</span
-          >
-          <br /><br />
-          <!--width는 수정해야함-->
-          <span id="가격"
-            ><h3><b>가격</b></h3>
-            9500원</span
-          >
-        </div>
+
+    <h3><b>식당 이름:</b></h3>
+          {{data.name}}</span
+        >
+        <br /><br />
+
+    <div class="menu">
+      <div style="display: inline-block">
+        <span id="메뉴명"
+          ><h3><b>메뉴 이름:</b></h3>
+          {{data.foodname}}</span
+        >
+        <br /><br />
+        <!--width는 수정해야함-->
+        <span id="가격"
+          ><h3><b>가격:</b></h3>
+          {{data.foodprice}}</span
+        ><br /><br />
+        <span id="비건"
+          ><h3><b>비건:</b></h3>
+          {% if data['vegan']== "Y" %} 비건음식입니다 {% endif %} {% if
+          data['vegan'] == "N" %} 비건음식이 아닙니다 {% endif %}</span
+        ><br /><br />
+        <span id="알러지"
+          ><h3><b>알러지:</b></h3>
+          {{data.allergy}}</span
+        >
       </div>
     </div>
   </div>
+</div>
+{% endfor %}
 
-  <div class="perMenu">
-    <!--메뉴판 부분-->
-    <br />
-    <div class="list">
-      <div class="menu">
-        <img
-          style="width: 300px; height: 250px"
-          id="gourment"
-          src="static/momiji3.jpg"
-          alt="샘플 대표메뉴 이미지"
-        />
-      </div>
-      <br />
-      <div class="menu">
-        <div style="display: inline-block">
-          <span id="메뉴명"
-            ><h3><b>메뉴 이름</b></h3>
-            육회덮밥</span
-          >
-          <br /><br />
-          <!--width는 수정해야함-->
-          <span id="가격"
-            ><h3><b>가격</b></h3>
-            11000원</span
-          >
-        </div>
-      </div>
-    </div>
+<!--{% else %}
+<p>
+    등록된 메뉴가 없습니다.
+</p>
+{% endif %}-->
 
-    <div class="perMenu">
-      <!--메뉴판 부분-->
-      <br />
-      <div class="list">
-        <div class="menu">
-          <img
-            style="width: 300px; height: 250px"
-            id="gourment"
-            src="static/momiji5.jpg"
-            alt="샘플 대표메뉴 이미지"
-          />
-        </div>
-        <br />
-        <div class="menu">
-          <div style="display: inline-block">
-            <span id="메뉴명"
-              ><h3><b>메뉴 이름</b></h3>
-              고등어 타레덮밥(시즌)</span
-            >
-            <br /><br />
-            <!--width는 수정해야함-->
-            <span id="가격"
-              ><h3><b>가격</b></h3>
-              12800원</span
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-{% endblock section %}
-
-
-{% block co_side %}
-    <div class="co side"></div>
+{% endblock section %} {% block co_side %}
+<div class="co side"></div>
 {% endblock co_side %}

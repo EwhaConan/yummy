@@ -42,15 +42,24 @@ head_title %} {% block section %}
   <p>{{data.time}}</p>
 </div>
 
-<div class="대표메뉴조회_버튼">
-  <h3>대표메뉴</h3>
-  <p>
-    <button type="button" onClick="대표메뉴_조회페이지로_이동()">
-      대표메뉴 조회
-    </button>
-  </p>
-  <!--나중에 JS로 이벤트리스너 함수 구현하기-->
-</div>
+<form method="post" action="/list_foods">
+  <input type="hidden" name="name" value="{{data.name}}" />
+  <div>
+    <a href="/list_foods/{{data.name}}/" color="black">
+      <img src="/static/menu_button.png" width="150" height="70" /></a
+    ><br /><br />
+  </div>
+</form>
+
+<form method="post" action="/menuRegister">
+  <input type="hidden" name="name" value="{{data.name}}" />
+  <div>
+    <p>It's time to register the representative menu in {{data.name}}</p>
+    <!-- js를 통해 버튼으로 넘어가는 것은 추후 구현 예정 -->
+    <button type="submit" name="menu">메뉴 등록하기</button>
+    <br /><br />
+  </div>
+</form>
 
 <!-- <div class="리뷰조회_버튼">
       <h3>리뷰</h3>

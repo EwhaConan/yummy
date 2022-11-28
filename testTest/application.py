@@ -64,7 +64,7 @@ def view_worldCup():
 @application.route("/menuSubmit", methods=['POST'])
 def view_menuSubmit():
     global idx
-    image_file=request.files["img"]
+    image_file=request.files["file"]
     image_file.save("./static/image/{}".format(image_file.filename))
     data=request.form
     
@@ -109,6 +109,13 @@ def view_restaurant_detail(name):
     print("####data:", data)
     return render_template("detail.html", data=data, avg_rate = avg_rate)
     
+@application.route("/list_foods/<name>/", methods=['POST'])
+def view_foods(name):
+   
+    data = DB.get_food_byname(str(name))
+  #  #tot_count = len(data)
+   # #page_count = len(data)
+    return render_template("menuView.html", datas=data)
 
 
 if __name__ == "__main__":
