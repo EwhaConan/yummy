@@ -31,10 +31,6 @@ def view_list():
 def view_restaurantRegister():
     return render_template("restaurantRegister.html")
 
-@application.route("/detail")
-def view_detail():
-    return render_template("detail.html")
-
 @application.route("/menuRegister", methods=['POST'])
 def reg_menu():
     data=request.form
