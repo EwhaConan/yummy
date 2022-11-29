@@ -30,6 +30,24 @@ nav a:hover {
   background-color: #ffec94;
   color: black;
 }
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+tr {
+  height: 50px;
+}
+
+button {
+  display: inline-block;
+}
+
+.info-th {
+  text-align: left;
+}
+
 .리스트 {
   text-align: center;
   width: 50%;
@@ -221,4 +239,11 @@ footer {
   color: black;
   text-decoration: none;
   font-weight: bold;
+}
+
+#avg-rate {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 60px;
+  font-style: italic;
+  color: lightsalmon;
 }
