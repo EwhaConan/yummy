@@ -1,91 +1,39 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <title>점메추/저메추</title>
-    <link rel="stylesheet" href="{{ url_for('static',filename='whole.css')}}">    
-  </head>
-  <body>
-    <header>
-      <!--공통헤더-->
-      <!--임시 샘플 파일을 넣긴 했지만 html에서는 공간만 확보하고 이미지 파일은 css에서 작업-->
-      <img src="static/food.jpeg" style width = "600px"; height = "260px";>
-    </header>
-    <nav>
-                  <!--공통네비게이션바-->
-                  <a href="/index"><b>맛집 리스트</b></a>
-                  <a href="/restaurantRegister"><b>맛집 등록</b></a>
-                  <a href="/menuRegister"><b>메뉴등록</b></a>
-                  <a href="/reviewRegister"><b>리뷰등록</b></a>
-                  <a href="/reviewView"><b>리뷰조회</b></a>
-                  <a href="/menuView"><b>메뉴 조회</b></a>
-                  <a href="/detail"><b>상세페이지</b></a>
-                  <a href="/worldCup"> <b>점메추 / 저메추</b></a>
-          
-              </nav>
-  
+{% extends "index.html" %}
 
-    <div class="pg_title">
-      <!--페이지 이름-->
+{% block head_title %}
+    점메추/저메추
+{% endblock head_title %}
+
+
+{% block section %}
+      <div class = "number">
+        <span id = "chk">
+        <h1>음식 이상형 월드컵</h1> 
+        </span>
+        <h2>32강</h2>
     </div>
-
-    <section>
-      <div class = "co side">
-        <div class="card">
-          <h2>인기차트</h2>
-          <p>1. 모미지식당<br>
-            2. 참참참<br>
-            3. 유야케도쿄<br>
-            4. 고냉지<br>
-            5. 티아라카페
-          </p>
-        </div>
-    
-        <div class="card">
-          <h3>Follow Me</h3>
-          <p>앞으로도 종종 들러서 <br>
-            업그레이드되는<br>
-            이대 주변 맛집 소식을<br>
-            봐주세요~</p>
-        </div>
-      </div>
-
-      <div class = "co mid">
-        <div class = "number">
-          <span id = "chk">
-          <h1>음식 이상형 월드컵</h1> 
-         </span>
-          <h2>32강</h2>
-      </div>
-      <div class="list">
-        <div class="box">
-          <img name="모미지사진" src="static/momiji.jpg" alt="모미지사진" width="285px" height="285px"> <br />
-          <div class="info">
-            <h3>모미지식당</h3>
-              <p>이대 정문쪽 덮밥집</p>
-          </div>
-        </div>
-        <div class="box">
-        <img name="vs" src="static/vs.png" alt="vs" width="260px" height="260px"> <br />
-        </div>
-       
-       <div class="box">
-        <img name="고냉지사진" src="static/konangji.jpg" alt="고냉지사진" width="285px" height="285px"> 
+    <div class="list">
+      <div class="box">
+        <img name="모미지사진" src="static/momiji.jpg" alt="모미지사진" width="285px" height="285px"> <br />
         <div class="info">
-          <h3>고냉지</h3>
-            <p>신촌기차역쪽 김치찌개 맛집</p> 
+          <h3>모미지식당</h3>
+            <p>이대 정문쪽 덮밥집</p>
         </div>
       </div>
+      <div class="box">
+      <img name="vs" src="static/vs.png" alt="vs" width="260px" height="260px"> <br />
+      </div>
+      
+      <div class="box">
+      <img name="고냉지사진" src="static/konangji.jpg" alt="고냉지사진" width="285px" height="285px"> 
+      <div class="info">
+        <h3>고냉지</h3>
+          <p>신촌기차역쪽 김치찌개 맛집</p> 
+      </div>
     </div>
-    </div>
-    <div class = " co side">
-    </div>
-    </section>
+  </div>
+  {% endblock section %}
 
-    <footer>
-      <!--footer 공통-->
-      <h3>@EwhaConan</h3>
-      <h3><a href="https://github.com/EwhaConan/yummy">github/EwhaConan</a></h3>
-  </footer>
-  </body>
-</html>
+    {% block co_side %}
+    <div class = " co side"></div>
+    {% endblock co_side %}
