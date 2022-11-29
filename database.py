@@ -33,7 +33,7 @@ class DBhandler:
             "park":data['park'],
             "time":data['time'],
             "site":data['site'],
-            "img_path":"static/image/"+img_path
+            "img_path":img_path
         }
         if self.restaurant_duplicate_check(name):
             self.db.child("restaurant").push(restaurant_info)
@@ -97,11 +97,17 @@ class DBhandler:
     
     def get_restaurants(self):
         restaurants = self.db.child("restaurant").get().val()
+        if str(restaurants) == "None":
+            return "None"
         return restaurants
     
     def get_restaurant_byname(self, name):
         restaurants = self.db.child("restaurant").get()
-        target_value="None"
+        
+        if str(restaurants.val()) == "None":
+            return "None"
+        
+        target_value=""
         for res in restaurants.each():
             value=res.val()
             
@@ -115,8 +121,12 @@ class DBhandler:
        # return menus
 
     def get_food_byname(self, name):
-        restaurants = self.db.child("menu").get()
+        restaurants = self.db.child("menu2").get()
         target_value=[]
+        
+        if str(restaurants.val()) == "None":
+            return "None"
+        
         for res in restaurants.each():
             value = res.val()
             print(value)
@@ -126,8 +136,12 @@ class DBhandler:
         return target_value
 
     def get_review_byname(self, name):
-        restaurants = self.db.child("review").get()
+        restaurants = self.db.child("review2").get()
         target_value=[]
+        
+        if str(restaurants.val()) == "None":
+            return "None"
+        
         for res in restaurants.each():
             value=res.val()
             print(value)
@@ -138,8 +152,12 @@ class DBhandler:
         
         
     def get_avgrate_byname(self, name):
-        reviews = self.db.child("review").get()
+        reviews = self.db.child("review2").get()
         rates=[]
+
+        if str(reviews.val()) == "None":
+            return "None"
+        
         for res in reviews.each():
             value=res.val()
             if value['name']==name:

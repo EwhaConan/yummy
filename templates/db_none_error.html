@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+
+{% block head_title %}
+    에러 페이지
+{% endblock head_title %}
+
+
+{% block section %}
+    <div class="title">
+        <span id="chk">
+            <h2>{{error_page}}</h2>
+        </span>
+    </div>
+
+    {% for mesg in get_flashed_messages() %}
+    <p>{{mesg}}</p>
+    {% endfor %}
+{% endblock section %}

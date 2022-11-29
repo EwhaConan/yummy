@@ -1,5 +1,9 @@
 {% extends "index.html" %} {% block head_title %} 메뉴 조회 {% endblock
 head_title %} {% block section %}
+{% for mesg in get_flashed_messages() %}
+    <script>alert("{{mesg}}")</script>
+{% endfor %}
+
 <div class="title">
   <span id="chk">
     <h2>메뉴 조회</h2>

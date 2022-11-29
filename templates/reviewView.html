@@ -1,6 +1,8 @@
 {% extends "index.html" %} {% block head_title %} 리뷰 조회 {% endblock
 head_title %} {% block section %}
-
+{% for mesg in get_flashed_messages() %}
+    <p>{{mesg}}<p>
+{% endfor %}
 <!--style 태그-->
 <!-- {% block style %} .keyword_graph ul { margin: 0 50px 0 50px; padding: 1px 0 0 0;
 border-top: 0; border-right: 0; font-size: 11px; font-family: Tahoma, Geneva,
