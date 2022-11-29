@@ -20,24 +20,29 @@ color: orange; } .non_fill_star { color: gray; } #total_star_rating { font-size:
   </span>
 </div>
 
-<div>
-  <!--식당 세부 화면으로 넘어가는 버튼-->
-  <input type="button" value="식당 세부 화면" />
-  <!-- <input type="button" value="리뷰 등록" /> -->
-  <!-- <form method="post" action="/reviewRegister">
-    
+<div class="button-box">
+  <br />
+  <a href="/detail/{{name}}/"
+    ><button type="button">식당 상세 페이지</button></a
+  >
+
+  <br /><br />
+
+  <form method="post" action="/reviewRegister">
+    <input type="hidden" name="name" value="{{name}}" />
 
     <button type="submit" name="menu">리뷰 등록하기</button>
     <br /><br />
-  </form> -->
-  <br />
+  </form>
 
+  <br />
+  <!-- 
   <div id="필터버튼">
     <input type="button" value="정렬" />
     <input type="button" value="메뉴별 리뷰보기" />
     <input type="checkbox" id="사진리뷰체크박스" />
     <label for="사진리뷰체크박스">사진 리뷰 모아보기</label>
-  </div>
+  </div> -->
   <br />
 </div>
 
