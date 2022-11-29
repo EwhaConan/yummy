@@ -7,11 +7,14 @@ app = Flask(__name__)
 DB = DBhandler()
 
 
+# route: 시작 페이지
 @application.route("/")
 def hello():
     # return render_template("list.html")
     return redirect(url_for("view_list", page=0))
-    
+
+
+# route: 맛집 리스트    
 @application.route("/list")
 def view_list():
     page = request.args.get("page", 0, type=int) # 페이지 인덱스
@@ -28,36 +31,49 @@ def view_list():
     print (data)    
     return render_template("list.html", page=page, limit=limit, page_count=page_count, total_count=total_count, datas=data.items())
 
+
+# route: 맛집 등록
 @application.route("/restaurantRegister")
 def view_restaurantRegister():
     return render_template("restaurantRegister.html")
 
+
+# route: 메뉴 등록
 @application.route("/menuRegister", methods=['POST'])
 def reg_menu():
     data=request.form
     print(data)
     return render_template("menuRegister.html", data=data)
 
+
+# route: 메뉴 조회
 @application.route("/menuView")
 def view_menuView():
     return render_template("menuView.html")
 
+
+# route: 리뷰 등록
 @application.route("/reviewRegister", methods=['POST'])
 def view_reviewRegister():
     data=request.form
     return render_template("reviewRegister.html", data=data)
 
+
+# route: 리뷰 조회
 @application.route("/reviewView", methods=['POST'])
 def view_reviewView():
     data=request.form
     return render_template("reviewView.html", data=data)
 
+
+# route: 점메추/저메추
 @application.route("/worldCup")
 def view_worldCup():
     return render_template("worldCup.html")
 
 
-#아래는 과제2 (11/15마감) 제출용 페이지들
+# 메뉴/맛집/리뷰 등록 과정에서 DB 받아오는 중간 페이지 (3개)
+# 메뉴 등록 과정에서
 @application.route("/menuSubmit", methods=['POST'])
 def view_menuSubmit():
     global idx
@@ -71,6 +87,7 @@ def view_menuSubmit():
         return "Menu name is already exist."
     
     
+# 맛집 등록 과정에서
 @application.route("/restaurantSubmit", methods=['POST'])
 def view_restaurantSubmit():
     global idx
@@ -83,6 +100,8 @@ def view_restaurantSubmit():
     else:
         return "Restaurant name already exist!"
 
+
+# 리뷰 등록 과정에서
 @application.route("/reviewSubmit", methods=['POST'])
 def view_reviewSubmit():
     image_file=request.files["img"]
@@ -94,18 +113,25 @@ def view_reviewSubmit():
     else:
         return "Enter the review!"
 
+
+# 동적 라우팅
+# 각 식당의 경로로 페이지가 라우팅 되도록 필요한 페이지.
 @app.route('/dynamicurl/<variable_name>')
 def DynamicUrl(variable_name):
     return str(variable_name)
 
+
+# route: 맛집 상세페이지
 @application.route("/view_detail/<name>/")
 def view_restaurant_detail(name):
     data = DB.get_restaurant_byname(str(name))
     avg_rate = DB.get_avgrate_byname(str(name))
     
-    print("####data:", data)
+    # print("####data:", data)
     return render_template("detail.html", data=data, avg_rate = avg_rate)
+  
     
+# route : 메뉴 조회
 @application.route("/list_foods/<name>/")
 def view_foods(name):
     data = DB.get_food_byname(str(name))
@@ -115,6 +141,8 @@ def view_foods(name):
     print (data)
     return render_template("menuView.html", datas=data.items())
 
+
+# route : 리뷰 조회
 @application.route("/view_reviewVView/<name>/")
 def view_reviewVView(name):
     #avg_rate = DB.get_avgrate_byname(str(name))
@@ -123,6 +151,7 @@ def view_reviewVView(name):
     
     print( data)
     return render_template("reviewView.html", datas=data.items())
+
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
