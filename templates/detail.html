@@ -13,34 +13,41 @@ head_title %} {% block section %}
     />
   </div>
 </div>
-<div class="rating">
+
+<div id="맛집 정보">
   <h3>전체 평점</h3>
-  {{avg_rate}}
-</div>
-<h3>맛집 사이트</h3>
-<div class="맛집url">
+  <p>{{avg_rate}}</p>
+
+  <h3>맛집 사이트</h3>
   <p>
     <a href="{{data.site}}">
-      <!--각 맛집의 실제 url로 나중에 수정할 것!-->
       <span class="맛집url">{{data.site}}</span>
     </a>
   </p>
-</div>
 
-<div class="맛집주소">
+  <h3>전화번호</h3>
+  <p><span class="맛집전화번호">{{data.tel}}</span></p>
+
   <h3>주소</h3>
   <p><span class="맛집주소">{{data.addr}}</span></p>
-</div>
 
-<div class="park">
   <h3>주차</h3>
   <p>
     {% if data['park'] == "Y" %} 가능합니다. {% endif %} {% if data['park'] ==
     "N" %} 불가능합니다. {% endif %}
   </p>
-  <h3>영업 시간은</h3>
+  
+  <h3>영업 시간</h3>
   <p>{{data.time}}</p>
+
+  <h3>음식 카테고리</h3>
+  <p>{{data.category}}</p>
+
+  <h3>가격대</h3>
+  <p>{{data.money}}</p>
 </div>
+
+
 
 <a href="/list_foods/{{data.name}}/" color="black"
   ><button type="button">메뉴 조회하기</button></a
