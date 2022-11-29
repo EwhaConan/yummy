@@ -1,8 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from database import DBhandler
 import sys
-application = Flask(__name__)
-application.config["SECRET_KEY"] = "yummy"
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "yummy"
 
@@ -10,14 +8,14 @@ DB = DBhandler()
 
 
 # route: 시작 페이지
-@application.route("/")
+@app.route("/")
 def hello():
     # return render_template("list.html")
     return redirect(url_for("view_list", page=0))
 
 
 # route: 맛집 리스트    
-@application.route("/list")
+@app.route("/list")
 def view_list():
     page = request.args.get("page", 0, type=int) # 페이지 인덱스
     limit = 9 # 한 페이지에 식당 최대 9개
@@ -40,13 +38,13 @@ def view_list():
 
 
 # route: 맛집 등록
-@application.route("/restaurantRegister")
+@app.route("/restaurantRegister")
 def view_restaurantRegister():
     return render_template("restaurantRegister.html")
 
 
 # route: 메뉴 등록
-@application.route("/menuRegister", methods=['POST'])
+@app.route("/menuRegister", methods=['POST'])
 def reg_menu():
     data=request.form
     print(data)
@@ -54,21 +52,21 @@ def reg_menu():
 
 
 # route: 리뷰 등록
-@application.route("/reviewRegister", methods=['POST'])
+@app.route("/reviewRegister", methods=['POST'])
 def view_reviewRegister():
     data=request.form
     return render_template("reviewRegister.html", data=data)
 
 
 # route: 점메추/저메추
-@application.route("/worldCup")
+@app.route("/worldCup")
 def view_worldCup():
     return render_template("worldCup.html")
 
 
 # 메뉴/맛집/리뷰 등록 과정에서 DB 받아오는 중간 페이지 (3개)
 # 메뉴 등록 과정에서
-@application.route("/menuSubmit", methods=['POST'])
+@app.route("/menuSubmit", methods=['POST'])
 def view_menuSubmit():
     global idx
     image_file=request.files["file"]
@@ -82,7 +80,7 @@ def view_menuSubmit():
     
     
 # 맛집 등록 과정에서
-@application.route("/restaurantSubmit", methods=['POST'])
+@app.route("/restaurantSubmit", methods=['POST'])
 def view_restaurantSubmit():
     global idx
     image_file=request.files["file"]
@@ -96,7 +94,7 @@ def view_restaurantSubmit():
 
 
 # 리뷰 등록 과정에서
-@application.route("/reviewSubmit", methods=['POST'])
+@app.route("/reviewSubmit", methods=['POST'])
 def view_reviewSubmit():
     image_file=request.files["img"]
     image_file.save("./static/image/{}".format(image_file.filename))
@@ -116,7 +114,7 @@ def DynamicUrl(variable_name):
 
 
 # route: 맛집 상세페이지
-@application.route("/view_detail/<name>/")
+@app.route("/view_detail/<name>/")
 def view_restaurant_detail(name):
     data = DB.get_restaurant_byname(str(name))
     avg_rate = DB.get_avgrate_byname(str(name))
@@ -131,7 +129,7 @@ def view_restaurant_detail(name):
   
     
 # route : 메뉴 조회
-@application.route("/list_foods/<name>/")
+@app.route("/list_foods/<name>/")
 def view_foods(name):
     data = DB.get_food_byname(str(name))
   #  #tot_count = len(data)
@@ -142,7 +140,7 @@ def view_foods(name):
 
 
 # route : 리뷰 조회
-@application.route("/view_reviewVView/<name>/")
+@app.route("/view_reviewVView/<name>/")
 def view_reviewVView(name):
     #avg_rate = DB.get_avgrate_byname(str(name))
     data = DB.get_review_byname(str(name))
@@ -153,4 +151,4 @@ def view_reviewVView(name):
 
 
 if __name__ == "__main__":
-    application.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=True)
