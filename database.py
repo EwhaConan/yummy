@@ -121,7 +121,7 @@ class DBhandler:
        # return menus
 
     def get_food_byname(self, name):
-        restaurants = self.db.child("menu2").get()
+        restaurants = self.db.child("menu").get()
         target_value=[]
         
         if str(restaurants.val()) == "None":
@@ -136,7 +136,7 @@ class DBhandler:
         return target_value
 
     def get_review_byname(self, name):
-        restaurants = self.db.child("review2").get()
+        restaurants = self.db.child("review").get()
         target_value=[]
         
         if str(restaurants.val()) == "None":
@@ -152,7 +152,7 @@ class DBhandler:
         
         
     def get_avgrate_byname(self, name):
-        reviews = self.db.child("review2").get()
+        reviews = self.db.child("review").get()
         rates=[]
 
         if str(reviews.val()) == "None":
