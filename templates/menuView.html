@@ -1,13 +1,36 @@
 {% extends "index.html" %} {% block head_title %} 메뉴 조회 {% endblock
-head_title %} {% block section %}
-{% for mesg in get_flashed_messages() %}
-    <script>alert("{{mesg}}")</script>
+head_title %} {% block section %} {% for mesg in get_flashed_messages() %}
+<script>
+  alert("{{mesg}}");
+</script>
 {% endfor %}
 
 <div class="title">
   <span id="chk">
     <h2>메뉴 조회</h2>
   </span>
+</div>
+
+<div class="button-box">
+  <br />
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <a href="/view_detail/{{name}}/"
+            ><button type="button">식당 상세 페이지</button></a
+          >
+        </td>
+        <td>
+          <form method="post" action="/menuRegister">
+            <input type="hidden" name="name" value="{{name}}" />
+            <button type="submit">메뉴 등록하기</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
 </div>
 
 <div class="perMenu">
