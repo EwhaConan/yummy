@@ -1,3 +1,0 @@
-2176121 남승현, 2176123 남지민, 2176278 이원주, 2176349 정유라, 2176355 정혜교
-
-https://github.com/EwhaConan/yummy/tree/server/server/HW02

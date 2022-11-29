@@ -1,92 +1,69 @@
+<!DOCTYPE html>
+
+
 {% extends "index.html" %} {% block head_title %} 맛집 등록 {% endblock
 head_title %} {% block section %}
-<div class="title">
-  <span id="chk">
-    <h2>맛집 등록</h2>
-  </span>
-  <span>
-    <h3>자신이 생각하는 맛집을 등록해주세요!</h3>
-  </span>
-</div>
 
-<form
-  name="맛집 등록"
-  method="POST"
-  enctype="multipart/form-data"
-  action="/restaurantSubmit"
-  enctype="multipart/form-data"
->
-  <div class="co mid1">
-    <img src="https://via.placeholder.com/350" alt="샘플이미지" />
-    <br /><br /><br />
-    <div>
-      <label for="img">대표사진:</label>
-      <input type="file" name="restaurantImg" required /><br /><br />
-    </div>
-    <p><b>식당이름:</b></p>
-    <input type="text" name="restaurantName" required /><br /><br />
+        <div class = "title">
+            <span id = "chk">
+            <h2>맛집 등록</h2> 
+            </span>
+            <span>
+                <h3>자신이 생각하는 맛집을 등록해주세요!</h3>
+            </span>
+        </div>
+     
+        <form name="맛집 등록" method="POST"  enctype="multipart/form-data" action="/restaurantSubmit" enctype="multipart/form-data">
 
-    <p>
-      <span id="주소" class="주소"><b>주소:</b></span>
-    </p>
-    <input
-      type="text"
-      name="restaurantAddress"
-      placeholder="도로명 주소"
-      required
-    /><br /><br />
-  </div>
+        <div class = "co mid1">
+            <img src="https://via.placeholder.com/350" alt="샘플이미지">
+            <br><br><br>
+            <div>
+            <label for="img"><b>대표사진:</b></label>
+            <input type="file" name="file" required><br><br><br>
+            </div>
+            
+            <label for="name"><b>식당이름:</b></label>
+            <input type="text" name="name" required><br><br>
 
-  <div class="co mid2">
-    <p>
-      <span id="전화번호" class="전화번호"><b>전화번호:</b></span>
-    </p>
-    <input type="tel" name="telephone" required /><br /><br />
+           
 
-    <p>
-      <span id="음식의 종류" class="음식의 종류"><b>음식의 종류:</b></span>
-    </p>
-    <input
-      type="text"
-      name="category"
-      placeholder="한식/양식/중식..."
-      required
-    /><br /><br />
+            <label for = "addr"><b>주소:</b></label>
+            <input type="text" name="addr" id="addr" placeholder="도로명 주소" required><br><br>
 
-    <p>
-      <span id="음식 가격대" class="음식 가격대"><b>음식 가격대:</b></span>
-    </p>
-    <input
-      type="text"
-      name="range"
-      placeholder="ex)10000-20000원"
-      required
-    /><br />
-    <br />
-    <p>
-      <span id="주차여부" class="주차여부"><b>주차여부:</b></span>
-    </p>
-    <input type="radio" value="Y" name="park" required />
-    <label for="y">YES</label><br />
-    <input type="radio" value="N" name="park" />
-    <label for="n">NO</label><br /><br />
 
-    <p>
-      <span id="영업시간" class="영업시간"><b>영업시간:</b></span>
-    </p>
-    <input type="text" name="time" required />
+        </div>
 
-    <br /><br />
+        <div class = "co mid2">
 
-    <p>
-      <span id="맛집사이트" class="맛집사이트"><b>사이트 URL:</b></span>
-    </p>
-    <input type="url" name="site" placeholder=인스타그램/홈페이지...
-    required><br /><br />
 
-    <br /><br />
+            <label for = "tel"><b>전화번호:</b></label>
+            <input type="tel" name="tel" id = "tel" required><br><br>
 
-    <input type="submit" value="맛집 등록하기" />
-  </div>
-</form>
+            <label for = "category"><b>음식의 종류:</b></label>
+            <input type="text" name="category" id = "category" placeholder="한식/양식/중식..." required><br><br>
+
+            <label for = "money"><b>음식 가격대:</b></label>
+            <input type="text" name="money" id = "money" placeholder="ex)10000-20000원" required><br><br>
+            
+            <label for = "park"><b>주차 여부:</b></label>
+            <input type="radio" value="Y" name="park" id = "park" required>
+            <label for="y">YES</label><br>
+            <input type="radio" value="N" name="park" id = "park">
+            <label for="n">NO</label><br><br>
+
+            <label for = "time"><b>영업시간:</b></label>
+            <input type="text" name="time" id = "time" required>
+
+            <br><br>
+
+            <label for = "site"><b>사이트 URL:</b></label>
+            <input type="url" name="site" placeholder=인스타그램/홈페이지... required><br><br>
+
+            <br><br>
+            
+            <input type="submit" value="맛집 등록하기">
+            </div>
+
+        </form>
 {% endblock section %}

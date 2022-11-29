@@ -1,70 +1,89 @@
-{% extends "index.html" %}
+{% extends "index.html" %} {% block head_title %} 맛집 상세페이지 {% endblock
+head_title %} {% block section %}
+<h2><span class="맛집이름">{{data.name}}</span></h2>
 
-{% block head_title %}
-  맛집 상세페이지
-{% endblock head_title %}
+<div class="list">
+  <div class="box">
+    <img
+      name="img"
+      width="250px"
+      height="220px"
+      src="/static/image/{{data.img_path}}"
+      alt="맛집 대표사진"
+    />
+  </div>
+</div>
+<div class="rating">
+  <h3>전체 평점</h3>
+  {{avg_rate}}
+</div>
+<h3>맛집 사이트</h3>
+<div class="맛집url">
+  <p>
+    <a href="{{data.site}}">
+      <!--각 맛집의 실제 url로 나중에 수정할 것!-->
+      <span class="맛집url">맛집url</span>
+    </a>
+  </p>
+</div>
 
+<div class="맛집주소">
+  <h3>주소</h3>
+  <p><span class="맛집주소">{{data.addr}}</span></p>
+</div>
 
-{% block section %}
-    <h2><span class="맛집이름">모미지</span></h2>
-    
-    <div class="list">
-      <div class="box">
-        <img
-          id="gourment"
-          style="width: 250px; height: 220px"
-          src="static/momiji.jpg"
-          alt="맛집 대표사진"
-        />
-      </div>
-      <div class="box">
-        <img
-          id="gourment"
-          style="width: 250px; height: 220px"
-          src="static/momiji3.jpg"
-          alt="맛집 대표사진"
-        />
-      </div>
-    </div>
-    <div class="맛집url">
-      <h3>링크</h3>
-      <p>
-        <a
-          href="https://map.naver.com/v5/search/%EB%AA%A8%EB%AF%B8%EC%A7%80%EC%8B%9D%EB%8B%B9/place/1915239189?placePath=%3Fentry=pll%26from=nx%26fromNxList=true"
-        >
-          <!--각 맛집의 실제 url로 나중에 수정할 것!-->
-          <span class="맛집url">맛집url</span>
-        </a>
-      </p>
-    </div>
+<div class="park">
+  <h3>주차</h3>
+  <p>
+    {% if data['park'] == "Y" %} 가능합니다. {% endif %} {% if data['park'] ==
+    "N" %} 불가능합니다. {% endif %}
+  </p>
+  <h3>영업 시간은</h3>
+  <p>{{data.time}}</p>
+</div>
 
-    <div class="맛집주소">
-      <h3>주소</h3>
-      <p><span class="맛집주소">서울 서대문구 이화여대7길 24 2층</span></p>
-    </div>
+<a href="/list_foods/{{data.name}}/" color="black"
+  ><button type="button">메뉴 조회하기</button></a
+>
 
-    <div class="대표메뉴조회_버튼">
-      <h3>대표메뉴</h3>
-      <p>
-        <button type="button" onClick="대표메뉴_조회페이지로_이동()">
-          대표메뉴 조회
-        </button>
-      </p>
-      <!--나중에 JS로 이벤트리스너 함수 구현하기-->
-    </div>
+<br /><br />
 
-    <div class="리뷰조회_버튼">
+<form method="post" action="/menuRegister">
+  <input type="hidden" name="name" value="{{data.name}}" />
+  <div>
+    <!-- js를 통해 버튼으로 넘어가는 것은 추후 구현 예정 -->
+    <button type="submit" name="menu">메뉴 등록하기</button>
+    <br /><br />
+  </div>
+</form>
+
+<!-- <div class="리뷰조회_버튼">
       <h3>리뷰</h3>
       <p>
         <button type="button" onClick="리뷰_조회페이지로_이동()">
           리뷰 조회
         </button>
       </p>
-      <!--나중에 JS로 이벤트리스너 함수 구현하기-->
-    </div>
-{% endblock section %}
+      
+    </div> -->
 
+<!-- <form method="post" action="/reviewView">
+  <input type="hidden" name="name" value="{{data.name}}" />
+  <div> -->
+<a href="/view_reviewVView/{{data.name}}/" color="black"
+  ><button type="button">리뷰 조회하기</button></a
+>
+<br /><br />
+<!-- </div>
+</form> -->
 
-{% block co_side %}
-  <div class="co side"></div>
+<form method="post" action="/reviewRegister">
+  <input type="hidden" name="name" value="{{data.name}}" />
+
+  <button type="submit" name="menu">리뷰 등록하기</button>
+  <br /><br />
+</form>
+
+{% endblock section %} {% block co_side %}
+<div class="co side"></div>
 {% endblock co_side %}
