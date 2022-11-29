@@ -46,24 +46,11 @@ def reg_menu():
     return render_template("menuRegister.html", data=data)
 
 
-# route: 메뉴 조회
-@application.route("/menuView")
-def view_menuView():
-    return render_template("menuView.html")
-
-
 # route: 리뷰 등록
 @application.route("/reviewRegister", methods=['POST'])
 def view_reviewRegister():
     data=request.form
     return render_template("reviewRegister.html", data=data)
-
-
-# route: 리뷰 조회
-@application.route("/reviewView", methods=['POST'])
-def view_reviewView():
-    data=request.form
-    return render_template("reviewView.html", data=data)
 
 
 # route: 점메추/저메추
@@ -149,7 +136,7 @@ def view_reviewVView(name):
     data = DB.get_review_byname(str(name))
     data = {i : data[i] for i in range(len(data))}
     
-    print( data)
+    # print( data)
     return render_template("reviewView.html", datas=data.items())
 
 
