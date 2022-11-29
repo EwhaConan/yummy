@@ -10,22 +10,36 @@ header {
   text-align: center;
 }
 nav {
+  position: sticky;
+  top: 0px;
+  z-index: 1;
   overflow: hidden;
   background-color: lightsalmon;
-}
-nav a {
-  float: left;
-  display: block;
-  color: white;
   text-align: center;
+}
+
+nav li {
+  list-style: none;
+}
+
+nav a {
+  float: left; /*링크 가운데 정렬 원하면 해당 부분만 삭제*/
+  display: inline-block;
+  color: white;
+  /* text-align: center; */
   padding: 14px 16px;
   text-decoration: none;
   font-size: 20px;
 }
+
 nav a:hover {
   background-color: #ffec94;
   color: black;
 }
+
+button {
+}
+
 .리스트 {
   text-align: center;
   width: 50%;
