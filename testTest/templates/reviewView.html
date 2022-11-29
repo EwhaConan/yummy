@@ -1,8 +1,8 @@
 {% extends "index.html" %} {% block head_title %} 리뷰 조회 {% endblock
-head_title %}
+head_title %} {% block section %}
 
 <!--style 태그-->
-{% block style %} .keyword_graph ul { margin: 0 50px 0 50px; padding: 1px 0 0 0;
+<!-- {% block style %} .keyword_graph ul { margin: 0 50px 0 50px; padding: 1px 0 0 0;
 border-top: 0; border-right: 0; font-size: 11px; font-family: Tahoma, Geneva,
 sans-serif; list-style: none; } .keyword_graph li { position: relative; margin:
 10px 0; vertical-align: top; white-space: nowrap; } .keyword_graph .g_term {
@@ -12,11 +12,9 @@ inline-block; left: 50px; position: relative; height: 20px; border-left: 0;
 background: orange; } .keyword_graph .g_bar span { position: absolute; top: 0;
 right: -50px; width: 40px; color: #767676; line-height: 20px; } .fill_star {
 color: orange; } .non_fill_star { color: gray; } #total_star_rating { font-size:
-300%; } .per_star_rating { font-size: 200%; } {% endblock style %} {% block
-section %}
+300%; } .per_star_rating { font-size: 200%; } {% endblock style %} -->
 <div class="title">
   <span id="chk">
-    <h2 style="display: inline">{{data.name}}</h2>
     <h2 style="display: inline">리뷰 조회</h2>
     <br />
   </span>
@@ -26,12 +24,12 @@ section %}
   <!--식당 세부 화면으로 넘어가는 버튼-->
   <input type="button" value="식당 세부 화면" />
   <!-- <input type="button" value="리뷰 등록" /> -->
-  <form method="post" action="/reviewRegister">
-    <input type="hidden" name="name" value="{{data.name}}" />
+  <!-- <form method="post" action="/reviewRegister">
+    
 
     <button type="submit" name="menu">리뷰 등록하기</button>
     <br /><br />
-  </form>
+  </form> -->
   <br />
 
   <div id="필터버튼">
@@ -76,29 +74,65 @@ section %}
     </ul>
   </div>
   <br />-->
-<h3>닉네임:</h3>
-{{data.reviewerName}}
 
-<div class="box">
-  <img
-    name="img"
-    width="250px"
-    height="220px"
-    src="/static/image/{{data.img_path}}"
-    alt="리뷰 사진"
-  />
-</div>
-<div class="rating">
-  <h3>평점</h3>
-  {{data.rating}}
-</div>
-<div class="menu">
-  <h3>메뉴</h3>
-  {{data.menu}}
-</div>
-<div class="text">
-  <h3>후기</h3>
-  {{data.text}}
+<div class="per리뷰">
+  {% for data in datas %}
+
+  <table>
+    <tbody>
+      <tr>
+        <th rowspan="4">
+          <img
+            width="250px"
+            height="220px"
+            src="/static/image/{{data[1].img_path}}"
+            alt="리뷰 사진"
+          />
+        </th>
+        <th>닉네임 :</th>
+        <td>{{data[1].reviewerName}}</td>
+      </tr>
+      <tr>
+        <th>평점 :</th>
+        <td>{{data[1].rating}}</td>
+      </tr>
+      <tr>
+        <th>메뉴 :</th>
+        <td>{{data[1].menu}}</td>
+      </tr>
+      <tr>
+        <th>후기 :</th>
+        <td>{{data[1].text}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <hr />
+  <!-- 
+  <div class="box">
+    <img
+      width="250px"
+      height="220px"
+      src="/static/image/{{data[1].img_path}}"
+      alt="리뷰 사진"
+    />
+  </div>
+
+  <h3>닉네임:</h3>
+  {{data[1].reviewerName}}
+  <div class="rating">
+    <h3>평점</h3>
+    {{data[1].rating}}
+  </div>
+  <div class="menu">
+    <h3>메뉴</h3>
+    {{data[1].menu}}
+  </div>
+  <div class="text">
+    <h3>후기</h3>
+    {{data[1].text}}
+  </div> -->
+
+  {% endfor %}
 </div>
 
 <!--
@@ -124,7 +158,7 @@ section %}
         <p class="user_name"><b>닉네임</b><br />Charlotte</p>
         <p class="review_text">
           <b>리뷰 내용</b><br />
-          육회덮밥 : 육회가 굉장히 신선하고 맛있어요:)
+          육회덮밥 : 육회가 굉장히 신선하고 맛있어요:
         </p>
       </div>
     </div>

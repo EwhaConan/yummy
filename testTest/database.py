@@ -78,13 +78,14 @@ class DBhandler:
     #넘겨 받은 후, 밑에 주석처리 한 함수 다시 풀기
     def insert_review(self, reviewerName, data, img_path):
         review_info = {
+            "reviewerName": reviewerName,
             "name":data['name'],
             "menu":data['menu'],
             "text":data['text'],
             "rating":data['rating'],
             "img_path":img_path
         }
-        self.db.child("review").child(reviewerName).set(review_info)
+        self.db.child("review").push(review_info)
         print(data, img_path)
         return True
     
@@ -117,6 +118,17 @@ class DBhandler:
                 target_value.append(value)
         print(target_value)
         return target_value
+
+    def get_review_byname(self, name):
+        restaurants = self.db.child("review").get()
+        target_value=[]
+        for res in restaurants.each():
+            value=res.val()
+            print(value)
+            if value.get("name") == name:
+                target_value.append(value)
+        print(target_value)
+        return target_value
         
         
     def get_avgrate_byname(self, name):
@@ -131,14 +143,5 @@ class DBhandler:
                 else :
                     return sum(rates)/len(rates)
 
-    def get_review_byname(self, reviewerName):
-        reviews = self.db.child("review").get()
-        target_value=[]
-        for res in reviews.each():
-            value=res.val()
-            
-            if value['reviewerName'] == reviewerName:
-                target_value=value
-        print(target_value)
-        return target_value
+    
         

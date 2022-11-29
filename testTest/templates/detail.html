@@ -42,19 +42,15 @@ head_title %} {% block section %}
   <p>{{data.time}}</p>
 </div>
 
-<form method="post" action="/list_foods">
-  <input type="hidden" name="name" value="{{data.name}}" />
-  <div>
-    <a href="/list_foods/{{data.name}}/" color="black">
-      <img src="/static/menu_button.png" width="150" height="70" /></a
-    ><br /><br />
-  </div>
-</form>
+<a href="/list_foods/{{data.name}}/" color="black"
+  ><button type="button">메뉴 조회하기</button></a
+>
+
+<br /><br />
 
 <form method="post" action="/menuRegister">
   <input type="hidden" name="name" value="{{data.name}}" />
   <div>
-    <p>It's time to register the representative menu in {{data.name}}</p>
     <!-- js를 통해 버튼으로 넘어가는 것은 추후 구현 예정 -->
     <button type="submit" name="menu">메뉴 등록하기</button>
     <br /><br />
@@ -71,12 +67,21 @@ head_title %} {% block section %}
       
     </div> -->
 
-<form method="post" action="/reviewView">
+<!-- <form method="post" action="/reviewView">
   <input type="hidden" name="name" value="{{data.name}}" />
-  <div>
-    <button type="submit" name="menu">리뷰 조회하기</button>
-    <br /><br />
-  </div>
+  <div> -->
+<a href="/view_reviewVView/{{data.name}}/" color="black"
+  ><button type="button">리뷰 조회하기</button></a
+>
+<br /><br />
+<!-- </div>
+</form> -->
+
+<form method="post" action="/reviewRegister">
+  <input type="hidden" name="name" value="{{data.name}}" />
+
+  <button type="submit" name="menu">리뷰 등록하기</button>
+  <br /><br />
 </form>
 
 {% endblock section %} {% block co_side %}

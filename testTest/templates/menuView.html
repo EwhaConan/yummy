@@ -14,7 +14,35 @@ head_title %} {% block section %}
 <div class="perMenu">
   <!--메뉴판 부분-->
   {% for data in datas %}
-  <br />
+  <table>
+    <tbody>
+      <tr>
+        <th rowspan="4">
+          <img
+            style="width: 300px; height: 250px"
+            id="gourment"
+            src="{{data[1].img_path}}"
+            alt="샘플 대표메뉴 이미지"
+          />
+        </th>
+        <th>메뉴명 :</th>
+        <td>{{data[1].foodname}}</td>
+      </tr>
+      <tr>
+        <th>가격 :</th>
+        <td>{{data[1].foodprice}}</td>
+      </tr>
+      <tr>
+        <th>비건 :</th>
+        <td>{{data[1].vegan}}</td>
+      </tr>
+      <tr>
+        <th>알러지 :</th>
+        <td>{{data[1].allergy}}</td>
+      </tr>
+    </tbody>
+  <!-- </table>
+
   <div class="list">
     <div class="menu">
       <img
@@ -30,7 +58,7 @@ head_title %} {% block section %}
           {{data[1].res_name}}</span
         >
         <br /><br /> -->
-
+<!-- 
     <div class="menu">
       <div style="display: inline-block">
         <span id="메뉴명"
@@ -39,7 +67,7 @@ head_title %} {% block section %}
         >
         <br /><br />
         <!--width는 수정해야함-->
-        <span id="가격"
+        <!-- <span id="가격"
           ><h3><b>가격:</b></h3>
           {{data[1].foodprice}}</span
         ><br /><br />
@@ -55,10 +83,10 @@ head_title %} {% block section %}
       </div>
       <br /><br />
     </div>
-  </div>
+  </div> -->
 </div>
 <br />
-<br />
+<hr>
 {% endfor %} {% endblock section %} {% block co_side %}
 <div class="co side"></div>
 {% endblock co_side %}

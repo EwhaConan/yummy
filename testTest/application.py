@@ -111,18 +111,6 @@ def view_foods(name):
     data = DB.get_food_byname(str(name))
   #  #tot_count = len(data)
    # #page_count = len(data)sss
-    # print("####data:", data)
-    # target_data = []
-    # for data in datas:
-    #     target_data.append({
-    #         "name" : data.get("res_name"),
-    #         "foodname": data.get("foodname"),
-    #         "foodprice":data.get("foodprice"),
-    #         "allergy":data.get("allergy"),
-    #         "vegan":data.get("vegan"),
-    #         "img_path":data.get("img_path")
-            
-    #     })
     data = {i : data[i] for i in range(len(data))}
     print (data)
     return render_template("menuView.html", datas=data.items())
@@ -131,9 +119,10 @@ def view_foods(name):
 def view_reviewVView(name):
     #avg_rate = DB.get_avgrate_byname(str(name))
     data = DB.get_review_byname(str(name))
+    data = {i : data[i] for i in range(len(data))}
     
-    print("####data:", data)
-    return render_template("reviewView.html", data=data)
+    print( data)
+    return render_template("reviewView.html", datas=data.items())
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
