@@ -1,6 +1,8 @@
 {% extends "index.html" %} {% block head_title %} 맛집 상세페이지 {% endblock
 head_title %} {% block section %}
-<h2><span class="맛집이름">{{data.name}}</span></h2>
+<div class="title">
+  <h2><span id="chk">{{data.name}}</span></h2>
+</div>
 
 <div class="list">
   <div class="box">
@@ -36,7 +38,7 @@ head_title %} {% block section %}
     {% if data['park'] == "Y" %} 가능합니다. {% endif %} {% if data['park'] ==
     "N" %} 불가능합니다. {% endif %}
   </p>
-  
+
   <h3>영업 시간</h3>
   <p>{{data.time}}</p>
 
@@ -46,8 +48,6 @@ head_title %} {% block section %}
   <h3>가격대</h3>
   <p>{{data.money}}</p>
 </div>
-
-
 
 <a href="/list_foods/{{data.name}}/" color="black"
   ><button type="button">메뉴 조회하기</button></a

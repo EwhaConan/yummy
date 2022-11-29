@@ -87,7 +87,8 @@ section:after {
 .star-rating {
   background-color: white;
 }
-#chk {
+
+.title {
   color: #ff28a7;
 }
 footer {
