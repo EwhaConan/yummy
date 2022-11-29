@@ -162,10 +162,8 @@ class DBhandler:
             value=res.val()
             if value['name']==name:
                 rates.append(float(value['rating']))
-                if len(rates) < 0:
-                    return 0
-                else :
-                    return sum(rates)/len(rates)
-
-    
-        
+                
+        if len(rates) <= 0:
+            return 0
+        else :
+            return sum(rates)/len(rates)
