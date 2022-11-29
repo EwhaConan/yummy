@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <body>
+    <img src="{{image_path }}" height="50px" alt="My Image" />
+    {% for key, value in data.items() %}
+    <p>{{ key }}</p>
+    <p>{{ value }}</p>
+    <br />
+    {% endfor %}
+  </body>
+</html>

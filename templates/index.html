@@ -1,131 +1,75 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8">
-        <title>맛집 리스트</title>
-        <link rel="stylesheet" href="{{ url_for('static',filename='whole.css')}}">     
-    </head>
-    
-    <body>
-        <header>
-                  <!--공통헤더-->
-                  <!--임시 샘플 파일을 넣긴 했지만 html에서는 공간만 확보하고 이미지 파일은 css에서 작업-->
-                  <img src="static/food.jpeg" style width = "600px"; height = "260px";>
-        </header>
-                <nav>
-                  <!--공통네비게이션바-->
-                  <a href="/index"><b>맛집 리스트</b></a>
-                  <a href="/restaurantRegister"><b>맛집 등록</b></a>
-                  <a href="/menuRegister"><b>메뉴등록</b></a>
-                  <a href="/reviewRegister"><b>리뷰등록</b></a>
-                  <a href="/reviewView"><b>리뷰조회</b></a>
-                  <a href="/menuView"><b>메뉴 조회</b></a>
-                  <a href="/detail"><b>상세페이지</b></a>
-                  <a href="/worldCup"> <b>점메추 / 저메추</b></a>
-          
-              </nav>
-            
-        
-                <div class="리스트">
-                </div>
-        
-                <section id="리스트section">
-                  <div class = "co side">
-                    <div class="card">
-                      <h2>인기차트</h2>
-                      <p>1. 모미지식당<br>
-                        2. 참참참<br>
-                        3. 유야케도쿄<br>
-                        4. 고냉지<br>
-                        5. 티아라카페
-                      </p>
-                    </div>
-                
-                    <div class="card">
-                      <h3>Follow Me</h3>
-                      <p>앞으로도 종종 들러서 <br>
-                        업그레이드되는<br>
-                        이대 주변 맛집 소식을<br>
-                        봐주세요~</p>
-                    </div>
-        
-                  </div>
-        
-                  <div class = "co mid">
-        
-                    <div class = "title">
-                      <span id = "chk">
-                      <h2>맛집 리스트</h2> 
-                    </span>
-                    </div>
-        
-        
-                    <div class="per맛집">
-                        <a href="각 맛집 상세페이지 url">  <!--각 맛집의 상세페이지 주소로 나중에 바꿀 것!-->
-                            <!-- 링크 거는 거:
-                                <a>태그 대신에, 나중에 JS로 div에 이벤트헨들러 추가하는 방식으로 바꿀 수도 있을 듯.
-                                <div onClick="함수이름();"> 해놓고
-                                JS에서
-                                    location.href = 이동할 주소;
-                                해주면 됨. -->
-                            <div class="list">
-                              <div class="맛집">
-                              <div class = "box">
-                                <div class ="image">
-                                <img name="momiji" src="static/momiji.jpg" alt="momiji" width="285px" height="285px"> 
-                              </div>
-                                <div class="info">
-                                  <h3>모미지식당</h3>
-                                    <p>이대 정문쪽 덮밥집</p>
-                                    <img src="static/heart.png" alt="채워진 하트" width="30px" height="30px">                          
-                                  </div>
-                              </div> 
-                            </div>
-                            <div class="맛집">
-                              <div class = "box">
-                                <div class ="image">
-                                <img name="유야케도쿄사진" src="static/yuyaketokyo.jpeg" alt="유야케도쿄사진" width="285px" height="285px"> 
-                              </div>
-                                <div class="info">
-                                  <h3>유야케도쿄</h3>
-                                    <p>이대 정문쪽 돈가스집</p>
-                                    <img src="static/heart.png" alt="채워진 하트" width="30px" height="30px">
-                                    <!--좋아요 버튼-->
-                                   <!--
-                                    JS 이용해서 이벤트핸들러 추가
-                                    버튼 이미지 바꾸게 (강의노트에 전구 불 on/off 있었던 것처럼.)
-                                   -->
-                                  </div>
-                              </div> 
-                            </div>
-                            <div class="맛집">
-                              <div class = "box">
-                                <div class ="image">
-                                <img name="고냉지사진" src="static/konangji.jpg" alt="고냉지사진" width="285px" height="285px"> 
-                              </div>
-                                <div class="info">
-                                  <h3>고냉지</h3>
-                                    <p>신촌기차역쪽 김치찌개 맛집</p>
-                                    <img src="static/emptyheart.png" alt="비워진 하트" width="30px" height="30px">
-                                    <!--좋아요 버튼-->
-                                   <!--
-                                    JS 이용해서 이벤트핸들러 추가
-                                    버튼 이미지 바꾸게 (강의노트에 전구 불 on/off 있었던 것처럼.)
-                                   -->
-                                  </div>
-                              </div> 
-                            </div>
-                            </div>
-                        </a>
-                    </div>
-                  </div>
-                </section>
-        
-                <footer>
-                  <!--footer 공통-->
-                  <h3>@EwhaConan</h3>
-                  <h3><a href="https://github.com/EwhaConan/yummy">github/EwhaConan</a></h3>
-              </footer>
-            </body>
-        </html>
-        
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block head_title %}{% endblock head_title %}</title>
+    <style>{% block style %}{% endblock style %}</style>
+    <link rel="stylesheet" href="{{ url_for('static',filename='whole.css') }}"  />
+  </head>
+
+  <body>
+    <!--헤더-->
+    <header>
+      <img src="/static/food.jpeg" width="600px" height="260px" />
+        <!--<a href="/"></a>-->
+    </header>
+
+
+    <!--네비게이션바-->
+    <nav>
+      <a href="/list"><b>맛집 리스트</b></a>
+      <a href="/restaurantRegister"><b>맛집 등록</b></a>
+      <!--<a href="/menuRegister"><b>메뉴등록</b></a>-->
+      <!--<a href="/reviewRegister"><b>리뷰등록</b></a>-->
+      <!--<a href="/reviewView"><b>리뷰조회</b></a>-->
+      <!--<a href="/menuView"><b>메뉴 조회</b></a>-->
+      <!--<a href="/detail"><b>상세페이지</b></a>-->
+      <a href="/worldCup"> <b>점메추 / 저메추</b></a>
+    </nav>
+
+
+    <!--사이드바-->
+    <div class="co side">
+      <div class="card">
+        <h2>인기차트</h2>
+        <p>
+          1. 모미지식당<br />
+          2. 참참참<br />
+          3. 유야케도쿄<br />
+          4. 고냉지<br />
+          5. 티아라카페
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Follow Me</h3>
+        <p>
+          앞으로도 종종 들러서 <br />
+          업그레이드되는<br />
+          이대 주변 맛집 소식을<br />
+          봐주세요~
+        </p>
+      </div>
+    </div>
+
+
+    <!--각 페이지 section-->
+    <section>
+      <div class="co mid">
+        {% block section %}       
+        {% endblock section %}
+      </div>
+      
+      <!--이 위치에 내용 비어있는 div태그가 있는 페이지가 있어서 추가함.-->
+      {% block co_side %}{% endblock co_side %}
+
+    </section>
+
+
+    <!--footer 공통-->
+    <footer>
+      <h3>@EwhaConan</h3>
+      <h3><a href="https://github.com/EwhaConan/yummy">github/EwhaConan</a></h3>
+    </footer>
+  </body>
+</html>

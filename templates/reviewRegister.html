@@ -1,168 +1,101 @@
-<!DOCTYPE html>
-<html lang="ko">
+{% extends "index.html" %} {% block head_title %} 리뷰 등록 {% endblock
+head_title %}
 
-<head>
-    <meta charset="UTF-8" />
-    <title>리뷰 등록</title>
-    <style>
-        .star-rating {
-            border: solid 1px #ccc;
-            display: flex;
-            flex-direction: row-reverse;
-            font-size: 1.5em;
-            justify-content: space-around;
-            padding: 0 .2em;
-            text-align: center;
-            width: 5em;
-        }
+<!--style 태그-->
+{% block style %} .star-rating { border: solid 1px #ccc; display: flex;
+flex-direction: row-reverse; font-size: 1.5em; justify-content: space-around;
+padding: 0 0.2em; text-align: center; width: 5em; } .star-rating input {
+display: none; } .star-rating label { color: #ccc; cursor: pointer; }
+.star-rating :checked ~ label { color: #f90; } .star-rating label:hover,
+.star-rating label:hover ~ label { color: #fc0; } /* explanation */ article {
+background-color: #ffe; box-shadow: 0 0 1em 1px rgba(0, 0, 0, 0.25); color:
+#006; font-family: cursive; font-style: italic; margin: 4em; max-width: 30em;
+padding: 2em; } {% endblock style %} {% block section %}
+<!--리뷰 등록 타이틀 및 기본 멘트 -->
+<div class="title">
+  <span id="chk">
+    <h2 style="display: inline">{{data.name}}</h2>
+    <h2 style="display: inline">리뷰 등록하기</h2>
+  </span>
+</div>
 
-        .star-rating input {
-            display: none;
-        }
+<h3>솔직하고 상세한 경험을 공유해주세요!</h3>
+<br />
 
-        .star-rating label {
-            color: #ccc;
-            cursor: pointer;
-        }
+<div class="input">
+  <form
+    name="리뷰등록"
+    method="POST"
+    enctype="multipart/form-data"
+    action="/reviewSubmit"
+    enctype="multipart/form-data"
+  >
+    <label for="name"><b>식당 이름:</b> {{data.name}}</label>
+    <input type="hidden" name="name" value="{{data.name}}" />
 
-        .star-rating :checked~label {
-            color: #f90;
-        }
+    <label for="reviewerName">
+      <p><b>작성자 닉네임 :</b></p>
+    </label>
+    <input type="text" name="reviewerName" required /><br />
 
-        .star-rating label:hover,
-        .star-rating label:hover~label {
-            color: #fc0;
-        }
+    <label for="menu"
+      ><p>
+        <span id="메뉴선택" class="메뉴선택"><b>먹은 메뉴 :</b></span>
+      </p></label
+    >
+    <input type="text" name="menu" required /><br /><br />
 
-        /* explanation */
-
-        article {
-            background-color: #ffe;
-            box-shadow: 0 0 1em 1px rgba(0, 0, 0, .25);
-            color: #006;
-            font-family: cursive;
-            font-style: italic;
-            margin: 4em;
-            max-width: 30em;
-            padding: 2em;
-        }
-    </style>
-        <link rel="stylesheet" href="{{ url_for('static',filename='whole.css')}}">    
-</head>
-
-<body>
-    <header>
-        <!--공통헤더-->
-        <!--임시 샘플 파일을 넣긴 했지만 html에서는 공간만 확보하고 이미지 파일은 css에서 작업-->
-        <img src="static/food.jpeg" style width = "600px"; height = "260px";>
-    </header>
-
-    <nav>
-                  <!--공통네비게이션바-->
-                  <a href="/index"><b>맛집 리스트</b></a>
-                  <a href="/restaurantRegister"><b>맛집 등록</b></a>
-                  <a href="/menuRegister"><b>메뉴등록</b></a>
-                  <a href="/reviewRegister"><b>리뷰등록</b></a>
-                  <a href="/reviewView"><b>리뷰조회</b></a>
-                  <a href="/menuView"><b>메뉴 조회</b></a>
-                  <a href="/detail"><b>상세페이지</b></a>
-                  <a href="/worldCup"> <b>점메추 / 저메추</b></a>
-          
-              </nav>
-  
-  
-
-    <div class="pg_title">
-
-        <!--페이지 이름-->
-
+    <div>
+      <label for="img">사진을 첨부하시겠습니까?</label>
+      <input type="file" name="img" required />
     </div>
+    <br /><br />
+    <img
+      src="https://via.placeholder.com/200"
+      alt="샘플 대표메뉴 이미지"
+    /><br />
 
+    <label for="text"
+      ><p>
+        <span id="리뷰내용" class="리뷰내용"
+          ><b> 리뷰내용 (*선택사항):</b></span
+        >
+      </p></label
+    >
+    <textarea
+      name="text"
+      cols="49"
+      rows="5"
+      placeholder="음식, 분위기, 대기여부, 친절도 등에 대한 리뷰를 남겨주세요"
+    ></textarea
+    ><br /><br />
 
-    <section>
-                <div class = "co side">
-                    <div class="card">
-                      <h2>인기차트</h2>
-                      <p>1. 모미지식당<br>
-                        2. 참참참<br>
-                        3. 유야케도쿄<br>
-                        4. 고냉지<br>
-                        5. 티아라카페
-                      </p>
-                    </div>
-                
-                    <div class="card">
-                      <h3>Follow Me</h3>
-                      <p>앞으로도 종종 들러서 <br>
-                        업그레이드되는<br>
-                        이대 주변 맛집 소식을<br>
-                        봐주세요~</p>
-                    </div>
-        
-             </div>
+    <label for="rating"
+      ><p>
+        <span id="평점 등록" class="평점 등록"
+          ><b>총 평점을 등록해주세요</b></span
+        >
+      </p></label
+    >
 
-             <div class = "co mid">
+    <div class="star-rating">
+      <input type="radio" id="5-stars" name="rating" value="5" required />
+      <label for="5-stars" class="star">&#9733;</label>
+      <input type="radio" id="4-stars" name="rating" value="4" />
+      <label for="4-stars" class="star">&#9733;</label>
+      <input type="radio" id="3-stars" name="rating" value="3" />
+      <label for="3-stars" class="star">&#9733;</label>
+      <input type="radio" id="2-stars" name="rating" value="2" />
+      <label for="2-stars" class="star">&#9733;</label>
+      <input type="radio" id="1-star" name="rating" value="1" />
+      <label for="1-star" class="star">&#9733;</label>
+    </div>
+    <br /><br /><br />
 
-                <!--리뷰 등록 타이틀 및 기본 멘트 -->
-                <div class = "title">
-                    <span id = "chk">
-                    <h2>리뷰 등록</h2>
-                </span>
-                    <h3>솔직하고 상세한 경험을 공유해주세요!</h3><br>
-                </div>
+    <input type="submit" value="리뷰 등록하기" />
+  </form>
+</div>
 
-                <div class = "input">
-                <form name="리뷰등록" method="POST"enctype="multipart/form-data" action="/reviewSubmit" enctype="multipart/form-data"> 
-
-                    <label for = "name">   </label>
-                    <p><b>작성자 닉네임 :</b></p>
-                    <input type="text" name="name" required><br>
-
-
-                    <p><span id="메뉴선택" class="메뉴선택"><b>먹은 메뉴 :</b></span></p>
-                    <input type = "text" name = "menu" required><br><br>
-
-                    <div>
-                    <label for="img">사진을 첨부하시겠습니까?</label>
-                    <input type="file" name="reviewImg" required>
-                    </div>
-                    <br><br>
-                    <img src="https://via.placeholder.com/200" alt="샘플 대표메뉴 이미지" /><br>
-
-                    <p><span id="리뷰내용" class="리뷰내용"><b>   리뷰내용 (*선택사항):</b></span></p>
-                    <textarea name="my-textarea" cols="49" rows="5"
-                        placeholder="음식, 분위기, 대기여부, 친절도 등에 대한 리뷰를 남겨주세요"></textarea><br><br>
-
-                    <p><span id="평점 등록" class="평점 등록"><b>총 평점을 등록해주세요</b></span></p>
-
-                    <div class="star-rating">
-                        <input type="radio" id="5-stars" name="rating" value="5" required>
-                        <label for="5-stars" class="star">&#9733;</label>
-                        <input type="radio" id="4-stars" name="rating" value="4">
-                        <label for="4-stars" class="star">&#9733;</label>
-                        <input type="radio" id="3-stars" name="rating" value="3">
-                        <label for="3-stars" class="star">&#9733;</label>
-                        <input type="radio" id="2-stars" name="rating" value="2">
-                        <label for="2-stars" class="star">&#9733;</label>
-                        <input type="radio" id="1-star" name="rating" value="1">
-                        <label for="1-star" class="star">&#9733;</label>
-                    </div><br><br><br>
-
-                    <input type="submit" value="리뷰 등록하기">
-
-                </form>
-            </div>
-
-            </div>
-
-            <div class ="co side">
-            </div>
-    </section>
-    <footer>
-        <!--footer 공통-->
-        <h3>@EwhaConan</h3>
-        <h3><a href="https://github.com/EwhaConan/yummy">github/EwhaConan</a></h3>
-    </footer>
-</body>
-
-</html>
+{% endblock section %} {% block co_side %}
+<div class="co side"></div>
+{% endblock co_side %}

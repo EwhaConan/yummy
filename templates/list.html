@@ -1,0 +1,78 @@
+{% extends "index.html" %}
+
+{% block head_title %}
+    맛집 리스트
+{% endblock head_title %}
+
+
+{% block section %}
+    {% for mesg in get_flashed_messages() %}
+    <script>alert("{{mesg}}")</script>
+    {% endfor %}
+
+    <div class="title">
+        <span id="chk">
+            <h2>맛집 리스트</h2>
+        </span>
+      </div>
+
+    <p>현재까지 등록된 맛집 : {{total_count}}개<p>
+
+    <div class="list">
+      {% for data in datas %}
+    
+      <div class="맛집">
+        <div class="box">
+          <div class="image">
+             
+             <a href = "/view_detail/{{data[1].name}}/">
+            <img
+              name="{{data[1].name}}"
+              src="../static/image/{{ data[1].img_path }}"
+              alt="{{ data[1].name }}"
+              width="285px"
+              height="285px"
+            />
+            </a>
+          </div>
+
+          <!-- <form method="post" action="/view_detail/{{data[1].name}}/">
+            <input
+        type="hidden"
+        name="img"
+        value="../static/image/{{ data[1].img_path }}"
+      />
+            <input type="image"  name="img_button" src="../static/image/{{ data[1].img_path }}"  alt="{{ data[1].name }}"
+            width="285px"
+            height="285px">
+            
+          </form> -->
+            
+          <div class="info">
+            <h3>{{ data[1].name }}</h3>
+            <img
+              src="static/emptyheart.png"
+              alt="비워진 하트"
+              width="30px"
+              height="30px"
+            />
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      <!--페이지네이션-->
+      <div class="page-wrap">
+        <div class="page-nation">
+          <ul>
+            <li>
+              {% for i in range(page_count) %}
+              <a href="{{url_for("view_list", page = i)}}" color="black">{{i}}</a>
+              {% endfor %}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+{% endblock section %}

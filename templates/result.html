@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="ko">
   <body>
-    <img src={{ "../static/image/" + image_file_name }} height="50px">
+    <img src="{{image_path }}" height="50px" alt = "My Image">
     {% for key, value in data.items() %}
         <p>{{ key }}</p>
         <p>{{ value }}</p>
         <br>
     {% endfor %}
+
+    <form method="post" action="/menuRegister">
+      <input
+        type="hidden"
+        name="restaurantName"
+        value="{{data.name}}"
+      />
+      <div>
+        <p>
+          It's time to register the representative menu in
+          {{data.name}}
+        </p>
+          <!-- js를 통해 버튼으로 넘어가는 것은 추후 구현 예정 -->
+        <button type="submit" name="menu">메뉴 등록하기</button>
+        <br /><br />
+      </div>
+    </form>
   </body>
 </html>
