@@ -138,7 +138,7 @@ def view_foods(name):
    # #page_count = len(data)sss
     data = {i : data[i] for i in range(len(data))}
     print (data)
-    return render_template("menuView.html", datas=data.items())
+    return render_template("menuView.html", datas=data.items(), name=name)
 
 
 # route : 리뷰 조회
@@ -149,7 +149,7 @@ def view_reviewVView(name):
     data = {i : data[i] for i in range(len(data))}
     
     # print( data)
-    return render_template("reviewView.html", datas=data.items())
+    return render_template("reviewView.html", datas=data.items(), name=name)
 
 
 if __name__ == "__main__":
