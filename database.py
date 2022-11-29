@@ -30,7 +30,7 @@ class DBhandler:
             "park":data['park'],
             "time":data['time'],
             "site":data['site'],
-            "img_path":img_path
+            "img_path": img_path
         }
         if self.restaurant_duplicate_check(name):
             self.db.child("restaurant").push(restaurant_info)

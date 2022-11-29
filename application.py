@@ -78,7 +78,7 @@ def view_restaurantSubmit():
     image_file.save("./static/image/{}".format(image_file.filename))
     data=request.form
     
-    if DB.insert_restaurant(data, data, image_file.filename):
+    if DB.insert_restaurant(data['name'], data, image_file.filename):
         return render_template("result.html", data=data, image_path="static/image/"+image_file.filename) 
     else:
         return "Restaurant name already exist!"
