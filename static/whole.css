@@ -40,6 +40,9 @@ nav a:hover {
 }
 .co.side {
   width: 20%;
+  position: sticky;
+  top: 50px;
+  left: 0px;
 }
 .co.mid {
   float: left;
