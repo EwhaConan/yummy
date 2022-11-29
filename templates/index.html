@@ -3,17 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <title>{% block head_title %}{% endblock head_title %}</title>
-    <style>{% block style %}{% endblock style %}</style>
-    <link rel="stylesheet" href="{{ url_for('static',filename='whole.css') }}"  />
+    <style>
+      {% block style %}{% endblock style %}
+    </style>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='whole.css') }}"
+    />
+    <!--title 글씨체- 두꺼운 글씨체-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
     <!--헤더-->
     <header>
       <img src="/static/food.jpeg" width="600px" height="260px" />
-        <!--<a href="/"></a>-->
+      <!--<a href="/"></a>-->
     </header>
-
 
     <!--네비게이션바-->
     <nav>
@@ -26,7 +37,6 @@
       <!--<a href="/detail"><b>상세페이지</b></a>-->
       <a href="/worldCup"> <b>점메추 / 저메추</b></a>
     </nav>
-
 
     <!--사이드바-->
     <div class="co side">
@@ -52,19 +62,13 @@
       </div>
     </div>
 
-
     <!--각 페이지 section-->
     <section>
-      <div class="co mid">
-        {% block section %}       
-        {% endblock section %}
-      </div>
-      
+      <div class="co mid">{% block section %} {% endblock section %}</div>
+
       <!--이 위치에 내용 비어있는 div태그가 있는 페이지가 있어서 추가함.-->
       {% block co_side %}{% endblock co_side %}
-
     </section>
-
 
     <!--footer 공통-->
     <footer>

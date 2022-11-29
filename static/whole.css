@@ -10,14 +10,18 @@ header {
   text-align: center;
 }
 nav {
+  position: sticky;
+  top: 0px;
+  z-index: 1;
   overflow: hidden;
   background-color: lightsalmon;
+  text-align: center;
 }
 nav a {
-  float: left;
-  display: block;
+  float: left; /*링크 가운데 정렬 원하면 해당부분만 삭제*/
+  display: inline-block;
   color: white;
-  text-align: center;
+  /* text-align: center; */
   padding: 14px 16px;
   text-decoration: none;
   font-size: 20px;
@@ -70,6 +74,7 @@ section:after {
   .co.mid {
     width: 100%;
   }
+
   .co.side,
   .list {
     width: 100%;
@@ -89,8 +94,23 @@ section:after {
 }
 
 .title {
-  color: #ff28a7;
+  display: block;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 30px;
+
+  /* color: #ff28a7; */
+  /* color: #a87a5a; */
+  color: #0bbbcc;
+
+  text-align: center;
 }
+
+.res-name {
+  text-decoration-line: underline;
+  text-decoration-color: #ff28a7;
+  text-decoration-style: double;
+}
+
 footer {
   padding: 20px;
   text-align: center;
