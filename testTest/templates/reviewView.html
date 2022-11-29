@@ -32,103 +32,131 @@ section %}
     <button type="submit" name="menu">리뷰 등록하기</button>
     <br /><br />
   </form>
+  <br />
+
+  <div id="필터버튼">
+    <input type="button" value="정렬" />
+    <input type="button" value="메뉴별 리뷰보기" />
+    <input type="checkbox" id="사진리뷰체크박스" />
+    <label for="사진리뷰체크박스">사진 리뷰 모아보기</label>
+  </div>
+  <br />
 </div>
-<div class="star_rating" id="total_star_rating">
-  <span class="fill_star" style="font-size: 100%">
-    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-  </span>
-  <span class="non_fill_star" style="font-size: 0%">
-    <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-  </span>
-</div>
+
+<!--
+  <div class="star_rating" id="total_star_rating">
+    <span class="fill_star" style="font-size: 100%">
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    </span>
+    <span class="non_fill_star" style="font-size: 0%">
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    </span>
+  </div>-->
 
 <br />
+<!--
+  <div class="keyword_graph">
+    <ul>
+      <li>
+        <span class="g_term">음식이 맛있어요</span
+        ><span class="g_bar" style="width: 40%"></span>
+      </li>
+      <li>
+        <span class="g_term">매장이 청결해요</span
+        ><span class="g_bar" style="width: 30%"></span>
+      </li>
+      <li>
+        <span class="g_term">음식이 빨리 나와요</span
+        ><span class="g_bar" style="width: 20%"></span>
+      </li>
+      <li>
+        <span class="g_term">가성비가 좋아요</span
+        ><span class="g_bar" style="width: 10%"></span>
+      </li>
+    </ul>
+  </div>
+  <br />-->
+<h3>닉네임:</h3>
+{{data.reviewerName}}
 
-<div class="keyword_graph">
-  <ul>
-    <li>
-      <span class="g_term">음식이 맛있어요</span
-      ><span class="g_bar" style="width: 40%"></span>
-    </li>
-    <li>
-      <span class="g_term">매장이 청결해요</span
-      ><span class="g_bar" style="width: 30%"></span>
-    </li>
-    <li>
-      <span class="g_term">음식이 빨리 나와요</span
-      ><span class="g_bar" style="width: 20%"></span>
-    </li>
-    <li>
-      <span class="g_term">가성비가 좋아요</span
-      ><span class="g_bar" style="width: 10%"></span>
-    </li>
-  </ul>
-</div>
-<br />
-
-<div id="필터버튼">
-  <input type="button" value="정렬" />
-  <input type="button" value="메뉴별 리뷰보기" />
-  <input type="checkbox" id="사진리뷰체크박스" />
-  <label for="사진리뷰체크박스">사진 리뷰 모아보기</label>
-</div>
-<br />
-
-<div class="per리뷰">
+<div class="box">
   <img
-    id="gourment"
-    style="width: 250px; height: 200px"
-    src="static/momiji3.jpg"
-    alt="샘플 대표메뉴 이미지"
-    style="display: inline-block; position: static"
+    name="img"
+    width="250px"
+    height="220px"
+    src="/static/image/{{data.img_path}}"
+    alt="리뷰 사진"
   />
+</div>
+<div class="rating">
+  <h3>평점</h3>
+  {{data.rating}}
+</div>
+<div class="menu">
+  <h3>메뉴</h3>
+  {{data.menu}}
+</div>
+<div class="text">
+  <h3>후기</h3>
+  {{data.text}}
+</div>
 
-  <div style="display: inline-block; position: relative; top: -50px">
-    <div class="star_rating per_star_rating" style="display: inline-block">
-      <span class="fill_star">
-        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-      </span>
-      <span class="non_fill_star" style="font-size: 0%">
-        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-      </span>
-    </div>
-    <div class="review_textblock">
-      <p class="user_name"><b>닉네임</b><br />Charlotte</p>
-      <p class="review_text">
-        <b>리뷰 내용</b><br />
-        육회덮밥 : 육회가 굉장히 신선하고 맛있어요:)
-      </p>
+<!--
+  <div class="per리뷰">
+    <img
+      id="gourment"
+      style="width: 250px; height: 200px"
+      src="static/momiji3.jpg"
+      alt="샘플 대표메뉴 이미지"
+      style="display: inline-block; position: static"
+    />
+  
+    <div style="display: inline-block; position: relative; top: -50px">
+      <div class="star_rating per_star_rating" style="display: inline-block">
+        <span class="fill_star">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </span>
+        <span class="non_fill_star" style="font-size: 0%">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </span>
+      </div>
+      <div class="review_textblock">
+        <p class="user_name"><b>닉네임</b><br />Charlotte</p>
+        <p class="review_text">
+          <b>리뷰 내용</b><br />
+          육회덮밥 : 육회가 굉장히 신선하고 맛있어요:)
+        </p>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="per리뷰">
-  <img
-    id="gourment"
-    style="width: 250px; height: 230px"
-    src="static/momiji4.jpeg"
-    alt="샘플 대표메뉴 이미지"
-    style="display: inline-block; position: static"
-  />
-
-  <div style="display: inline-block; position: relative; top: -50px">
-    <div class="star_rating per_star_rating" style="display: inline-block">
-      <span class="fill_star">
-        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-      </span>
-      <span class="non_fill_star" style="font-size: 0%">
-        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-      </span>
+  
+  <div class="per리뷰">
+    <img
+      id="gourment"
+      style="width: 250px; height: 230px"
+      src="static/momiji4.jpeg"
+      alt="샘플 대표메뉴 이미지"
+      style="display: inline-block; position: static"
+    />
+  
+    <div style="display: inline-block; position: relative; top: -50px">
+      <div class="star_rating per_star_rating" style="display: inline-block">
+        <span class="fill_star">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </span>
+        <span class="non_fill_star" style="font-size: 0%">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </span>
+      </div>
+      <div class="review_textblock">
+        <p class="user_name"><b>닉네임</b><br />Dolores</p>
+        <p class="review_text">
+          <b>리뷰 내용</b><br />소고기 대파 덮밥 : 고기와 대파 조합 최고!
+          <br />특히 대파가 튀긴 것과 구운 것 둘 다 있어 맛있어용
+        </p>
+      </div>
     </div>
-    <div class="review_textblock">
-      <p class="user_name"><b>닉네임</b><br />Dolores</p>
-      <p class="review_text">
-        <b>리뷰 내용</b><br />소고기 대파 덮밥 : 고기와 대파 조합 최고!
-        <br />특히 대파가 튀긴 것과 구운 것 둘 다 있어 맛있어용
-      </p>
-    </div>
-  </div>
-</div>
+  </div>-->
 {% endblock section %} {% block co_side %}
 <div class="co side"></div>
 {% endblock co_side %}

@@ -127,6 +127,13 @@ def view_foods(name):
     print (data)
     return render_template("menuView.html", datas=data.items())
 
+@application.route("/view_reviewVView/<name>/")
+def view_reviewVView(name):
+    #avg_rate = DB.get_avgrate_byname(str(name))
+    data = DB.get_review_byname(str(name))
+    
+    print("####data:", data)
+    return render_template("reviewView.html", data=data)
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)

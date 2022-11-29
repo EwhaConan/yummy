@@ -130,6 +130,15 @@ class DBhandler:
                     return 0
                 else :
                     return sum(rates)/len(rates)
+
+    def get_review_byname(self, reviewerName):
+        reviews = self.db.child("review").get()
+        target_value=[]
+        for res in reviews.each():
+            value=res.val()
             
-   
+            if value['reviewerName'] == reviewerName:
+                target_value=value
+        print(target_value)
+        return target_value
         
