@@ -1,95 +1,92 @@
 {% extends "index.html" %} {% block head_title %} 맛집 상세페이지 {% endblock
 head_title %} {% block section %}
 <div class="title">
-  <h2><span id="chk">{{data.name}}</span></h2>
+  <h2><span class="res-name">{{data.name}}</span></h2>
 </div>
 
-<div class="list">
-  <div class="box">
-    <img
-      name="img"
-      width="250px"
-      height="220px"
-      src="/static/image/{{data.img_path}}"
-      alt="맛집 대표사진"
-    />
-  </div>
-</div>
-
-<div id="맛집 정보">
-  <h3>전체 평점</h3>
-  <p>{{avg_rate}}</p>
-
-  <h3>맛집 사이트</h3>
-  <p>
-    <a href="{{data.site}}">
-      <span class="맛집url">{{data.site}}</span>
-    </a>
-  </p>
-
-  <h3>전화번호</h3>
-  <p><span class="맛집전화번호">{{data.tel}}</span></p>
-
-  <h3>주소</h3>
-  <p><span class="맛집주소">{{data.addr}}</span></p>
-
-  <h3>주차</h3>
-  <p>
-    {% if data['park'] == "Y" %} 가능합니다. {% endif %} {% if data['park'] ==
-    "N" %} 불가능합니다. {% endif %}
-  </p>
-
-  <h3>영업 시간</h3>
-  <p>{{data.time}}</p>
-
-  <h3>음식 카테고리</h3>
-  <p>{{data.category}}</p>
-
-  <h3>가격대</h3>
-  <p>{{data.money}}</p>
-</div>
-
-<a href="/list_foods/{{data.name}}/" color="black"
-  ><button type="button">메뉴 조회하기</button></a
->
+<table class="info-table">
+  <tbody>
+    <tr>
+      <th colspan="2">전체 평점</th>
+    </tr>
+    <tr>
+      <td colspan="2" id="avg-rate" style="text-align: center">{{avg_rate}}</td>
+    </tr>
+    <tr>
+      <td colspan="2" style="text-align: center">
+        <img
+          name="img"
+          width="250px"
+          height="220px"
+          src="/static/image/{{data.img_path}}"
+          alt="맛집 대표사진"
+        />
+      </td>
+    </tr>
+    <tr height="2em">
+      <th
+        colspan="2"
+        style="color: #a87a5a; text-decoration: underline wavy lightsalmon"
+      >
+        맛집 세부 정보
+      </th>
+    </tr>
+    <tr>
+      <th class="info-th">카테고리</th>
+      <td>{{data.category}}</td>
+    </tr>
+    <tr>
+      <th class="info-th">가격대</th>
+      <td>{{data.money}}</td>
+    </tr>
+    <tr>
+      <th class="info-th">영업 시간</th>
+      <td>{{data.time}}</td>
+    </tr>
+    <tr>
+      <th class="info-th">전화 번호</th>
+      <td>{{data.tel}}</td>
+    </tr>
+    <tr>
+      <th class="info-th">맛집 사이트</th>
+      <td>
+        <a href="{{data.site}}">{{data.site}}</a>
+      </td>
+    </tr>
+    <tr>
+      <th class="info-th">주차</th>
+      <td>
+        {% if data['park'] == "Y" %} 가능합니다. {% endif %} {% if data['park']
+        == "N" %} 불가능합니다. {% endif %}
+      </td>
+    </tr>
+    <tr>
+      <th class="info-th">주소</th>
+      <td>{{data.addr}}</td>
+    </tr>
+  </tbody>
+</table>
 
 <br /><br />
 
-<form method="post" action="/menuRegister">
-  <input type="hidden" name="name" value="{{data.name}}" />
+<div style="text-align: center">
   <div>
-    <!-- js를 통해 버튼으로 넘어가는 것은 추후 구현 예정 -->
-    <button type="submit" name="menu">메뉴 등록하기</button>
-    <br /><br />
+    <a href="/list_foods/{{data.name}}/" color="black"
+      ><button type="button">메뉴 보기</button></a
+    >
+    <a href="/view_reviewVView/{{data.name}}/" color="black"
+      ><button type="button">리뷰 보기</button></a
+    >
+    <form method="post" action="/menuRegister" style="display: inline-block">
+      <input type="hidden" name="name" value="{{data.name}}" />
+      <button type="submit" name="menu">메뉴 등록</button>
+    </form>
+    <form method="post" action="/reviewRegister" style="display: inline-block">
+      <input type="hidden" name="name" value="{{data.name}}" />
+      <button type="submit" name="menu">리뷰 등록</button>
+    </form>
   </div>
-</form>
-
-<!-- <div class="리뷰조회_버튼">
-      <h3>리뷰</h3>
-      <p>
-        <button type="button" onClick="리뷰_조회페이지로_이동()">
-          리뷰 조회
-        </button>
-      </p>
-      
-    </div> -->
-
-<!-- <form method="post" action="/reviewView">
-  <input type="hidden" name="name" value="{{data.name}}" />
-  <div> -->
-<a href="/view_reviewVView/{{data.name}}/" color="black"
-  ><button type="button">리뷰 조회하기</button></a
->
-<br /><br />
-<!-- </div>
-</form> -->
-
-<form method="post" action="/reviewRegister">
-  <input type="hidden" name="name" value="{{data.name}}" />
-
-  <button type="submit" name="menu">리뷰 등록하기</button>
-  <br /><br />
-</form>
+</div>
 
 {% endblock section %} {% block co_side %}
 <div class="co side"></div>

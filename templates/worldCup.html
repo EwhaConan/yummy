@@ -1,39 +1,45 @@
-{% extends "index.html" %}
-
-{% block head_title %}
-    점메추/저메추
-{% endblock head_title %}
-
-
-{% block section %}
-      <div class = "number">
-        <span id = "chk">
-        <h1>음식 이상형 월드컵</h1> 
-        </span>
-        <h2>32강</h2>
-    </div>
-    <div class="list">
-      <div class="box">
-        <img name="모미지사진" src="static/momiji.jpg" alt="모미지사진" width="285px" height="285px"> <br />
-        <div class="info">
-          <h3>모미지식당</h3>
-            <p>이대 정문쪽 덮밥집</p>
-        </div>
-      </div>
-      <div class="box">
-      <img name="vs" src="static/vs.png" alt="vs" width="260px" height="260px"> <br />
-      </div>
-      
-      <div class="box">
-      <img name="고냉지사진" src="static/konangji.jpg" alt="고냉지사진" width="285px" height="285px"> 
-      <div class="info">
-        <h3>고냉지</h3>
-          <p>신촌기차역쪽 김치찌개 맛집</p> 
-      </div>
+{% extends "index.html" %} {% block head_title %} 점메추/저메추 {% endblock
+head_title %} {% block section %}
+<div class="number">
+  <span id="chk">
+    <h1>음식 이상형 월드컵</h1>
+  </span>
+  <h2>32강</h2>
+</div>
+<div class="list">
+  <div class="box">
+    <img
+      name="모미지사진"
+      src="static/momiji.jpg"
+      alt="모미지사진"
+      width="285px"
+      height="285px"
+    />
+    <br />
+    <div class="info">
+      <h3>모미지식당</h3>
+      <p>이대 정문쪽 덮밥집</p>
     </div>
   </div>
-  {% endblock section %}
+  <div class="box">
+    <img name="vs" src="static/vs.png" alt="vs" width="260px" height="260px" />
+    <br />
+  </div>
 
-    {% block co_side %}
-    <div class = " co side"></div>
-    {% endblock co_side %}
+  <div class="box">
+    <img
+      name="고냉지사진"
+      src="static/konangji.jpg"
+      alt="고냉지사진"
+      width="285px"
+      height="285px"
+    />
+    <div class="info">
+      <h3>고냉지</h3>
+      <p>신촌기차역쪽 김치찌개 맛집</p>
+    </div>
+  </div>
+</div>
+{% endblock section %} {% block co_side %}
+<div class="co side"></div>
+{% endblock co_side %}

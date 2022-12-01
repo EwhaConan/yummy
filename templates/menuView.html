@@ -6,29 +6,15 @@ head_title %} {% block section %} {% for mesg in get_flashed_messages() %}
 {% endfor %}
 
 <div class="title">
-  <h2><span>{{name}}</span> <span> 메뉴 조회 </span></h2>
+  <h2><span class="res-name">{{name}}</span> <span> 메뉴 조회 </span></h2>
 </div>
 
-<div class="button-box">
-  <br />
-  <table>
-    <tbody>
-      <tr>
-        <td>
-          <a href="/view_detail/{{name}}/"
-            ><button type="button">식당 상세 페이지</button></a
-          >
-        </td>
-        <td>
-          <form method="post" action="/menuRegister">
-            <input type="hidden" name="name" value="{{name}}" />
-            <button type="submit">메뉴 등록하기</button>
-          </form>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <br />
+<div style="text-align: center">
+  <a href="/view_detail/{{name}}/"><button type="button">맛집 정보</button></a>
+  <form method="post" action="/menuRegister" style="display: inline-block">
+    <input type="hidden" name="name" value="{{name}}" />
+    <button type="submit">메뉴 등록</button>
+  </form>
 </div>
 
 <div class="perMenu">

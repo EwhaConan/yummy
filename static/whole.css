@@ -10,14 +10,18 @@ header {
   text-align: center;
 }
 nav {
+  position: sticky;
+  top: 0px;
+  z-index: 1;
   overflow: hidden;
   background-color: lightsalmon;
+  text-align: center;
 }
 nav a {
-  float: left;
-  display: block;
+  float: left; /*링크 가운데 정렬 원하면 해당부분만 삭제*/
+  display: inline-block;
   color: white;
-  text-align: center;
+  /* text-align: center; */
   padding: 14px 16px;
   text-decoration: none;
   font-size: 20px;
@@ -26,6 +30,43 @@ nav a:hover {
   background-color: #ffec94;
   color: black;
 }
+
+.info-table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+tr {
+  height: 50px;
+}
+
+button {
+  display: inline-block;
+  font-family: sans-serif;
+  font-weight: bolder;
+  font-size: 20px;
+  color: white;
+  background-color: lightsalmon;
+  box-shadow: 0px 0px 0px 0px rgb(179, 131, 112);
+  width: 120px;
+  padding: 0;
+  margin: 10px 20px 10px 0;
+  font-weight: 600;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 5px;
+  transition: all 0.2s;
+  outline: 0px;
+  border: 0px;
+}
+button:hover {
+  box-shadow: 0px 0px 0px 4px rgb(179, 131, 112);
+}
+
+.info-th {
+  text-align: left;
+}
+
 .리스트 {
   text-align: center;
   width: 50%;
@@ -36,6 +77,9 @@ nav a:hover {
 }
 .co.side {
   width: 20%;
+  position: sticky;
+  top: 50px;
+  left: 0px;
 }
 .co.mid {
   float: left;
@@ -70,6 +114,7 @@ section:after {
   .co.mid {
     width: 100%;
   }
+
   .co.side,
   .list {
     width: 100%;
@@ -89,8 +134,23 @@ section:after {
 }
 
 .title {
-  color: #ff28a7;
+  display: block;
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 30px;
+
+  /* color: #ff28a7; */
+  /* color: #a87a5a; */
+  color: #0bbbcc;
+
+  text-align: center;
 }
+
+.res-name {
+  text-decoration-line: underline;
+  text-decoration-color: #ff28a7;
+  text-decoration-style: double;
+}
+
 footer {
   padding: 20px;
   text-align: center;
@@ -198,4 +258,11 @@ footer {
   color: black;
   text-decoration: none;
   font-weight: bold;
+}
+
+#avg-rate {
+  font-family: "Do Hyeon", sans-serif;
+  font-size: 60px;
+  font-style: italic;
+  color: lightsalmon;
 }
