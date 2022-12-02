@@ -61,8 +61,12 @@ def view_reviewRegister():
 # route: 점메추/저메추
 @app.route("/worldCup")
 def view_worldCup():
-    return render_template("worldCup.html")
-
+    datas = DB.get_restaurants()
+    #print(datas)
+    dic = []
+    for data in datas.items() :
+        dic.append(data[1])
+    return render_template("worldCup.html", datas = dic, len = len(dic))
 
 # 메뉴/맛집/리뷰 등록 과정에서 DB 받아오는 중간 페이지 (3개)
 # 메뉴 등록 과정에서
