@@ -66,7 +66,7 @@ def view_worldCup():
     dic = []
     for data in datas.items() :
         dic.append(data[1])
-    return render_template("worldCup.html", datas = dic, len = len(dic))
+    return render_template("worldCup.html", datas = dic)
 
 # 메뉴/맛집/리뷰 등록 과정에서 DB 받아오는 중간 페이지 (3개)
 # 메뉴 등록 과정에서

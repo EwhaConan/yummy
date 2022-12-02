@@ -70,7 +70,7 @@ head_title %} {% block section %}
   //랜덤 인덱스 추출, 라운드 개수만큼
   var idx = [];
   for(var i = 0 ; i <round_input ; i++){
-    randomNum = Math.floor(Math.random()*{{len}});
+    randomNum = Math.floor(Math.random()*img.length);
     if(idx.indexOf(randomNum)===-1){
       idx.push(randomNum);
     }else{
