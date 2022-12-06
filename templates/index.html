@@ -59,13 +59,15 @@
     <!--사이드바-->
     <div class="co side">
       <div class="card">
-        <h2>인기차트</h2>
-        <p>
-          1. 모미지식당<br />
-          2. 참참참<br />
-          3. 유야케도쿄<br />
-          4. 고냉지<br />
-          5. 티아라카페
+        <h2>평점 랭킹</h2>
+
+        <p style="text-align: left">
+          {% for i in range(5) %} {{i+1}} :
+          <a href="/view_detail/{{top5_list[i]}}" style="color: black">
+            {{top5_list[i]}}</a
+          >
+          <br />
+          {% endfor %}
         </p>
       </div>
 
