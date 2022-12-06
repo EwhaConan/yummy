@@ -78,12 +78,14 @@ color: orange; } .non_fill_star { color: gray; } #total_star_rating { font-size:
     <tbody>
       <tr>
         <th rowspan="4">
-          <img
-            width="250px"
-            height="220px"
-            src="/static/image/{{data[1].img_path}}"
-            alt="리뷰 사진"
-          />
+          <div class="menuView">
+            <img
+              width="250px"
+              height="220px"
+              src="/static/image/{{data[1].img_path}}"
+              alt="리뷰 사진"
+            />
+          </div>
         </th>
         <th>닉네임 :</th>
         <td>{{data[1].reviewerName}}</td>

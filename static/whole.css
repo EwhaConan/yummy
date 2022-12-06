@@ -40,7 +40,7 @@ tr {
   height: 50px;
 }
 
-button{
+button {
   display: inline-block;
   font-family: sans-serif;
   font-weight: bolder;
@@ -62,9 +62,6 @@ button{
 button:hover {
   box-shadow: 0px 0px 0px 4px rgb(179, 131, 112);
 }
-
-
-
 
 .info-th {
   text-align: left;
@@ -270,3 +267,6 @@ footer {
   color: lightsalmon;
 }
 
+.menuView {
+  border-radius: 25%;
+}
