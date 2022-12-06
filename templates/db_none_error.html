@@ -8,8 +8,24 @@
 {% block section %}
     <div class="title">
         <span id="chk">
-            <h2>{{error_page}}</h2>
+            <h2><span class="res-name">{{name}}</span> {{error_page}}</h2>
         </span>
+    </div>
+
+    <div style="text-align: center">
+    {% if error_page == "리뷰 조회" %}
+        <a href="/view_detail/{{name}}/"><button type="button">맛집 정보</button></a>
+        <form method="post" action="/reviewRegister" style="display: inline-block">
+          <input type="hidden" name="name" value="{{name}}" />
+          <button type="submit">리뷰 등록</button>
+        </form>
+    {% elif error_page == "메뉴 조회" %}
+        <a href="/view_detail/{{name}}/"><button type="button">맛집 정보</button></a>
+        <form method="post" action="/menuRegister" style="display: inline-block">
+          <input type="hidden" name="name" value="{{name}}" />
+          <button type="submit">메뉴 등록</button>
+        </form>
+    {% endif %}
     </div>
 
     {% for mesg in get_flashed_messages() %}

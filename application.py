@@ -33,7 +33,7 @@ def view_list():
     page_count = int(((total_count + 8)/ limit)) # 페이지 총 개수
     data = dict(list(data.items())[start_idx:end_idx])
 
-    print (data)    
+    # print (data)    
     return render_template("list.html", page=page, limit=limit, page_count=page_count, total_count=total_count, datas=data.items())
 
 
@@ -47,7 +47,7 @@ def view_restaurantRegister():
 @app.route("/menuRegister", methods=['POST'])
 def reg_menu():
     data=request.form
-    print(data)
+    # print(data)
     return render_template("menuRegister.html", data=data)
 
 
@@ -129,10 +129,10 @@ def view_restaurant_detail(name):
     if str(data) == "None": # 예외 처리
         flash("올바르지 않은 맛집 이름입니다.")
         return redirect(url_for('view_list'))
-    if str(avg_rate) == "None": # 예외 처리
-        avg_rate = "평점을 계산할 리뷰가 없습니다."
+    # if str(avg_rate) == "None": # 예외 처리
+    #     avg_rate = "평점을 계산할 리뷰가 없습니다."
     
-    print("####data:", data)
+    # print("####data:", data)
     return render_template("detail.html", data=data, avg_rate = avg_rate)
   
     
@@ -143,31 +143,29 @@ def view_foods(name):
     
     if str(data) == "None": # 예외 처리
         flash("등록된 메뉴가 없습니다.")
-        return redirect(url_for('handle_db_none_error', error_page="메뉴 조회"))
+        return redirect(url_for('handle_db_none_error', name=name, error_page="메뉴 조회"))
         
-  #  #tot_count = len(data)
-   # #page_count = len(data)sss
+    #tot_count = len(data)
+    #page_count = len(data)sss
     data = {i : data[i] for i in range(len(data))}
-    print (data)
+    # print (data)
     return render_template("menuView.html", datas=data.items(), name=name)
 
-@app.route("/db_none_error/<error_page>")
-def handle_db_none_error(error_page):
-    return render_template("db_none_error.html", error_page=error_page)
+@app.route("/db_none_error/<name>/<error_page>")
+def handle_db_none_error(name, error_page):
+    return render_template("db_none_error.html", name=name, error_page=error_page)
 
 # route : 리뷰 조회
 @app.route("/view_reviewVView/<name>/")
 def view_reviewVView(name):
-    #avg_rate = DB.get_avgrate_byname(str(name))
     data = DB.get_review_byname(str(name))
     
     if str(data) == "None": # 예외 처리
         flash("등록된 리뷰가 없습니다.")
-        return redirect(url_for('handle_db_none_error', error_page="리뷰 조회"))
+        return redirect(url_for('handle_db_none_error', name=name, error_page="리뷰 조회"))
     
     data = {i : data[i] for i in range(len(data))}
     
-    print( data)
     return render_template("reviewView.html", datas=data.items(), name=name)
 
 

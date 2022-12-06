@@ -124,7 +124,7 @@ class DBhandler:
         restaurants = self.db.child("menu").get()
         target_value=[]
         
-        if str(restaurants.val()) == "None":
+        if str(restaurants.val()) == "None": # 예외 처리 : DB에 등록된 메뉴가 아예 없을 때
             return "None"
         
         for res in restaurants.each():
@@ -132,14 +132,17 @@ class DBhandler:
             print(value)
             if value.get("res_name") == name:
                 target_value.append(value)
-        print(target_value)
+
+        if target_value == []: # 예외 처리 : 해당 맛집에 등록된 메뉴가 없을 때
+            return "None"
+
         return target_value
 
     def get_review_byname(self, name):
         restaurants = self.db.child("review").get()
         target_value=[]
         
-        if str(restaurants.val()) == "None":
+        if str(restaurants.val()) == "None": # 예외 처리 : DB에 등록된 리뷰가 아예 없을 때
             return "None"
         
         for res in restaurants.each():
@@ -147,7 +150,10 @@ class DBhandler:
             print(value)
             if value.get("name") == name:
                 target_value.append(value)
-        print(target_value)
+        
+        if target_value == []: # 예외 처리 : 해당 맛집에 등록된 리뷰가 없을 때
+            return "None"
+        
         return target_value
         
         
@@ -155,7 +161,7 @@ class DBhandler:
         reviews = self.db.child("review").get()
         rates=[]
 
-        if str(reviews.val()) == "None":
+        if str(reviews.val()) == "None": # 예외 처리 : DB에 등록된 리뷰가 아예 없을 때
             return "None"
         
         for res in reviews.each():
@@ -163,8 +169,8 @@ class DBhandler:
             if value['name']==name:
                 rates.append(float(value['rating']))
                 
-        if len(rates) <= 0:
-            return 0
+        if len(rates) <= 0: # 예외 처리 : 해당 맛집에 등록된 리뷰가 없을 때
+            return "None"
         else :
             return round(sum(rates)/len(rates) ,1 )
         
