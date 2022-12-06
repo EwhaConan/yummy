@@ -16,7 +16,10 @@ def top5_chart():
 
     for data in datas.items():
         name = data[1]["name"]
-        rating_dic[name] = DB.get_avgrate_byname(str(name))
+        avg_rate = DB.get_avgrate_byname(str(name))
+        if avg_rate == "None":
+            avg_rate = 0
+        rating_dic[name] = avg_rate
     sorted_dic = sorted(rating_dic.items(), key = lambda item: item[1], reverse=True)
 
     for i in range(5):
