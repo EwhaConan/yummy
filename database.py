@@ -166,7 +166,7 @@ class DBhandler:
         if len(rates) <= 0:
             return 0
         else :
-            return sum(rates)/len(rates)
+            return round(sum(rates)/len(rates) ,1 )
         
         
     def insert_user(self, data, pw):

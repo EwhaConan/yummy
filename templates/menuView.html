@@ -17,9 +17,11 @@ head_title %} {% block section %} {% for mesg in get_flashed_messages() %}
   </form>
 </div>
 
+{% for data in datas %}
+
 <div class="perMenu">
   <!--메뉴판 부분-->
-  {% for data in datas %}
+
   <table>
     <tbody>
       <tr>

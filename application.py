@@ -78,7 +78,7 @@ def view_menuSubmit():
     data=request.form
     
     if DB.insert_menu(data['foodname'], data, image_file.filename):
-        return render_template("menuResult.html", data=data, image_path="static/image/"+image_file.filename)
+        return view_foods(data["res_name"])
     else:
         return "Menu name is already exist."
     
@@ -92,7 +92,8 @@ def view_restaurantSubmit():
     data=request.form
     
     if DB.insert_restaurant(data["name"], data, image_file.filename):
-        return render_template("result.html", data=data, image_path="static/image/"+image_file.filename) 
+        #return render_template("result.html", data=data, image_path="static/image/"+image_file.filename) 
+        return redirect(url_for('view_list'))
     else:
         return "Restaurant name already exist!"
 
@@ -105,7 +106,9 @@ def view_reviewSubmit():
     data=request.form
     
     if DB.insert_review(data['reviewerName'], data, image_file.filename):
-        return render_template("reviewResult.html", data=data, image_path="static/image/"+image_file.filename)
+
+        return view_reviewVView(data['name'])
+        
     else:
         return "Enter the review!"
 
@@ -203,6 +206,11 @@ def login_user():
     else:
         flash("Wrong ID or PW!")
         return render_template("login.html")
+
+@app.route("/logout")
+def logout_user():
+    session.clear()
+    return redirect(url_for('view_list'))
 
     
     

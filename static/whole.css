@@ -17,6 +17,11 @@ nav {
   background-color: lightsalmon;
   text-align: center;
 }
+
+nav li {
+  float: right;
+  list-style: none;
+}
 nav a {
   float: left; /*링크 가운데 정렬 원하면 해당부분만 삭제*/
   display: inline-block;
@@ -265,8 +270,4 @@ footer {
   font-size: 60px;
   font-style: italic;
   color: lightsalmon;
-}
-
-.menuView {
-  border-radius: 25%;
 }
