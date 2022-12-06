@@ -4,13 +4,24 @@ head_title %} {% block section %}
   <h2><span class="res-name">{{data.name}}</span></h2>
 </div>
 
+<style>
+.fontset{
+  color: #a87a5a;
+  border:2px dashed lightsalmon;
+}
+</style>
+
+
 <table class="info-table">
   <tbody>
     <tr>
-      <th colspan="2">전체 평점</th>
+      <th colspan="2" class="fontset">전체 평점</th>
     </tr>
     <tr>
       <td colspan="2" id="avg-rate" style="text-align: center">{{avg_rate}}</td>
+    </tr>
+    <tr>
+      <th colspan="2" class="fontset">맛집 대표사진</th>
     </tr>
     <tr>
       <td colspan="2" style="text-align: center">
@@ -24,10 +35,7 @@ head_title %} {% block section %}
       </td>
     </tr>
     <tr height="2em">
-      <th
-        colspan="2"
-        style="color: #a87a5a; text-decoration: underline wavy lightsalmon"
-      >
+      <th colspan="2" class="fontset">
         맛집 세부 정보
       </th>
     </tr>
