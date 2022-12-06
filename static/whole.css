@@ -37,8 +37,20 @@ nav a:hover {
 }
 
 .info-table {
+  width: 60%;
+  table-layout: fixed;
   margin-left: auto;
   margin-right: auto;
+}
+
+.fontset {
+  color: #a87a5a;
+  border: 2px dashed lightsalmon;
+}
+
+.info-th {
+  width: 35%;
+  table-layout: fixed;
 }
 
 tr {
