@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from database import DBhandler
+import hashlib
 import sys
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "yummy"
@@ -12,7 +13,6 @@ DB = DBhandler()
 def hello():
     # return render_template("list.html")
     return redirect(url_for("view_list", page=0))
-
 
 # route: 맛집 리스트    
 @app.route("/list")
@@ -61,8 +61,12 @@ def view_reviewRegister():
 # route: 점메추/저메추
 @app.route("/worldCup")
 def view_worldCup():
-    return render_template("worldCup.html")
-
+    datas = DB.get_restaurants()
+    #print(datas)
+    dic = []
+    for data in datas.items() :
+        dic.append(data[1])
+    return render_template("worldCup.html", datas = dic)
 
 # 메뉴/맛집/리뷰 등록 과정에서 DB 받아오는 중간 페이지 (3개)
 # 메뉴 등록 과정에서
@@ -164,5 +168,43 @@ def view_reviewVView(name):
     return render_template("reviewView.html", datas=data.items(), name=name)
 
 
+
+# route: 회원가입
+@app.route("/signup")
+def signup():
+    return render_template("signup.html")
+
+# 회원가입 시 입력받은 정보를 처리하는 페이지
+@app.route("/signup_post", methods=['POST'])
+def register_user():
+    data=request.form
+    pw=request.form['pw']
+    pw_hash=hashlib.sha256(pw.encode('utf-8')).hexdigest()
+    if DB.insert_user(data, pw_hash):
+        return render_template("login.html")
+    else:
+        flash("이미 존재하는 아이디입니다! 다른 아이디를 사용해주세요")
+    return render_template("signup.html")
+
+# route: 로그인
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+# 로그인 시 입력받은 정보를 처리하는 페이지
+@app.route("/login_confirm", methods=['POST'])
+def login_user():
+    id_=request.form['id']
+    pw=request.form['pw']
+    pw_hash = hashlib.sha256(pw.encode('utf-8')).hexdigest()
+    if DB.find_user(id_,pw_hash):   
+        session['id']=id_
+        return redirect(url_for('view_list'))
+    else:
+        flash("Wrong ID or PW!")
+        return render_template("login.html")
+
+    
+    
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)

@@ -1,24 +1,31 @@
 {% extends "index.html" %} {% block head_title %} 점메추/저메추 {% endblock
 head_title %} {% block section %}
-<div class="number">
-  <span id="chk">
-    <h1>음식 이상형 월드컵</h1>
-  </span>
-  <h2>32강</h2>
+
+<div class="title">
+  <h1>음식 이상형 월드컵</h1>
 </div>
-<div class="list">
+
+<div style="text-align: center">
+  <h2><span id="round-num">num</span></h2>
+</div>
+
+<div
+  class="list"
+  id="wrap"
+  style="margin-left: auto; margin-right: auto; text-align: center"
+>
   <div class="box">
     <img
-      name="모미지사진"
-      src="static/momiji.jpg"
-      alt="모미지사진"
+      id="img1"
+      src=" "
+      onclick="choice(0)"
+      alt="이미지1"
       width="285px"
       height="285px"
     />
     <br />
     <div class="info">
-      <h3>모미지식당</h3>
-      <p>이대 정문쪽 덮밥집</p>
+      <h3 id="info1">info1</h3>
     </div>
   </div>
   <div class="box">
@@ -28,18 +35,113 @@ head_title %} {% block section %}
 
   <div class="box">
     <img
-      name="고냉지사진"
-      src="static/konangji.jpg"
-      alt="고냉지사진"
+      id="img2"
+      onclick="choice(1)"
+      src=" "
+      alt="이미지2"
       width="285px"
       height="285px"
     />
     <div class="info">
-      <h3>고냉지</h3>
-      <p>신촌기차역쪽 김치찌개 맛집</p>
+      <h3 id="info2">info2</h3>
     </div>
   </div>
 </div>
+
+<script>
+  //처음 시작 라운드 입력
+  var round_input = prompt("라운드를 입력해주세요. (숫자만)", "16");
+  var round_write = document.getElementById("round-num");
+  var img1 = document.getElementById("img1");
+  var img2 = document.getElementById("img2");
+  var info1 = document.getElementById("info1");
+  var info2 = document.getElementById("info2");
+  //예외 처리 해줘야 함
+  //ㄴ(목록 개수보다 더 큰 강의 수를 뽑을 때, 2의 제곱수가 아닌 수를 작성할 때, 숫자 외 다른 변수가 들어갔을 때)
+  var round = round_input;
+  var round_cnt = round;
+
+  //필요한 데이터만 추출해서 img에 push, 랜덤으로 추출하기 위해 js에 다시 리스트로 받아주는 것
+  var img = [];
+  {% for data in datas %}
+  img.push(["{{data.name}}", "{{data.img_path}}"]);
+  {% endfor %}
+
+  //랜덤 인덱스 추출, 라운드 개수만큼
+  var idx = [];
+  for(var i = 0 ; i <round_input ; i++){
+    randomNum = Math.floor(Math.random()*img.length);
+    if(idx.indexOf(randomNum)===-1){
+      idx.push(randomNum);
+    }else{
+      i--;
+    }
+  }
+
+  //맨 처음 시작
+  round_write.innerText = round + '강';
+  var i = idx.length - 1;
+  img1.src = "static/image/"+ img[idx[i]][1];
+  info1.innerText = img[idx[i]][0];
+  img2.src = "static/image/"+ img[idx[i-1]][1];
+  info2.innerText = img[idx[i-1]][0];
+
+  //alert(idx);
+
+  function roundCheck(){
+
+    round_cnt -= 2;
+    if(round_cnt==0){
+      round /= 2;
+      round_cnt = round;
+    }
+
+    if(round==1){
+      return '최종 우승 \n 사진을 클릭하시면 해당 맛집 상세 페이지로 이동합니다.';
+    }
+    return round  + '강';
+  }
+
+
+  function choice(check){
+    round_write.innerText = roundCheck();
+
+    if(check==0){
+      idx.splice(i-1,1);
+    }
+    if(check==1){
+      idx.splice(i,1);
+    }
+
+    if(round ==1 ){
+      //alert(idx);
+      finish();
+    }
+
+    i -= 2;
+    if(i == -1){
+      i = round -1;
+    }
+    img1.src = "static/image/"+ img[idx[i]][1];
+    info1.innerText = img[idx[i]][0];
+    img2.src = "static/image/"+ img[idx[i-1]][1];
+    info2.innerText = img[idx[i-1]][0];
+  }
+
+  function finish(){
+    document.getElementById("wrap").innerHTML = " ";
+    var fin = document.createElement('img');
+    fin.src = "static/image/"+ img[idx[0]][1];
+    //img.src = "static/image/"+ "food.jpeg";
+    fin.style.height = '285px';
+    fin.style.width = 'auto';
+    document.getElementById('wrap').appendChild(fin);
+    fin.onclick = function(){
+      location.href= "/view_detail/"+img[idx[0]][0]+"/";
+    };
+  }
+</script>
+
 {% endblock section %} {% block co_side %}
 <div class="co side"></div>
 {% endblock co_side %}

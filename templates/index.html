@@ -6,6 +6,7 @@
     <style>
       {% block style %}{% endblock style %}
     </style>
+
     <link
       rel="stylesheet"
       href="{{ url_for('static',filename='whole.css') }}"
@@ -22,6 +23,10 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='whole.css') }}"
+    />
   </head>
 
   <body>
@@ -33,6 +38,7 @@
 
     <!--네비게이션바-->
     <nav>
+      <a href="/login"><b>로그인</b></a>
       <a href="/list"><b>맛집 리스트</b></a>
       <a href="/restaurantRegister"><b>맛집 등록</b></a>
       <!--<a href="/menuRegister"><b>메뉴등록</b></a>-->
