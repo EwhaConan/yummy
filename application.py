@@ -151,10 +151,6 @@ def view_foods(name):
     # print (data)
     return render_template("menuView.html", datas=data.items(), name=name)
 
-@app.route("/db_none_error/<name>/<error_page>")
-def handle_db_none_error(name, error_page):
-    return render_template("db_none_error.html", name=name, error_page=error_page)
-
 # route : 리뷰 조회
 @app.route("/view_reviewVView/<name>/")
 def view_reviewVView(name):
@@ -167,6 +163,11 @@ def view_reviewVView(name):
     data = {i : data[i] for i in range(len(data))}
     
     return render_template("reviewView.html", datas=data.items(), name=name)
+
+# 에러 처리 페이지 : db에서 받아오는 값이 없을 때 (none)
+@app.route("/db_none_error/<name>/<error_page>")
+def handle_db_none_error(name, error_page):
+    return render_template("db_none_error.html", name=name, error_page=error_page)
 
 
 
