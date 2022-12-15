@@ -12,8 +12,7 @@ class DBhandler:
     #restaurant check
     def restaurant_duplicate_check(self, name):
         restaurants = self.db.child("restaurant").get()
-        
-        if restaurants.val() == "None": # 예외 처리 : DB에 등록된 맛집이 하나도 없는 상황
+        if str(restaurants.val()) == "None": # 예외 처리 : DB에 등록된 맛집이 하나도 없는 상황
             return True
         
         for res in restaurants.each():
@@ -47,7 +46,7 @@ class DBhandler:
     def menu_duplicate_check(self, foodname):
         menus = self.db.child("menu").get()
 
-        if menus.val() == "None": # 예외 처리 : DB에 등록된 메뉴가 하나도 없는 상황
+        if str(menus.val()) == "None": # 예외 처리 : DB에 등록된 메뉴가 하나도 없는 상황
             return True
         
         for res in menus.each():
