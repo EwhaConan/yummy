@@ -22,7 +22,7 @@ def top5_chart():
         rating_dic[name] = avg_rate
     sorted_dic = sorted(rating_dic.items(), key = lambda item: item[1], reverse=True)
 
-    for i in range(5):
+    for i in range(min(5, len(rating_dic))):
         top5_list.append(sorted_dic[i][0])
 
 # route: 시작 페이지
