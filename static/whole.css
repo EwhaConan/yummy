@@ -283,3 +283,7 @@ footer {
   font-style: italic;
   color: lightsalmon;
 }
+
+.page-nation {
+  clear:left;
+}
