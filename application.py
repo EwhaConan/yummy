@@ -7,6 +7,23 @@ app.config["SECRET_KEY"] = "yummy"
 
 DB = DBhandler()
 
+top5_list = [] #전역변수라 걱정
+
+@app.before_first_request
+def top5_chart():
+    datas = DB.get_restaurants()
+    rating_dic = {}
+
+    for data in datas.items():
+        name = data[1]["name"]
+        avg_rate = DB.get_avgrate_byname(str(name))
+        if avg_rate == "None":
+            avg_rate = 0
+        rating_dic[name] = avg_rate
+    sorted_dic = sorted(rating_dic.items(), key = lambda item: item[1], reverse=True)
+
+    for i in range(5):
+        top5_list.append(sorted_dic[i][0])
 
 # route: 시작 페이지
 @app.route("/")
@@ -34,13 +51,13 @@ def view_list():
     data = dict(list(data.items())[start_idx:end_idx])
 
     # print (data)    
-    return render_template("list.html", page=page, limit=limit, page_count=page_count, total_count=total_count, datas=data.items())
+    return render_template("list.html", page=page, limit=limit, page_count=page_count, total_count=total_count, datas=data.items(), top5_list=top5_list)
 
 
 # route: 맛집 등록
 @app.route("/restaurantRegister")
 def view_restaurantRegister():  
-    return render_template("restaurantRegister.html")
+    return render_template("restaurantRegister.html" , top5_list=top5_list)
 
 
 # route: 메뉴 등록
@@ -48,14 +65,14 @@ def view_restaurantRegister():
 def reg_menu():
     data=request.form
     # print(data)
-    return render_template("menuRegister.html", data=data)
+    return render_template("menuRegister.html", data=data, top5_list=top5_list)
 
 
 # route: 리뷰 등록
 @app.route("/reviewRegister", methods=['POST'])
 def view_reviewRegister():
     data=request.form
-    return render_template("reviewRegister.html", data=data)
+    return render_template("reviewRegister.html", data=data, top5_list=top5_list)
 
 
 # route: 점메추/저메추
@@ -66,7 +83,7 @@ def view_worldCup():
     dic = []
     for data in datas.items() :
         dic.append(data[1])
-    return render_template("worldCup.html", datas = dic)
+    return render_template("worldCup.html", datas = dic, top5_list=top5_list)
 
 # 메뉴/맛집/리뷰 등록 과정에서 DB 받아오는 중간 페이지 (3개)
 # 메뉴 등록 과정에서
@@ -133,7 +150,7 @@ def view_restaurant_detail(name):
     #     avg_rate = "평점을 계산할 리뷰가 없습니다."
     
     # print("####data:", data)
-    return render_template("detail.html", data=data, avg_rate = avg_rate)
+    return render_template("detail.html", data=data, avg_rate = avg_rate, top5_list=top5_list)
   
     
 # route : 메뉴 조회
@@ -149,12 +166,12 @@ def view_foods(name):
     #page_count = len(data)sss
     data = {i : data[i] for i in range(len(data))}
     # print (data)
-    return render_template("menuView.html", datas=data.items(), name=name)
+    return render_template("menuView.html", datas=data.items(), name=name, top5_list=top5_list)
 
 # 에러 처리 페이지 : db에서 받아오는 값이 없을 때 (none)
 @app.route("/db_none_error/<name>/<error_page>")
 def handle_db_none_error(name, error_page):
-    return render_template("db_none_error.html", name=name, error_page=error_page)
+    return render_template("db_none_error.html", name=name, error_page=error_page, top5_list=top5_list)
 
 # route : 리뷰 조회
 @app.route("/view_reviewVView/<name>/")
@@ -167,14 +184,14 @@ def view_reviewVView(name):
     
     data = {i : data[i] for i in range(len(data))}
     
-    return render_template("reviewView.html", datas=data.items(), name=name)
+    return render_template("reviewView.html", datas=data.items(), name=name, top5_list=top5_list)
 
 
 
 # route: 회원가입
 @app.route("/signup")
 def signup():
-    return render_template("signup.html")
+    return render_template("signup.html", top5_list=top5_list)
 
 # 회원가입 시 입력받은 정보를 처리하는 페이지
 @app.route("/signup_post", methods=['POST'])
@@ -183,15 +200,15 @@ def register_user():
     pw=request.form['pw']
     pw_hash=hashlib.sha256(pw.encode('utf-8')).hexdigest()
     if DB.insert_user(data, pw_hash):
-        return render_template("login.html")
+        return render_template("login.html", top5_list=top5_list)
     else:
         flash("이미 존재하는 아이디입니다! 다른 아이디를 사용해주세요")
-    return render_template("signup.html")
+    return render_template("signup.html", top5_list=top5_list)
 
 # route: 로그인
 @app.route("/login")
 def login():
-    return render_template("login.html")
+    return render_template("login.html", top5_list=top5_list)
 
 # 로그인 시 입력받은 정보를 처리하는 페이지
 @app.route("/login_confirm", methods=['POST'])
@@ -204,7 +221,7 @@ def login_user():
         return redirect(url_for('view_list'))
     else:
         flash("Wrong ID or PW!")
-        return render_template("login.html")
+        return render_template("login.html", top5_list=top5_list)
 
 @app.route("/logout")
 def logout_user():
