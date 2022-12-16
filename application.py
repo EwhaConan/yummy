@@ -7,7 +7,7 @@ app.config["SECRET_KEY"] = "yummy"
 
 DB = DBhandler()
 
-top5_list = [] #전역변수라 걱정
+top5_list = []
 
 @app.before_first_request
 def top5_chart():
