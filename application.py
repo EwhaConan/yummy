@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from database import DBhandler
+from os.path import splitext #확장자를 분리하는 함수
+import time
 import hashlib
 import sys
+
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "yummy"
 
@@ -90,11 +93,17 @@ def view_worldCup():
 @app.route("/menuSubmit", methods=['POST'])
 def view_menuSubmit():
     global idx
-    image_file=request.files["file"]
-    image_file.save("./static/image/{}".format(image_file.filename))
     data=request.form
     
-    if DB.insert_menu(data['foodname'], data, image_file.filename):
+    image_file=request.files["file"] # form 태그에 묶어서 넘긴, 업로드한 파일
+    
+    time_str = time.strftime("%Y-%m-%d_%H%M%S") #현재 "연도-월-일_시분초" 문자열
+    extension = splitext(str(image_file))[1] # 업로드한 파일의 확장자
+    filename = "menu_" + time_str + extension # 저장할 파일명
+    
+    image_file.save("./static/image/{}".format(filename))
+            
+    if DB.insert_menu(data['foodname'], data, filename):
         return view_foods(data["res_name"])
     else:
         return "Menu name is already exist."
@@ -104,11 +113,16 @@ def view_menuSubmit():
 @app.route("/restaurantSubmit", methods=['POST'])
 def view_restaurantSubmit():
     global idx
-    image_file=request.files["file"]
-    image_file.save("./static/image/{}".format(image_file.filename))
     data=request.form
+    image_file=request.files["file"] # form 태그에 묶어서 넘긴, 업로드한 파일
     
-    if DB.insert_restaurant(data["name"], data, image_file.filename):
+    time_str = time.strftime("%Y-%m-%d_%H%M%S") #현재 "연도-월-일_시분초" 문자열
+    extension = splitext(str(image_file))[1] # 업로드한 파일의 확장자
+    filename = "restaurant_" + time_str + extension # 저장할 파일명
+    
+    image_file.save("./static/image/{}".format(filename))
+        
+    if DB.insert_restaurant(data["name"], data, filename):
         #return render_template("result.html", data=data, image_path="static/image/"+image_file.filename) 
         return redirect(url_for('view_list'))
     else:
@@ -118,11 +132,17 @@ def view_restaurantSubmit():
 # 리뷰 등록 과정에서
 @app.route("/reviewSubmit", methods=['POST'])
 def view_reviewSubmit():
-    image_file=request.files["img"]
-    image_file.save("./static/image/{}".format(image_file.filename))
     data=request.form
     
-    if DB.insert_review(data['reviewerName'], data, image_file.filename):
+    image_file=request.files["img"] # form 태그에 묶어서 넘긴, 업로드한 파일
+    
+    time_str = time.strftime("%Y-%m-%d_%H%M%S") #현재 "연도-월-일_시분초" 문자열
+    extension = splitext(str(image_file))[1] # 업로드한 파일의 확장자
+    filename = "review_" + time_str + extension # 저장할 파일명
+    
+    image_file.save("./static/image/{}".format(filename))
+            
+    if DB.insert_review(data['reviewerName'], data, filename):
 
         return view_reviewVView(data['name'])
         
