@@ -16,6 +16,10 @@ top5_list = []
 def top5_chart():
     datas = DB.get_restaurants()
     rating_dic = {}
+    
+    if str(datas) == "None": # 예외 처리 : 등록된 맛집이 없는 경우
+            top5_list = ["등록된 맛집이 없습니다."]
+            return
 
     for data in datas.items():
         name = data[1]["name"]
