@@ -100,7 +100,7 @@ def view_menuSubmit():
     image_file=request.files["file"] # form 태그에 묶어서 넘긴, 업로드한 파일
     
     time_str = time.strftime("%Y-%m-%d_%H%M%S") #현재 "연도-월-일_시분초" 문자열
-    extension = splitext(str(image_file))[1] # 업로드한 파일의 확장자
+    extension = splitext(str(image_file.filename))[1] # 업로드한 파일의 확장자
     filename = "menu_" + time_str + extension # 저장할 파일명
     
     image_file.save("./static/image/{}".format(filename))
@@ -119,7 +119,7 @@ def view_restaurantSubmit():
     image_file=request.files["file"] # form 태그에 묶어서 넘긴, 업로드한 파일
     
     time_str = time.strftime("%Y-%m-%d_%H%M%S") #현재 "연도-월-일_시분초" 문자열
-    extension = splitext(str(image_file))[1] # 업로드한 파일의 확장자
+    extension = splitext(str(image_file.filename))[1] # 업로드한 파일의 확장자
     filename = "restaurant_" + time_str + extension # 저장할 파일명
     
     image_file.save("./static/image/{}".format(filename))
@@ -139,7 +139,7 @@ def view_reviewSubmit():
     image_file=request.files["img"] # form 태그에 묶어서 넘긴, 업로드한 파일
     
     time_str = time.strftime("%Y-%m-%d_%H%M%S") #현재 "연도-월-일_시분초" 문자열
-    extension = splitext(str(image_file))[1] # 업로드한 파일의 확장자
+    extension = splitext(str(image_file.filename))[1] # 업로드한 파일의 확장자
     filename = "review_" + time_str + extension # 저장할 파일명
     
     image_file.save("./static/image/{}".format(filename))
