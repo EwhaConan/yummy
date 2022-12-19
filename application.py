@@ -52,6 +52,7 @@ def view_list():
         return redirect(url_for('view_restaurantRegister'))
         
     total_count = len(data) # 레스토랑 총 개수
+    data=dict(sorted(data.items(), key=lambda x: x[1]['name'], reverse=False))
     page_count = int(((total_count + 8)/ limit)) # 페이지 총 개수
     data = dict(list(data.items())[start_idx:end_idx])
 
