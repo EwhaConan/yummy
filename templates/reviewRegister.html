@@ -48,13 +48,11 @@ padding: 2em; } {% endblock style %} {% block section %}
 
     <div>
       <label for="img">사진을 첨부하시겠습니까?</label>
-      <input type="file" name="img" accept="image/*" required />
+      <input type="file" name="img" onchange="readURL(this);" required />
     </div>
     <br /><br />
-    <img
-      src="https://via.placeholder.com/200"
-      alt="샘플 대표메뉴 이미지"
-    /><br />
+    <img id="preview" width="200px" height="200px" />
+    <br />
 
     <label for="text"
       ><p>

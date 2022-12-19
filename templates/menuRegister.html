@@ -56,18 +56,29 @@ head_title %} {% block section %}
   </div>
 
   <div class="co mid2">
-    <img
-      src="https://via.placeholder.com/300"
-      alt="샘플 대표메뉴 이미지"
-    /><br /><br />
+    <img id="preview" width="300px" height="300px" />
+    <br /><br /><br />
     <div>
       <label for="file">사진:</label>
-      <input type="file" name="file" accept="image/*" required />
+      <input type="file" name="file" onchange="readURL(this);" required />
     </div>
     <br /><br /><br />
     <input type="submit" value="메뉴 등록하기" />
   </div>
 </form>
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById("preview").src = e.target.result;
+      };
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      document.getElementById("preview").src = "";
+    }
+  }
+</script>
 {% endblock section %} {% block co_side %}
 <div class="co side"></div>
 {% endblock co_side %}

@@ -20,11 +20,16 @@ head_title %} {% block section %} {% for mesg in get_flashed_messages() %}
   enctype="multipart/form-data"
 >
   <div class="co mid1">
-    <img src="https://via.placeholder.com/350" alt="샘플이미지" />
+    <img id="preview" width="300px" height="300px" />
     <br /><br /><br />
     <div>
       <label for="file"><b>대표사진:</b></label>
-      <input type="file" name="file" accept="image/*" required /><br /><br /><br />
+      <input
+        type="file"
+        name="file"
+        onchange="readURL(this);"
+        required
+      /><br /><br /><br />
     </div>
 
     <label for="name"><b>식당이름:</b></label>
