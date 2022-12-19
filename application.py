@@ -56,8 +56,18 @@ def view_list():
     page_count = int(((total_count + 8)/ limit)) # 페이지 총 개수
     data = dict(list(data.items())[start_idx:end_idx])
 
-    # print (data)    
-    return render_template("list.html", page=page, limit=limit, page_count=page_count, total_count=total_count, datas=data.items(), top5_list=top5_list)
+    category = []
+    for i in data.items():
+        opt = i[1]["category"]
+        tmp = 0
+        for j in category:
+            if opt == j:
+                tmp += 1
+        if tmp == 0:
+            category.append(opt)
+
+    print (data)    
+    return render_template("list.html", page=page, limit=limit, page_count=page_count, total_count=total_count, datas=data.items(), category=category, top5_list=top5_list)
 
 
 # route: 맛집 등록
