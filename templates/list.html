@@ -32,6 +32,8 @@
       </select>
     </div>
 
+    <br>
+
     <div class="list">
       <div id="pers">
       {% for data in datas %}
@@ -99,14 +101,14 @@
         var opt = select.options[select.selectedIndex].value;
 
         {% for data in datas %}
+        
+        document.getElementById('{{data[1].name}}').style.display='block';
 
-        if ( opt != "{{data[1].category}}"){
-
-          document.getElementById('{{data[1].name}}').remove();
+        if ( opt !="all" && opt != "{{data[1].category}}"){
+          document.getElementById('{{data[1].name}}').style.display='none';
         }
 
         {% endfor %}
-        
       }
     
     </script>
