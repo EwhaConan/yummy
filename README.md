@@ -67,8 +67,8 @@
     - **회원가입 / 로그인**
 
 ⬇️ 페이지 간 관계도 : 상위 페이지를 통해서 하위 페이지로 이동할 수 있습니다.
+![Untitled](https://user-images.githubusercontent.com/87740183/209659774-bbc62d05-b054-4333-b4bd-ff0e45f152fc.png)
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8daa0845-7a6b-4efb-be05-d4bdebc4af2c/Untitled.png)
 
 ## (선택) 라이센스(**License)**
 
